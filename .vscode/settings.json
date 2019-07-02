@@ -3,8 +3,26 @@
   "editor.rulers": [140],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[scss]": {
-    "editor.defaultFormatter": null
+    "editor.defaultFormatter": null,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
   },
+  "[json]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
+  },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]":       { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "prettier.tslintIntegration": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
