@@ -27,8 +27,14 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "src/app/sass"
+              ]
+            },
             "styles": [
-              "src/styles.scss"
+              "src/app/sass/main.scss"
             ],
             "scripts": []
           },
@@ -88,7 +94,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/app/sass/main.scss"
             ],
             "scripts": []
           }
