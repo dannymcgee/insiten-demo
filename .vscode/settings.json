@@ -1,0 +1,15 @@
+{
+  "editor.wordWrapColumn": 140,
+  "editor.rulers": [140],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[scss]": {
+    "editor.defaultFormatter": null
+  },
+  "prettier.tslintIntegration": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true
+}
