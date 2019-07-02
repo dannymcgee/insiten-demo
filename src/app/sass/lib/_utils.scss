@@ -1,0 +1,295 @@
+///-- Unit Conversion ----------------------------------------------------------
+
+
+/// Convert px value to its equivalent in rem
+/// @param {number} $px The number to convert
+
+@function px-to-rem($px) {
+	@return $px / 16 * 1rem;
+}
+
+
+/// Convert px value to its equivalent in vw
+/// @param {number} $px The number to convert
+
+@function px-to-vw($px) {
+	@return 1600 / $px * 1vw;
+}
+
+
+/// Convert px value to its equivalent in the unit specified as default with
+/// $default-unit
+/// @param {number} $px The number to convert
+
+@function px($px) {
+	@if $default-unit == 'rem' {
+		@return px-to-rem($px);
+	} @else if $default-unit == 'vw' {
+		@return px-to-vw($px);
+	} @else {
+		@return $px * 1px;
+	}
+}
+
+
+
+
+///-- Transitions & Interactables ----------------------------------------------
+
+
+/// Shorthand for defining one or more transition properties with sensible
+/// defaults for delay and timing
+/// @param {property | (property, property...)} $properties
+/// @param {number} $delay (optional)
+/// @param {timing function} $timing (optional)
+/// @example
+///   (simple) @include transition(opacity)
+///   (multiple properties) @include transition((background, color, opacity))
+///   (complex) @include transition((background, color), 0.25s, ease-in-out)
+
+@mixin transition($properties, $delay: 0.1s, $timing: linear) {
+	@if type-of($properties) == list {
+		$transition-list: ();
+
+		@each $property in $properties {
+			$transition-list: append(
+				$transition-list,
+				$property $delay $timing,
+				comma
+			);
+		}
+
+		transition: $transition-list;
+	} @else {
+		transition: $properties $delay $timing;
+	}
+}
+
+
+/// Adds basic transitions and focus states to interactable elements
+/// @param {number} $offset (optional) The desired offset of the focus ring
+/// @param {color} $color (optional) The desired color of the focus ring
+
+@mixin interactable($offset: 3px, $color: $blue) {
+	@include transition((
+		background-color,
+		color,
+		border-color,
+		opacity,
+		outline-color,
+		outline-offset,
+		box-shadow
+	));
+
+	&:focus {
+		outline: none;
+	}
+
+	[data-whatintent="keyboard"] & {
+		outline: 3px solid transparent;
+
+		&:focus {
+			outline-color: $color;
+			outline-offset: $offset;
+			z-index: 1;
+		}
+	}
+}
+
+
+
+
+///-- Layout & Positioning -----------------------------------------------------
+
+
+/// Sets an element to responsively maintain an aspect ratio via a
+/// pseudo-element child whose height is a factor of the target element's width
+
+@mixin aspect-ratio($width, $height) {
+	&::before {
+		content: ' ';
+		display: block;
+		width: 100%;
+		height: 0;
+		padding-top: percentage($height / $width);
+	}
+}
+
+
+/// Shorthand for setting position rules
+/// @param { static|relative|absolute|fixed|sticky } $type
+/// @param {( number|null, number|null, number|null, numer|null )} $positions
+/// @example
+///   @include position(absolute, (0 null null 10px)
+///     compiles to =>
+///   position: absolute;
+///   top: 0;
+///   left: 10px;
+
+@mixin position(
+	$type,
+	$values: (
+		$top: null,
+		$right: null,
+		$bottom: null,
+		$left: null
+	)
+) {
+	position: $type;
+
+	$properties: (top, right, bottom, left);
+
+	@for $i from 1 through length($values) {
+		$property: nth($properties, $i);
+		$value: nth($values, $i);
+
+		@if $value != null {
+			#{$property}: $value;
+		}
+	}
+}
+
+
+/// Shorthand for absolute position with all directions set to 0
+
+@mixin absolute-fill() {
+	@include position(absolute, (0 0 0 0));
+}
+
+
+/// Shorthand for vertically and horizontally centering an element inside
+/// a relatively-positioned container via absolute position and translation
+
+@mixin absolute-center() {
+	@include position(absolute, (50% null null 50%));
+	transform: translateX(-50%) translateY(-50%);
+}
+
+
+/// Shorthand for vertically centering an element inside a relatively-
+/// positioned container via absolute position and translation
+
+@mixin absolute-vcenter() {
+	@include position(absolute, (50%));
+	transform: translateY(-50%);
+}
+
+
+/// Calculate the value of a container's side margins at a given breakpoint
+/// @param {string} $breakpoint
+/// @return {number} The px value of a single side-margin
+
+@function calc-container-margin($breakpoint) {
+	$container-width: map-get($container-max-widths, $breakpoint);
+	@return calc((100vw - #{$container-width}) / 2);
+}
+
+
+/// Calculates container side margin values for all breakpoints beginning with
+/// the one specified, going up
+/// @param {string} $breakpoint
+/// @param {string} $property
+/// @param {string} $side
+///
+/// @example
+///   @include calc-container-margins-from('lg', 'padding', 'left')
+///     compiles to =>
+///   @media (min-width: ['lg' breakpoint]) {
+///     padding-left: [calculated-value];
+///   }
+///   @media (min-width: ['xl' breakpoint]) {
+///     padding-left: [calculated-value];
+///   }
+
+@mixin calc-container-margins-from($breakpoint, $property, $side) {
+	$started: false;
+
+	@each $_breakpoint, $value in $grid-breakpoints {
+		@if $breakpoint == $_breakpoint {
+			$started: true;
+		}
+		@if $started == true {
+			@include media-min($_breakpoint) {
+				#{$property}-#{$side}: calc-container-margin($_breakpoint);
+			}
+		}
+	}
+}
+
+
+/// @output A series of escalating vertical padding values
+///   appropriate for most page sections
+
+@mixin section-padding() {
+	padding: px(36) 0;
+	@include media-min('md') { padding: px(48) 0 }
+	@include media-min('lg') { padding: px(72) 0 }
+	@include media-min('xl') { padding: px(100) 0 }
+}
+
+
+/// Collapses a flexbox container from row to column direction
+/// below the given breakpoint
+
+@mixin flexbox-collapse($breakpoint) {
+	flex-direction: column;
+
+	@include media-min($breakpoint) {
+		flex-direction: row;
+	}
+}
+
+
+
+
+///-- Media Queries ------------------------------------------------------------
+
+
+/// Shorthand for @media min-width queries at breakpoints
+/// pre-defined in $grid-breakpoints
+
+@mixin media-min($name, $breakpoints: $grid-breakpoints) {
+	$breakpoint: map-get($breakpoints, $name);
+
+	@media (min-width: $breakpoint) {
+		@content;
+	};
+}
+
+
+/// Shorthand for @media max-width queries at breakpoints
+/// pre-defined in $grid-breakpoints
+
+@mixin media-max($name, $breakpoints: $grid-breakpoints) {
+	$breakpoint: map-get($breakpoints, $name) - 0.02px;
+
+	@media (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+
+/// Shorthand for @media min-width AND max-width queries at
+/// breakpoints pre-defined in $grid-breakpoints
+
+@mixin media-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+	$breakpoint-lower: map-get($breakpoints, $lower);
+	$breakpoint-upper: map-get($breakpoints, $upper);
+
+	@media (min-width: $breakpoint-lower) and (max-width: $breakpoint-upper) {
+		@content;
+	}
+}
+
+
+/// Shorthand for @media max-width OR min-width queries at
+/// breakpoints pre-defined in $grid-breakpoints
+
+@mixin media-max-min($max, $min, $breakpoints: $grid-breakpoints) {
+	$breakpoint-max: map-get($breakpoints, $max);
+	$breakpoint-min: map-get($breakpoints, $min);
+
+	@media (max-width: $breakpoint-max), (min-width: $breakpoint-min) {
+		@content;
+	}
+}

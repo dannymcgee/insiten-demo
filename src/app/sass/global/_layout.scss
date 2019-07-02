@@ -1,0 +1,31 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/grid-framework';
+@import '~bootstrap/scss/mixins/grid';
+@import '~bootstrap/scss/grid';
+
+* {
+	box-sizing: border-box;
+}
+
+nav {
+	// Setting the sensible default on the tag instead of the class to avoid some specificity-related issues
+	@include flexbox-collapse('md');
+}
+.nav {
+	display: flex;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 0.666em;
+		text-decoration: none;
+	}
+}
+
+.container {
+	@include media-max('sm') {
+		padding-right: $grid-gutter-width;
+		padding-left: $grid-gutter-width;
+	}
+}
