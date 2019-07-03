@@ -48,7 +48,9 @@ class Company {
 		this.name = this._generateName()
 		this.url = this._generateUrl()
 		this.description = lipsum.getParagraph()
+		this.isPublic = Random.chance(0.34)
 		this.contacts = this._generateContacts()
+		this.financials = this._generateFinancials()
 		this.status = 'Researching'
 	}
 
@@ -101,7 +103,67 @@ class Company {
   _getSuffix() {
     const index = Random.range(0, suffixes.length - 1)
     return suffixes[index]
-  }
+	}
+
+	_generateFinancials() {
+		const years = []
+		const random = Math.random()
+		const baseFactor =
+			(random < 0.5)
+				? 100000
+				: (random < 0.85)
+					? 1000000
+					: 10000000
+
+		for (let y = 2018; y > (2018 - 3); y--) {
+			years.push({
+				key: y,
+				metrics: generateMetrics.apply(this)
+			})
+		}
+
+		function generateMetrics() {
+			const lastYear = years[years.length - 1]
+			let metrics = {
+				assets: 0,
+				debt: 0,
+				revenue: 0
+			}
+			if (this.isPublic) {
+				metrics.mc = 0
+			}
+
+			if (!lastYear) {
+				const keys = Object.keys(metrics)
+				for (const key of keys) {
+					const foo = Math.random() + 1
+					metrics[key] = foo * baseFactor
+				}
+				const ratio = Random.range(25, 40) / 100
+				metrics.ebitda = metrics.revenue * ratio
+			} else {
+				metrics = { ...lastYear.metrics }
+				const keys = Object.keys(metrics)
+				for (const key of keys) {
+					const sign = Random.coinFlip() ? 1 : -1
+					const changePercent = Math.random()
+					const change = metrics[key] * changePercent * sign
+
+					metrics[key] += change
+				}
+				const ratio = Random.range(25, 40) / 100
+				metrics.ebitda = metrics.revenue * ratio
+			}
+
+			const keys = Object.keys(metrics)
+			for (const key of keys) {
+				metrics[key] = Math.round(metrics[key])
+			}
+
+			return metrics
+		}
+		return years
+	}
 }
 
 module.exports = Company;
