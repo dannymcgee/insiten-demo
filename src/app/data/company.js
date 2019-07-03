@@ -40,10 +40,12 @@ const suffixes = [
 	'Ventures',
 	'Works'
 ]
+const tlds = ['com', 'co', 'net', 'org',]
 
 class Company {
   constructor() {
 		this.name = this._generateName()
+		this.url = this._generateUrl()
 		this.description = lipsum.getParagraph()
 		this.status = 'Researching'
 	}
@@ -64,7 +66,20 @@ class Company {
 		nameWords.push(this._getSuffix())
 
 		return nameWords.join(' ')
-  }
+	}
+
+	_generateUrl() {
+		const nameArr = this.name.split(' ')
+		nameArr.pop()
+		const baseName = (nameArr.length === 1)
+			? nameArr[0].toLowerCase()
+			: nameArr.reduce((acc, cur) => acc.toLowerCase() + cur.toLowerCase())
+
+		const tldIndex = Random.range(0, tlds.length - 1)
+		const tld = '.' + tlds[tldIndex]
+
+		return baseName + tld
+	}
 
   _getSuffix() {
     const index = Random.range(0, suffixes.length - 1)
