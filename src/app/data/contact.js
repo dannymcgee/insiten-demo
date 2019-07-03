@@ -108,10 +108,6 @@ const positions = ['CEO', 'President', 'Vice President', 'CFO']
 
 class Contact {
 	constructor(alreadyUsedPositions, companyUrl) {
-		console.log('constructor called', {
-			alreadyUsedPositions,
-			companyUrl
-		})
 		this.name = this._generateName()
 		this.position = this._generatePosition(alreadyUsedPositions)
 		this.phone = this._generatePhoneNumber()
@@ -129,7 +125,6 @@ class Contact {
 	}
 
 	_generatePosition(alreadyUsedPositions) {
-		console.log('_generatePosition called', alreadyUsedPositions)
 		const index = Random.range(0, positions.length - 1)
 		const maybePosition = positions[index]
 
