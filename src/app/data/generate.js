@@ -23,12 +23,10 @@ function writeDataModule(companies) {
 	fileContents += `const companies = [`
 
 	for (const company of companies) {
-		fileContents += '\n\t'
+		fileContents += '\n'
 
 		// stringify each company
-		let companyString = JSON.stringify(company, null, '\t\t') + ','
-		// Add single tabs before closing braces
-		companyString = companyString.replace('},', '\t},')
+		let companyString = JSON.stringify(company, null, '\t') + ','
 		// Remove quotes around property names
 		companyString = companyString.replace(/"([a-zA-Z]+)":/g, '$1:')
 		// Convert double quotes to single quotes
