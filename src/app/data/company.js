@@ -75,9 +75,10 @@ class Company {
 	_generateUrl() {
 		const nameArr = this.name.split(' ')
 		nameArr.pop()
-		const baseName = (nameArr.length === 1)
+		let baseName = (nameArr.length === 1)
 			? nameArr[0].toLowerCase()
 			: nameArr.reduce((acc, cur) => acc.toLowerCase() + cur.toLowerCase())
+		baseName = baseName.replace(/[^-a-z0-9]/, '')
 		const tld = '.' + Random.itemOf(tlds)
 
 		return baseName + tld

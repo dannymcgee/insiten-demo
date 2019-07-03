@@ -3,7 +3,7 @@
 const companies = [
 {
 	name: 'Excepteur Cillum & Co.',
-	url: 'excepteurcillum&.co',
+	url: 'excepteurcillum.co',
 	description: 'Deserunt aute consequat non nostrud. Exercitation ut sit velit nisi pariatur nisi nostrud id mollit. Amet et anim sunt do. Velit officia laboris id ullamco.',
 	isPublic: true,
 	contacts: [
@@ -14,7 +14,7 @@ const companies = [
 			},
 			position: 'CEO',
 			phone: '(517) 973-4445',
-			email: 'bjeffords@excepteurcillum&.co'
+			email: 'bjeffords@excepteurcillum.co'
 		}
 	],
 	financials: [
