@@ -45,6 +45,7 @@ class Company {
   constructor() {
 		this.name = this._generateName()
 		this.description = lipsum.getParagraph()
+		this.status = 'Researching'
 	}
 
   _generateName() {
