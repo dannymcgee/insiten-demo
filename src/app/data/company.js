@@ -1,5 +1,6 @@
 const Random = require('./random')
 const LoremIpsum = require('./lipsum')
+const Contact = require('./contact')
 const lipsum = new LoremIpsum()
 
 const suffixes = [
@@ -47,6 +48,7 @@ class Company {
 		this.name = this._generateName()
 		this.url = this._generateUrl()
 		this.description = lipsum.getParagraph()
+		this.contacts = this._generateContacts()
 		this.status = 'Researching'
 	}
 
@@ -79,6 +81,21 @@ class Company {
 		const tld = '.' + tlds[tldIndex]
 
 		return baseName + tld
+	}
+
+	_generateContacts() {
+		const contacts = []
+
+		const number = Random.range(1, 3)
+		const alreadyUsedPositions = []
+
+		for (let i = 0; i < number; i++) {
+			const newContact = new Contact(alreadyUsedPositions, this.url)
+			contacts.push(newContact)
+			alreadyUsedPositions.push(newContact.position)
+		}
+
+		return contacts
 	}
 
   _getSuffix() {
