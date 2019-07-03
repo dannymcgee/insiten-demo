@@ -37,7 +37,7 @@ function writeDataModule(companies) {
 	fileContents += '\n];\n\n'
 	fileContents += 'export default companies;\n'
 
-	fs.writeFile('./companies.ts', fileContents, error => {
+	fs.writeFile('./src/app/data/companies.ts', fileContents, error => {
 		if (error) {
 			throw error
 		}
