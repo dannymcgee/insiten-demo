@@ -122,13 +122,11 @@ class Contact {
 	}
 
 	_generatePosition(alreadyUsedPositions) {
-		const maybePosition = Random.itemOf(positions)
+		const positionsFiltered = positions.filter(
+			position => alreadyUsedPositions.indexOf(position) === -1
+		)
 
-		if (alreadyUsedPositions.indexOf(maybePosition) !== -1) {
-			return this._generatePosition(alreadyUsedPositions)
-		} else {
-			return maybePosition
-		}
+		return Random.itemOf(positionsFiltered)
 	}
 
 	_generatePhoneNumber() {
