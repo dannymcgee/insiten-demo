@@ -67,7 +67,7 @@ class Company {
 
       nameWords.push(word)
 		}
-		nameWords.push(this._getSuffix())
+		nameWords.push(Random.itemOf(suffixes))
 
 		return nameWords.join(' ')
 	}
@@ -78,9 +78,7 @@ class Company {
 		const baseName = (nameArr.length === 1)
 			? nameArr[0].toLowerCase()
 			: nameArr.reduce((acc, cur) => acc.toLowerCase() + cur.toLowerCase())
-
-		const tldIndex = Random.range(0, tlds.length - 1)
-		const tld = '.' + tlds[tldIndex]
+		const tld = '.' + Random.itemOf(tlds)
 
 		return baseName + tld
 	}
@@ -98,11 +96,6 @@ class Company {
 		}
 
 		return contacts
-	}
-
-  _getSuffix() {
-    const index = Random.range(0, suffixes.length - 1)
-    return suffixes[index]
 	}
 
 	_generateFinancials() {

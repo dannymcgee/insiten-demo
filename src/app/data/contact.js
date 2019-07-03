@@ -115,18 +115,14 @@ class Contact {
 	}
 
 	_generateName() {
-		const fnIndex = Random.range(0, firstNames.length - 1)
-		const lnIndex = Random.range(0, lastNames.length - 1)
-
 		return {
-			first: firstNames[fnIndex],
-			last: lastNames[lnIndex]
+			first: Random.itemOf(firstNames),
+			last: Random.itemOf(lastNames)
 		}
 	}
 
 	_generatePosition(alreadyUsedPositions) {
-		const index = Random.range(0, positions.length - 1)
-		const maybePosition = positions[index]
+		const maybePosition = Random.itemOf(positions)
 
 		if (alreadyUsedPositions.indexOf(maybePosition) !== -1) {
 			return this._generatePosition(alreadyUsedPositions)

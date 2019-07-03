@@ -76,9 +76,8 @@ class LoremIpsum {
     const wordsPool = minLength
       ? this.words.filter(word => word.length >= minLength)
       : this.words
-    const index = Random.range(0, wordsPool.length - 1)
 
-    return wordsPool[index]
+		return Random.itemOf(wordsPool)
   }
 
   getSentence() {
