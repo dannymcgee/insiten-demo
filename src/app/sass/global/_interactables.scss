@@ -1,0 +1,12 @@
+a, button, input, textarea {
+	@include interactable;
+}
+
+a {
+	color: $primary;
+	text-decoration-color: $gray-400;
+
+	&:hover {
+		text-decoration-color: transparent;
+	}
+}
