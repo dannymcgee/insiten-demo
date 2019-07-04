@@ -46,10 +46,33 @@ a {
 		background: $gray-100;
 		color: $gray-600;
 		border: 1px solid $gray-300;
+		box-shadow: 0 px(2) px(5) transparentize($black, 0.85);
 		font-size: px(14);
 
 		#{$block}--open & {
 			display: block;
 		}
 	}
+		&__menu-heading,
+		&__menu {
+			padding-right: 1em;
+			padding-left: 0.75em;
+		}
+		&__menu-heading {
+			margin: 1em 0 0.5em;
+		}
+		&__menu {
+			margin: 0 0 0.5em;
+			padding-bottom: 0.5em;
+			list-style: none;
+			border-bottom: 1px solid $gray-300;
+
+			&:last-child {
+				padding-bottom: 0;
+				border-bottom: 0;
+			}
+		}
+			&__menu-item {
+				padding: 0.15em 0;
+			}
 }

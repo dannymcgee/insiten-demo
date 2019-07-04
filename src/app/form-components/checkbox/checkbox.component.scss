@@ -1,0 +1,55 @@
+@import 'lib';
+
+.checkbox {
+	$block: &;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	@include interactable;
+
+	&__input {
+		display: none;
+	}
+	&__ui {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1em;
+		height: 1em;
+		margin-right: 0.5em;
+		position: relative;
+		border: 1px solid $gray-500;
+
+		#{$block}:hover & { border-color: $gray-600 }
+		#{$block}--checked &,
+		#{$block}--checked:hover &,
+		#{$block}--false &,
+		#{$block}--false:hover & { border-color: $gray-700 }
+
+		&::after {
+			content: '';
+			display: block;
+			@include position(absolute, (2px 2px 2px 2px));
+			background: transparent;
+
+			#{$block}--checked & { background: $primary }
+			#{$block}--false & {
+				width: 3px;
+				@include position(absolute, (-4px unset -4px unset));
+				background: $red;
+				border-radius: 1.5px;
+				box-shadow: 1px 0 0 $gray-100;
+				transform: rotate(45deg);
+			}
+		}
+	}
+	&__label {
+		color: $gray-600;
+		cursor: pointer;
+		user-select: none;
+
+		#{$block}:hover & { color: $gray-700 }
+		#{$block}--checked &,
+		#{$block}--checked:hover & { color: $gray-900 }
+	}
+}

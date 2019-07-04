@@ -17,7 +17,8 @@ enum TernaryState {
 @Component({
 	selector: 'app-checkbox',
 	templateUrl: './checkbox.component.html',
-	styleUrls: ['./checkbox.component.scss']
+	styleUrls: ['./checkbox.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent implements OnInit {
 	@Input() label: string;
