@@ -1,0 +1,40 @@
+@import 'lib';
+
+.target-list {
+	&__container {
+		padding-top: $grid-gutter-width;
+		padding-bottom: $grid-gutter-width;
+	}
+		&__row {
+			margin-right: -($grid-gutter-width / 4);
+			margin-left: -($grid-gutter-width / 4);
+		}
+		&__col {
+			margin-bottom: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 4;
+			padding-left: $grid-gutter-width / 4;
+		}
+}
+
+.targets-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: none;
+
+	&__header {
+		background: $white;
+	}
+	&__row {
+		display: table-row;
+	}
+		&__cell {
+			display: table-cell;
+			&:first-child { @include calc-container-margins-from('sm', 'padding', 'left') }
+			&:last-child  { @include calc-container-margins-from('sm', 'padding', 'right') }
+
+			&--heading {
+				text-align: left;
+			}
+		}
+}

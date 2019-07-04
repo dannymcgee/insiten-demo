@@ -14,9 +14,18 @@ import {
 	faUserChart
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
+import { TargetListComponent } from './targets/target-list/target-list.component';
+import { TargetCardComponent } from './targets/target-card/target-card.component';
+import { TargetTableComponent } from './targets/target-table/target-table.component';
 
 @NgModule({
-	declarations: [AppComponent, ToolbarComponent],
+	declarations: [
+		AppComponent,
+		ToolbarComponent,
+		TargetListComponent,
+		TargetCardComponent,
+		TargetTableComponent
+	],
 	imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
 	providers: [],
 	bootstrap: [AppComponent]

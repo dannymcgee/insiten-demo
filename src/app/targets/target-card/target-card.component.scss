@@ -1,0 +1,16 @@
+@import 'lib';
+
+:host, .target-card {
+	height: 100%;
+}
+.target-card {
+	background: $white;
+	padding: px(15);
+
+	&__name {
+		margin: 0 0 px(8);
+	}
+	&__description {
+		margin: 0;
+	}
+}

@@ -1,0 +1,42 @@
+<main class="target-list">
+  <div
+    [ngSwitch]="viewMode"
+    [ngClass]="{
+      'container target-list__container': viewMode !== 'list'
+    }"
+  >
+    <div *ngSwitchCase="'grid'" class="row target-list__row">
+      <div class="col-lg-6 target-list__col" *ngFor="let target of targets">
+        <app-target-card [company]="target"></app-target-card>
+      </div>
+    </div>
+
+    <table *ngSwitchCase="'list'" class="targets-table">
+      <!-- TODO: Move this into its own component -->
+      <thead class="targets-table__header">
+        <tr class="targets-table__row">
+          <th class="targets-table__cell targets-table__cell--heading">Name</th>
+          <th class="targets-table__cell targets-table__cell--heading">URL</th>
+          <th class="targets-table__cell targets-table__cell--heading">
+            Public
+          </th>
+          <th class="targets-table__cell targets-table__cell--heading">
+            Revenue
+          </th>
+        </tr>
+      </thead>
+      <tbody class="targets-table__body">
+        <app-target-table
+          *ngFor="let target of targets"
+          class="targets-table__row"
+          [company]="target"
+        ></app-target-table>
+      </tbody>
+    </table>
+
+    <div class="alert alert--error" *ngSwitchDefault>
+      <h3>Error</h3>
+      <p>Unknown view mode '{{ viewMode }}'!</p>
+    </div>
+  </div>
+</main>
