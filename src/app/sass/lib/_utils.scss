@@ -81,14 +81,9 @@
 		text-decoration-color,
 		box-shadow
 	));
-
-	&:focus {
-		outline: none;
-	}
+	outline: 3px solid transparent;
 
 	[data-whatintent="keyboard"] & {
-		outline: 3px solid transparent;
-
 		&:focus {
 			outline-color: $color;
 			outline-offset: $offset;
