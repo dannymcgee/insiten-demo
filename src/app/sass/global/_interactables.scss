@@ -1,4 +1,4 @@
-a, button, input, textarea {
+a, button, input, textarea, .dropdown {
 	@include interactable;
 }
 
@@ -28,6 +28,28 @@ a {
 
 		+ #{$block}--icon {
 			margin-left: 1em;
+		}
+	}
+}
+
+.dropdown {
+	$block: &;
+
+	&__toggle {
+		* {
+			pointer-events: none !important;
+		}
+	}
+	&__nav {
+		display: none;
+		padding: px(10);
+		background: $gray-100;
+		color: $gray-600;
+		border: 1px solid $gray-300;
+		font-size: px(14);
+
+		#{$block}--open & {
+			display: block;
 		}
 	}
 }

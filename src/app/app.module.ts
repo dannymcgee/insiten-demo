@@ -17,9 +17,11 @@ import {
 	faThLarge,
 	faThList,
 	faSearch,
-	faUserChart
+	faUserChart,
+	faCaretDown
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
+import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
 	declarations: [
@@ -29,7 +31,8 @@ import 'what-input';
 		TargetCardComponent,
 		TargetTableComponent,
 		CheckboxComponent,
-		InputComponent
+		InputComponent,
+		DropdownDirective
 	],
 	imports: [
 		BrowserModule,
@@ -43,6 +46,6 @@ import 'what-input';
 })
 export class AppModule {
 	constructor() {
-		library.add(faThLarge, faThList, faSearch, faUserChart);
+		library.add(faThLarge, faThList, faSearch, faUserChart, faCaretDown);
 	}
 }
