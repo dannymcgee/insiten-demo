@@ -1,3 +1,6 @@
+import { Injectable } from '@angular/core';
+import companies from './companies';
+
 export interface Contact {
 	name: {
 		first: string
@@ -27,3 +30,8 @@ export interface Company {
 	contacts: Contact[];
 	financials: Financials[];
 }
+
+@Injectable({
+	providedIn: 'root'
+})
+export class DataManagerService {}

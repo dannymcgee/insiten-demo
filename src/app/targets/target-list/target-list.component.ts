@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ViewMode, StateManager } from 'src/app/state-manager.service';
-import { Company } from 'src/app/targets/target.model';
+import { Company } from 'src/app/data/data-manager.service';
 import companies from './../../data/companies';
 import { Subscription } from 'rxjs';
 

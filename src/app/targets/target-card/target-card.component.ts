@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Company } from './../target.model';
+import { Company } from 'src/app/data/data-manager.service';
 
 @Component({
 	selector: 'app-target-card',
