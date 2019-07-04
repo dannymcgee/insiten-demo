@@ -18,7 +18,8 @@ import {
 	faThList,
 	faSearch,
 	faUserChart,
-	faCaretDown
+	faCaretDown,
+	faBuilding
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 import { DropdownDirective } from './dropdown.directive';
@@ -46,6 +47,13 @@ import { DropdownDirective } from './dropdown.directive';
 })
 export class AppModule {
 	constructor() {
-		library.add(faThLarge, faThList, faSearch, faUserChart, faCaretDown);
+		library.add(
+			faThLarge,
+			faThList,
+			faSearch,
+			faUserChart,
+			faCaretDown,
+			faBuilding
+		);
 	}
 }
