@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ViewMode } from 'src/app/state-manager.service';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { ViewMode, StateManager } from 'src/app/state-manager.service';
 import { Company } from 'src/app/targets/target.model';
 import companies from './../../data/companies';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-target-list',
@@ -9,15 +10,27 @@ import companies from './../../data/companies';
 	styleUrls: ['./target-list.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class TargetListComponent implements OnInit {
+export class TargetListComponent implements OnInit, OnDestroy {
 	targets: Company[];
-	// FIXME: Placeholder; use a service to get the state from app-toolbar
 	eViewMode = ViewMode;
-	viewMode = ViewMode.Grid;
+	viewMode: ViewMode;
+	viewModeSub: Subscription;
 
-	constructor() {}
+	constructor(public stateManager: StateManager) {}
 
 	ngOnInit() {
 		this.targets = companies;
+
+		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
+			this.onViewModeChange(viewMode)
+		);
+	}
+
+	onViewModeChange(viewMode: ViewMode) {
+		this.viewMode = viewMode;
+	}
+
+	ngOnDestroy() {
+		this.viewModeSub.unsubscribe();
 	}
 }

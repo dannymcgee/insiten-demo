@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export enum ViewMode {
 	Grid,
@@ -9,5 +10,5 @@ export enum ViewMode {
 	providedIn: 'root'
 })
 export class StateManager {
-	constructor() {}
+	viewMode = new BehaviorSubject<ViewMode>(ViewMode.Grid);
 }

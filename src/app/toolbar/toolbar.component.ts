@@ -1,21 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewMode } from 'src/app/state-manager.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ViewMode, StateManager } from 'src/app/state-manager.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-toolbar',
 	templateUrl: './toolbar.component.html',
 	styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
-	// TODO: Move this into a service
+export class ToolbarComponent implements OnInit, OnDestroy {
 	eViewMode = ViewMode;
-	viewMode = ViewMode.Grid;
+	viewMode: ViewMode;
+	viewModeSub: Subscription;
 
-	constructor() {}
+	constructor(public stateManager: StateManager) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
+			this.onViewModeChange(viewMode)
+		);
+	}
+
+	onViewModeChange(viewMode: ViewMode) {
+		this.viewMode = viewMode;
+	}
 
 	onViewModeSet(viewMode: ViewMode) {
-		this.viewMode = viewMode;
+		this.stateManager.viewMode.next(viewMode);
+	}
+
+	ngOnDestroy() {
+		this.viewModeSub.unsubscribe();
 	}
 }
