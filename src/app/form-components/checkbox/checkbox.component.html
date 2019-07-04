@@ -1,6 +1,7 @@
 <ng-container [formGroup]="form">
   <input
     [id]="id"
+    [ngClass]="['checkbox__input', inputClass]"
     (change)="onChanged($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"
