@@ -7,6 +7,11 @@
 	box-sizing: border-box;
 }
 
+body {
+	margin: 0;
+	background: $gray-200;
+}
+
 nav {
 	// Setting the sensible default on the tag instead of the class to avoid some specificity-related issues
 	@include flexbox-collapse('md');
