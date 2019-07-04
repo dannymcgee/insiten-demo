@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ViewMode, StateManager } from 'src/app/state-manager.service';
-import { DataManager } from 'src/app/data/data-manager.service';
+import {
+	DataManager,
+	createFilterConfig
+} from 'src/app/data/data-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,16 +17,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	eViewMode = ViewMode;
 	viewMode: ViewMode;
 	viewModeSub: Subscription;
-	filterFormCheckboxes = [
+	filterQueryCheckboxes = [
 		{ label: 'Name', id: 'filterFieldName', defaultValue: true },
 		{ label: 'URL', id: 'filterFieldUrl' },
 		{ label: 'Description', id: 'filterFieldDescription' },
 		{ label: 'Contacts', id: 'filterFieldContacts' }
 	];
 	filterForm: FormGroup;
-	filterQuery: string;
-	filterFields: Set<string> = new Set();
 	filterFormSub: Subscription;
+	filterConfig = createFilterConfig();
 
 	constructor(
 		public stateManager: StateManager,
@@ -40,27 +42,24 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 		);
 	}
 
-	runFilter() {
-		if (this.filterQuery != null) {
-			this.dataManager.filterForText(this.filterQuery, this.filterFields);
-		}
-	}
-
 	onFilterFormUpdate(values: any) {
-		this.filterQuery = values.filterQuery;
+		const term = values.filterQuery;
+		const fields = this.filterConfig.query.fields;
 
-		for (const checkbox of this.filterFormCheckboxes) {
+		for (const checkbox of this.filterQueryCheckboxes) {
 			const key = checkbox.label.toLowerCase();
 			const value = values[checkbox.id];
 
 			if (value === true) {
-				this.filterFields.add(key);
+				fields.add(key);
 			} else {
-				this.filterFields.delete(key);
+				fields.delete(key);
 			}
 		}
+		this.filterConfig.query = { term, fields };
+		this.filterConfig.isPublic = values.filterPublic;
 
-		this.runFilter();
+		this.dataManager.filter(this.filterConfig);
 	}
 
 	onViewModeChange(viewMode: ViewMode) {
