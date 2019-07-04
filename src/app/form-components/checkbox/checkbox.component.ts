@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CheckboxComponent implements OnInit {
 	@Input() label: string;
 	@Input() id: string;
-	@Input() inputClass: string;
+	@Input() baseClass: string;
 	@Input() form: FormGroup;
 	@Input() defaultValue: boolean;
 	@Input() onChangeFn: ($event: any) => void;
