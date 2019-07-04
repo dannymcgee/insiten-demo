@@ -20,15 +20,57 @@
         <fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
       </button>
     </nav>
-    <form class="toolbar__filter">
-      <fa-icon class="toolbar__filter-icon" icon="search"></fa-icon>
+    <form class="toolbar__filter filter">
+      <fa-icon class="filter__icon" icon="search"></fa-icon>
       <app-input
-        id="filter"
-        inputClass="toolbar__filter-input"
+        id="filterQuery"
+        inputClass="filter__input"
         type="text"
-        [onChangeFn]="onFilter"
         [form]="filterForm"
       ></app-input>
+      <div class="dropdown filter__dropdown" appDropdown>
+        <button class="btn btn--icon dropdown__toggle">
+          <fa-icon class="dropdown__icon" icon="caret-down"></fa-icon>
+        </button>
+        <nav class="nav nav--stacked dropdown__nav">
+          <h5 class="dropdown__menu-heading">Search fields:</h5>
+          <ul class="dropdown__menu">
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                label="Name"
+                id="filterFieldName"
+                inputClass="dropdown__menu-checkbox"
+                [defaultValue]="true"
+                [form]="filterForm"
+              ></app-checkbox>
+            </li>
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                label="URL"
+                id="filterFieldUrl"
+                inputClass="dropdown__menu-checkbox"
+                [form]="filterForm"
+              ></app-checkbox>
+            </li>
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                label="Description"
+                id="filterFieldDescription"
+                inputClass="dropdown__menu-checkbox"
+                [form]="filterForm"
+              ></app-checkbox>
+            </li>
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                label="Contacts"
+                id="filterFieldContacts"
+                inputClass="dropdown__menu-checkbox"
+                [form]="filterForm"
+              ></app-checkbox>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </form>
   </div>
 </header>

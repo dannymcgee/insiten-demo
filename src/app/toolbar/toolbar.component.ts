@@ -15,6 +15,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	viewMode: ViewMode;
 	viewModeSub: Subscription;
 	filterForm: FormGroup;
+	filterQuery: string;
+	filterFields: Set<string> = new Set();
+	filterFormSub: Subscription;
 
 	constructor(
 		public stateManager: StateManager,
@@ -26,11 +29,36 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 			this.onViewModeChange(viewMode)
 		);
 		this.filterForm = new FormGroup({});
+		this.filterFormSub = this.filterForm.valueChanges.subscribe(values =>
+			this.onFilterFormUpdate(values)
+		);
 	}
 
-	onFilter($event: any) {
-		const query = $event.target.value;
-		this.dataManager.filterForText(query, ['name']);
+	runFilter() {
+		if (this.filterQuery != null) {
+			this.dataManager.filterForText(this.filterQuery, this.filterFields);
+		}
+	}
+
+	onFilterFormUpdate(values: any) {
+		this.filterQuery = values.filterQuery;
+
+		const checkboxesMap = {
+			name: values.filterFieldName,
+			url: values.filterFieldUrl,
+			description: values.filterFieldDescription,
+			contacts: values.filterFieldContacts
+		};
+		const keys = Object.keys(checkboxesMap);
+		for (const key of keys) {
+			if (checkboxesMap[key] === true) {
+				this.filterFields.add(key);
+			} else {
+				this.filterFields.delete(key);
+			}
+		}
+
+		this.runFilter();
 	}
 
 	onViewModeChange(viewMode: ViewMode) {

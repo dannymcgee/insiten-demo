@@ -22,21 +22,44 @@
 					&--active { opacity: 1.0 !important }
 				}
 			}
-		&__filter {
-			margin-left: auto;
-			padding: 0.5em 1em;
-			background: $white;
-			border-radius: 1em;
-			line-height: 1;
-		}
-			&__filter-icon {
-				margin-left: -0.25em;
-				margin-right: 0.5em;
-				color: $gray-600;
-			}
-			&__filter-input {
-				width: 20em;
-				padding: 0;
-				border: 0;
-			}
+}
+
+.filter,
+.dropdown {
+	&__icon {
+		color: $gray-600;
+	}
+}
+
+.filter {
+	position: relative;
+	margin-left: auto;
+	padding: 0.5em 1em;
+	background: $white;
+	border-radius: 1em;
+	line-height: 1;
+
+	&__icon {
+		margin-left: -0.25em;
+		margin-right: 0.5em;
+	}
+	&__input {
+		width: 20em;
+		padding: 0;
+		border: 0;
+	}
+}
+
+.dropdown {
+	$block: &;
+
+	&__toggle {
+		font-size: px(16);
+		@include position(absolute, (50% 0.5em));
+		transform: translateY(-50%);
+	}
+	&__nav {
+		@include position(absolute, (null 0 0));
+		transform: translateY(100%);
+	}
 }
