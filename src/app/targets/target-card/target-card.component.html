@@ -8,6 +8,16 @@
       "
       [icon]="company.isPublic ? 'user-chart' : 'building'"
     ></fa-icon>
+    <span class="target-card__status target-card__status--{{ status.key }}">
+      {{ status.description }}
+      <fa-icon
+        class="
+					target-card__status-icon
+					target-card__status-icon--{{ status.key }}
+				"
+        [icon]="icons[status.key]"
+      ></fa-icon>
+    </span>
   </header>
   <p class="target-card__description">{{ company.description }}</p>
 </div>

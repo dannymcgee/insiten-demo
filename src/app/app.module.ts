@@ -19,7 +19,11 @@ import {
 	faSearch,
 	faUserChart,
 	faCaretDown,
-	faBuilding
+	faBuilding,
+	faFlask,
+	faHandshake,
+	faCheckCircle,
+	faBan
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 import { DropdownDirective } from './dropdown.directive';
@@ -53,7 +57,11 @@ export class AppModule {
 			faSearch,
 			faUserChart,
 			faCaretDown,
-			faBuilding
+			faBuilding,
+			faFlask,
+			faHandshake,
+			faCheckCircle,
+			faBan
 		);
 	}
 }
