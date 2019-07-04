@@ -34,7 +34,7 @@
 .filter {
 	position: relative;
 	margin-left: auto;
-	padding: 0.5em 1em;
+	padding: 0.5em 2em 0.5em 1em;
 	background: $white;
 	border-radius: 1em;
 	line-height: 1;
@@ -55,7 +55,7 @@
 
 	&__toggle {
 		font-size: px(16);
-		@include position(absolute, (50% 0.5em));
+		@include position(absolute, (50% 0.75em));
 		transform: translateY(-50%);
 	}
 	&__nav {
