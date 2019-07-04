@@ -124,7 +124,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Laborum Industrial',
@@ -245,7 +245,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Mollit Services',
@@ -296,7 +296,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Ex Sunt Industrial',
@@ -343,7 +343,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Cillum Dolore Labs',
@@ -456,7 +456,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Commodo Specialties',
@@ -516,7 +516,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Irure Inc.',
@@ -572,7 +572,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Veniam & Co.',
@@ -620,7 +620,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Minim Solutions',
@@ -667,7 +667,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Magna Amet Properties',
@@ -770,7 +770,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Veniam Books',
@@ -1038,7 +1038,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Deserunt Creative',
@@ -1089,7 +1089,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Reprehenderit Adipisicing Dynamics',
@@ -1139,7 +1139,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Ea Laborum Digital',
@@ -1196,7 +1196,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Eiusmod Development',
@@ -1303,7 +1303,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Magna Industrial',
@@ -1350,7 +1350,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Laborum Systems',
@@ -1448,7 +1448,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Tempor Online',
@@ -1505,7 +1505,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Deserunt Online',
@@ -1555,7 +1555,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Officia Bureau',
@@ -1783,7 +1783,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Fugiat Innovations',
@@ -1830,7 +1830,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Exercitation Group',
@@ -1881,7 +1881,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Nulla Solutions',
@@ -1928,7 +1928,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Ullamco Development',
@@ -1975,7 +1975,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Aliqua Dynamics',
@@ -2025,7 +2025,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Nulla Dynamics',
@@ -2262,7 +2262,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Nisi Fugiat Direct',
@@ -2319,7 +2319,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Incididunt Laborum Industrial',
@@ -2366,7 +2366,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 {
 	name: 'Ipsum & Co.',
@@ -2422,7 +2422,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Reprehenderit Scientific',
@@ -2478,7 +2478,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Declined
 },
 {
 	name: 'Cupidatat Amet Innovations',
@@ -2538,7 +2538,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.Approved
 },
 {
 	name: 'Veniam Creative',
@@ -2752,7 +2752,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.Researching
+	status: Status.PendingApproval
 },
 ];
 
