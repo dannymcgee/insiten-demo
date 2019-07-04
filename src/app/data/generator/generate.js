@@ -19,18 +19,22 @@ function generateCompanies(number = 10) {
 }
 
 function writeDataModule(companies) {
-	let fileContents = `// tslint:disable\n\n`
+	let fileContents = `import { Status } from './status.enum';\n\n`
 	fileContents += `const companies = [`
 
 	for (const company of companies) {
 		fileContents += '\n'
 
+		// Add status property
+		company.status = "Status.Researching"
 		// stringify each company
 		let companyString = JSON.stringify(company, null, '\t') + ','
 		// Remove quotes around property names
 		companyString = companyString.replace(/"([a-zA-Z]+)":/g, '$1:')
 		// Convert double quotes to single quotes
 		companyString = companyString.replace(/"/g, '\'')
+		// Remove quotes from status value
+		companyString = companyString.replace(/'(Status\.Researching)'/g, '$1')
 
 		fileContents += companyString
 	}

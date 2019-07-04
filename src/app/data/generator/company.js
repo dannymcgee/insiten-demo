@@ -51,7 +51,6 @@ class Company {
 		this.isPublic = Random.chance(0.34)
 		this.contacts = this._generateContacts()
 		this.financials = this._generateFinancials()
-		this.status = 'Researching'
 	}
 
   _generateName() {
