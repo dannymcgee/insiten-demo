@@ -23,7 +23,7 @@
 	border: none;
 
 	&__header {
-		background: $white;
+		z-index: 10;
 	}
 	&__row {
 		display: table-row;
@@ -34,6 +34,8 @@
 			&:last-child  { @include calc-container-margins-from('sm', 'padding', 'right') }
 
 			&--heading {
+				@include position(sticky, (px(50)));
+				background: $white;
 				text-align: left;
 			}
 		}
