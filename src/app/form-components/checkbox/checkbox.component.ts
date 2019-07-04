@@ -11,11 +11,12 @@ export class CheckboxComponent implements OnInit {
 	@Input() id: string;
 	@Input() inputClass: string;
 	@Input() form: FormGroup;
+	@Input() defaultValue: boolean;
 	@Input() onChangeFn: ($event: any) => void;
 	control: FormControl;
 
 	@HostBinding('class.checkbox') _ = true;
-	@HostBinding('class.checkbox--checked') isChecked = false;
+	@HostBinding('class.checkbox--checked') isChecked = this.defaultValue || false;
 	@HostBinding('class.checkbox--focus') isFocused = false;
 
 	constructor() {}
@@ -23,6 +24,7 @@ export class CheckboxComponent implements OnInit {
 	ngOnInit() {
 		this.control = new FormControl(null);
 		this.form.addControl(this.id, this.control);
+		this.control.setValue(this.defaultValue || false);
 	}
 
 	onChanged($event: any) {
