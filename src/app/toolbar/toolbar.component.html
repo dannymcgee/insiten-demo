@@ -49,6 +49,21 @@
               ></app-checkbox>
             </li>
           </ul>
+
+          <h5 class="dropdown__menu-heading">Show only:</h5>
+          <ul class="dropdown__menu">
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                label="Public"
+                [id]="'filterPublic'"
+                class="dropdown-checkbox"
+                baseClass="dropdown-checkbox"
+                [isTernary]="true"
+                [defaultValue]="null"
+                [form]="filterForm"
+              ></app-checkbox>
+            </li>
+          </ul>
         </nav>
       </div>
     </form>
