@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Status } from './status.enum';
+import { Status } from './status.model';
 import companies from './companies';
 
 export interface Contact {

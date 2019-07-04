@@ -1,4 +1,4 @@
-import { Status } from './status.enum';
+import { Status } from './status.model';
 
 const companies = [
 {
