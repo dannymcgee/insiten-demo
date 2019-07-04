@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ViewMode, StateManager } from 'src/app/state-manager.service';
-import { Company } from 'src/app/data/data-manager.service';
-import companies from './../../data/companies';
+import { Company, DataManager } from 'src/app/data/data-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,14 +11,21 @@ import { Subscription } from 'rxjs';
 })
 export class TargetListComponent implements OnInit, OnDestroy {
 	targets: Company[];
+	targetsSub: Subscription;
+
 	eViewMode = ViewMode;
 	viewMode: ViewMode;
 	viewModeSub: Subscription;
 
-	constructor(public stateManager: StateManager) {}
+	constructor(
+		public stateManager: StateManager,
+		public dataManager: DataManager
+	) {}
 
 	ngOnInit() {
-		this.targets = companies;
+		this.targetsSub = this.dataManager.companies.subscribe(
+			companies => (this.targets = companies)
+		);
 
 		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
 			this.onViewModeChange(viewMode)
