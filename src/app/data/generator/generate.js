@@ -36,6 +36,28 @@ function writeDataModule(companies) {
 		// Remove quotes from status value
 		companyString = companyString.replace(/'(Status\.Researching)'/g, '$1')
 
+		// Split lines that are longer than 130 characters
+		let lines = companyString.split('\n')
+		// for (let line of lines) {
+		lines.forEach((line, index) => {
+			if (line.length > 130) {
+				const words = [];
+				let charCount = 0;
+				for (const word of line.split(' ')) {
+					charCount += word.length + 1
+					if (charCount > 130) {
+						words.push('\'\n\t\t+ \'' + word)
+						charCount = 0
+					} else {
+						words.push(word)
+					}
+				}
+				line = words.join(' ')
+				lines[index] = line
+			}
+		})
+		companyString = lines.join('\n')
+
 		fileContents += companyString
 	}
 	fileContents += '\n];\n\n'
