@@ -1,0 +1,29 @@
+<header class="toolbar">
+  <div class="container toolbar__container">
+    <nav class="nav toolbar__nav">
+      <button
+        [ngClass]="{
+          'toolbar__btn toolbar__btn--icon btn btn--icon': true,
+          'toolbar__btn--icon--active': viewMode === 'grid'
+        }"
+        (click)="onViewModeSet('grid')"
+      >
+        <fa-icon class="toolbar__icon" icon="th-large"></fa-icon>
+      </button>
+      <button
+        [ngClass]="{
+          'toolbar__btn toolbar__btn--icon btn btn--icon': true,
+          'toolbar__btn--icon--active': viewMode === 'list'
+        }"
+        (click)="onViewModeSet('list')"
+      >
+        <fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
+      </button>
+    </nav>
+    <!-- TODO: Replace with component -->
+    <div class="toolbar__filter-text">
+      <fa-icon class="toolbar__filter-icon" icon="search"></fa-icon>
+      <input class="toolbar__filter-input" type="text" />
+    </div>
+  </div>
+</header>
