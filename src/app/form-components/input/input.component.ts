@@ -6,6 +6,7 @@ import {
 	HostBinding
 } from '@angular/core';
 import { ValidatorFn, FormGroup, FormControl, Validators } from '@angular/forms';
+import { DataManager } from 'src/app/data/data-manager.service';
 
 @Component({
 	selector: 'app-input',
@@ -28,7 +29,7 @@ export class InputComponent implements AfterViewInit, OnInit {
 	@HostBinding('class.form-control--filled') isFilled = false;
 	@HostBinding('class.form-control--focus') isFocused = false;
 
-	constructor() {}
+	constructor(public dataManager: DataManager) {}
 
 	ngOnInit() {
 		this.control = new FormControl(null, this.validators);

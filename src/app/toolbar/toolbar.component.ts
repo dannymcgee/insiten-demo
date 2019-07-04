@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ViewMode, StateManager } from 'src/app/state-manager.service';
+import { DataManager } from 'src/app/data/data-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,7 +16,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	viewModeSub: Subscription;
 	filterForm: FormGroup;
 
-	constructor(public stateManager: StateManager) {}
+	constructor(
+		public stateManager: StateManager,
+		public dataManager: DataManager
+	) {}
 
 	ngOnInit() {
 		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
@@ -25,7 +29,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	}
 
 	onFilter($event: any) {
-		console.log('Filtering!', $event.target.value);
+		const query = $event.target.value;
+		this.dataManager.filterForText(query, ['name']);
 	}
 
 	onViewModeChange(viewMode: ViewMode) {

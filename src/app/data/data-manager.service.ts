@@ -55,4 +55,45 @@ export class DataManager {
 		this._companies[index] = newCompany;
 		this._companiesSubject.next(this._companies);
 	}
+
+	filterForText(text: string, fields: string[]) {
+		const filteredCompanies = this._companies.filter(company => {
+			let query = text.replace(/[^-_a-zA-Z0-9&,;. ]/g, '');
+			query = query.replace(/\./, '\\.');
+			const pattern = new RegExp(query, 'gi');
+
+			if (fields.indexOf('name') !== -1) {
+				if (pattern.test(company.name)) {
+					return true;
+				}
+			}
+
+			if (fields.indexOf('url') !== -1) {
+				if (pattern.test(company.url)) {
+					return true;
+				}
+			}
+
+			if (fields.indexOf('description') !== -1) {
+				if (pattern.test(company.description)) {
+					return true;
+				}
+			}
+
+			if (fields.indexOf('contacts') !== -1) {
+				for (const contact of company.contacts) {
+					if (
+						pattern.test(contact.name.first) ||
+						pattern.test(contact.name.last)
+					) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		});
+
+		this._companiesSubject.next(filteredCompanies);
+	}
 }
