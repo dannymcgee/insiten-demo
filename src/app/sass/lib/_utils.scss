@@ -185,7 +185,7 @@
 /// the one specified, going up
 /// @param {string} $breakpoint
 /// @param {string} $property
-/// @param {string} $side
+/// @param {right | left} $side (optional)
 ///
 /// @example
 ///   @include calc-container-margins-from('lg', 'padding', 'left')
@@ -197,7 +197,11 @@
 ///     padding-left: [calculated-value];
 ///   }
 
-@mixin calc-container-margins-from($breakpoint, $property, $side) {
+@mixin calc-container-margins-from(
+	$breakpoint,
+	$property,
+	$side: null
+) {
 	$started: false;
 
 	@each $_breakpoint, $value in $grid-breakpoints {
@@ -206,7 +210,12 @@
 		}
 		@if $started == true {
 			@include media-min($_breakpoint) {
-				#{$property}-#{$side}: calc-container-margin($_breakpoint);
+				@if $side != null {
+					#{$property}-#{$side}: calc-container-margin($_breakpoint);
+				} @else {
+					#{$property}-right: calc-container-margin($_breakpoint);
+					#{$property}-left: calc-container-margin($_breakpoint);
+				}
 			}
 		}
 	}
