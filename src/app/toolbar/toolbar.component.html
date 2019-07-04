@@ -20,10 +20,15 @@
         <fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
       </button>
     </nav>
-    <!-- TODO: Replace with component -->
-    <div class="toolbar__filter-text">
+    <form class="toolbar__filter">
       <fa-icon class="toolbar__filter-icon" icon="search"></fa-icon>
-      <input class="toolbar__filter-input" type="text" />
-    </div>
+      <app-input
+        id="filter"
+        inputClass="toolbar__filter-input"
+        type="text"
+        [onChangeFn]="onFilter"
+        [form]="filterForm"
+      ></app-input>
+    </form>
   </div>
 </header>

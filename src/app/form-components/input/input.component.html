@@ -1,0 +1,34 @@
+<ng-container [formGroup]="form">
+  <label *ngIf="label" [for]="id">{{ label }}</label>
+  <textarea
+    *ngIf="type === 'textarea'"
+    [id]="id"
+    [ngClass]="[
+      'form-control__input',
+      'form-control__input--' + type,
+      inputClass
+    ]"
+    (change)="onChanged($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    [name]="id"
+    [formControlName]="id"
+    spellcheck="false"
+  ></textarea>
+  <input
+    *ngIf="type !== 'textarea'"
+    [id]="id"
+    [ngClass]="[
+      'form-control__input',
+      'form-control__input--' + type,
+      inputClass
+    ]"
+    [type]="type"
+    (keyup)="onChanged($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    [name]="id"
+    [formControlName]="id"
+    spellcheck="false"
+  />
+</ng-container>
