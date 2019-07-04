@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "generate-mock-data": "node ./src/app/data/generate.js"
+    "generate-mock-data": "node ./src/app/data/generator/generate.js"
   },
   "private": true,
   "dependencies": {
