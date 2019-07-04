@@ -4,18 +4,18 @@
       <button
         [ngClass]="{
           'toolbar__btn toolbar__btn--icon btn btn--icon': true,
-          'toolbar__btn--icon--active': viewMode === 'grid'
+          'toolbar__btn--icon--active': viewMode === eViewMode.Grid
         }"
-        (click)="onViewModeSet('grid')"
+        (click)="onViewModeSet(eViewMode.Grid)"
       >
         <fa-icon class="toolbar__icon" icon="th-large"></fa-icon>
       </button>
       <button
         [ngClass]="{
           'toolbar__btn toolbar__btn--icon btn btn--icon': true,
-          'toolbar__btn--icon--active': viewMode === 'list'
+          'toolbar__btn--icon--active': viewMode === eViewMode.Table
         }"
-        (click)="onViewModeSet('list')"
+        (click)="onViewModeSet(eViewMode.Table)"
       >
         <fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
       </button>

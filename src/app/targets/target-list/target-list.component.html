@@ -2,16 +2,16 @@
   <div
     [ngSwitch]="viewMode"
     [ngClass]="{
-      'container target-list__container': viewMode !== 'list'
+      'container target-list__container': viewMode !== eViewMode.Table
     }"
   >
-    <div *ngSwitchCase="'grid'" class="row target-list__row">
+    <div *ngSwitchCase="eViewMode.Grid" class="row target-list__row">
       <div class="col-lg-6 target-list__col" *ngFor="let target of targets">
         <app-target-card [company]="target"></app-target-card>
       </div>
     </div>
 
-    <table *ngSwitchCase="'list'" class="targets-table">
+    <table *ngSwitchCase="eViewMode.Table" class="targets-table">
       <!-- TODO: Move this into its own component -->
       <thead class="targets-table__header">
         <tr class="targets-table__row">

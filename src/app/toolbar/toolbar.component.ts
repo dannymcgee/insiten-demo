@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewMode } from 'src/app/state-manager.service';
 
 @Component({
 	selector: 'app-toolbar',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 	// TODO: Move this into a service
-	viewMode = 'grid';
+	eViewMode = ViewMode;
+	viewMode = ViewMode.Grid;
 
 	constructor() {}
 
 	ngOnInit() {}
 
-	onViewModeSet(viewMode: string) {
+	onViewModeSet(viewMode: ViewMode) {
 		this.viewMode = viewMode;
 	}
 }

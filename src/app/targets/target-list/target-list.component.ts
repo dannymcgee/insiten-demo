@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ViewMode } from 'src/app/state-manager.service';
 import { Company } from 'src/app/targets/target.model';
 import companies from './../../data/companies';
 
@@ -11,7 +12,8 @@ import companies from './../../data/companies';
 export class TargetListComponent implements OnInit {
 	targets: Company[];
 	// FIXME: Placeholder; use a service to get the state from app-toolbar
-	viewMode = 'list';
+	eViewMode = ViewMode;
+	viewMode = ViewMode.Grid;
 
 	constructor() {}
 
