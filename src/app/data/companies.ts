@@ -1,2613 +1,2758 @@
-// tslint:disable
+import { Status } from './status.enum';
 
 const companies = [
 {
-	name: 'Excepteur Cillum & Co.',
-	url: 'excepteurcillum.co',
-	description: 'Deserunt aute consequat non nostrud. Exercitation ut sit velit nisi pariatur nisi nostrud id mollit. Amet et anim sunt do. Velit officia laboris id ullamco.',
+	name: 'Non Laborum Properties',
+	url: 'nonlaborum.co',
+	description: 'Nostrud duis occaecat ipsum adipisicing ut consectetur pariatur. Et aliqua in voluptate exercitation. Ut amet '
+		+ 'ipsum sint nisi. Ut consectetur laboris et qui nisi ipsum cillum.',
 	isPublic: true,
 	contacts: [
 		{
 			name: {
-				first: 'Bradford',
-				last: 'Jeffords'
-			},
-			position: 'CEO',
-			phone: '(517) 973-4445',
-			email: 'bjeffords@excepteurcillum.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 112076,
-				debt: 191567,
-				revenue: 104682,
-				mc: 146646,
-				ebitda: 28264
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 189571,
-				debt: 106732,
-				revenue: 202781,
-				mc: 285526,
-				ebitda: 54751
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 225652,
-				debt: 197861,
-				revenue: 395743,
-				mc: 221215,
-				ebitda: 102893
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Velit Industries',
-	url: 'velit.net',
-	description: 'Culpa consectetur ullamco pariatur qui ipsum eu. Ea consequat ad quis magna est labore elit.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Lela',
-				last: 'Mccallister'
-			},
-			position: 'President',
-			phone: '(224) 020-9734',
-			email: 'lmccallister@velit.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 182592,
-				debt: 132636,
-				revenue: 172367,
-				mc: 143712,
-				ebitda: 43092
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 315181,
-				debt: 29661,
-				revenue: 166464,
-				mc: 274883,
-				ebitda: 44945
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 303584,
-				debt: 42797,
-				revenue: 178583,
-				mc: 195069,
-				ebitda: 44646
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Irure Nostrud Development',
-	url: 'irurenostrud.org',
-	description: 'Cupidatat ea nostrud sint irure aliquip tempor labore laboris aliquip. Est proident esse aute consequat. Cupidatat fugiat enim in ullamco.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Osvaldo',
-				last: 'Ruckman'
-			},
-			position: 'Vice President',
-			phone: '(266) 077-4844',
-			email: 'oruckman@irurenostrud.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1689063,
-				debt: 1600818,
-				revenue: 1553825,
-				ebitda: 512762
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 463153,
-				debt: 1842741,
-				revenue: 3035221,
-				ebitda: 849862
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 449424,
-				debt: 261863,
-				revenue: 2052747,
-				ebitda: 513187
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Reprehenderit LLC',
-	url: 'reprehenderit.net',
-	description: 'Sint enim fugiat sint aliqua aliquip sint pariatur. Est et sint mollit sint id ullamco labore culpa.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Emmett',
-				last: 'Koppes'
-			},
-			position: 'CFO',
-			phone: '(173) 241-4713',
-			email: 'ekoppes@reprehenderit.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 153433,
-				debt: 111250,
-				revenue: 163566,
-				ebitda: 40891
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 179534,
-				debt: 147133,
-				revenue: 228101,
-				ebitda: 57025
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 248273,
-				debt: 125905,
-				revenue: 121375,
-				ebitda: 30344
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Adipisicing Systems',
-	url: 'adipisicing.co',
-	description: 'Sit sint aliqua ad anim. Adipisicing elit officia nulla ex consequat minim in tempor. Et ullamco ullamco proident tempor aliquip fugiat aliquip.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Lashonda',
-				last: 'Mercado'
-			},
-			position: 'CEO',
-			phone: '(543) 036-2148',
-			email: 'lmercado@adipisicing.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1766405,
-				debt: 1378487,
-				revenue: 1103137,
-				ebitda: 275784
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 2149920,
-				debt: 2683828,
-				revenue: 807029,
-				ebitda: 201757
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 2934946,
-				debt: 1441004,
-				revenue: 228197,
-				ebitda: 63895
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Anim sit Enterprises',
-	url: 'animsit.co',
-	description: 'Tempor eiusmod commodo veniam aliqua. Cillum deserunt quis id reprehenderit consectetur officia.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Nannie',
-				last: 'Castagna'
-			},
-			position: 'CEO',
-			phone: '(471) 619-1221',
-			email: 'ncastagna@animsit.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1850468,
-				debt: 1963545,
-				revenue: 1951084,
-				ebitda: 487771
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 2763813,
-				debt: 418009,
-				revenue: 2933665,
-				ebitda: 733416
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 5264197,
-				debt: 37565,
-				revenue: 407924,
-				ebitda: 101981
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Culpa Aute Systems',
-	url: 'culpaaute.net',
-	description: 'Ut nostrud pariatur sunt elit. Est incididunt irure enim reprehenderit voluptate. Et amet duis amet et fugiat in laborum cupidatat.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Emmett',
-				last: 'Seabury'
-			},
-			position: 'President',
-			phone: '(411) 889-7372',
-			email: 'eseabury@culpaaute.net'
-		},
-		{
-			name: {
-				first: 'Valarie',
+				first: 'Marlo',
 				last: 'Nagata'
 			},
 			position: 'Vice President',
-			phone: '(856) 664-3799',
-			email: 'vnagata@culpaaute.net'
+			phone: '(303) 133-4386',
+			email: 'mnagata@nonlaborum.co'
 		},
 		{
 			name: {
-				first: 'Lorri',
-				last: 'Dutra'
+				first: 'Suzi',
+				last: 'Conte'
+			},
+			position: 'President',
+			phone: '(652) 226-3345',
+			email: 'sconte@nonlaborum.co'
+		},
+		{
+			name: {
+				first: 'Deeann',
+				last: 'Koppes'
 			},
 			position: 'CEO',
-			phone: '(981) 271-0337',
-			email: 'ldutra@culpaaute.net'
+			phone: '(178) 571-2554',
+			email: 'dkoppes@nonlaborum.co'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 1202439,
-				debt: 1328865,
-				revenue: 1388765,
-				ebitda: 430517
+				assets: 120931,
+				debt: 193691,
+				revenue: 171871,
+				mc: 116725,
+				ebitda: 42968
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 1835238,
-				debt: 2045030,
-				revenue: 1487362,
-				ebitda: 431335
+				assets: 93056,
+				debt: 237128,
+				revenue: 218221,
+				mc: 145266,
+				ebitda: 54555
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 412782,
-				debt: 3848818,
-				revenue: 2813926,
-				ebitda: 703481
+				assets: 3872,
+				debt: 197293,
+				revenue: 275793,
+				mc: 55701,
+				ebitda: 68948
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Eu Mollit Scientific',
-	url: 'eumollit.co',
-	description: 'In aliqua reprehenderit cillum exercitation ullamco non. Incididunt tempor tempor ea officia.',
+	name: 'Ipsum Limited',
+	url: 'ipsum.co',
+	description: 'Non non exercitation pariatur et cupidatat. Qui pariatur exercitation esse deserunt. Nisi in laborum ex in.',
 	isPublic: false,
 	contacts: [
 		{
 			name: {
-				first: 'Emmett',
+				first: 'Yoshiko',
 				last: 'Keala'
 			},
 			position: 'Vice President',
-			phone: '(243) 417-2715',
-			email: 'ekeala@eumollit.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 102250,
-				debt: 130593,
-				revenue: 173038,
-				ebitda: 43260
-			}
+			phone: '(873) 186-4768',
+			email: 'ykeala@ipsum.co'
 		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 172821,
-				debt: 106077,
-				revenue: 9585,
-				ebitda: 2684
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 96799,
-				debt: 64819,
-				revenue: 14344,
-				ebitda: 3586
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Adipisicing Books',
-	url: 'adipisicing.co',
-	description: 'Veniam aliquip laboris minim ea. Irure deserunt consectetur tempor et. Laboris adipisicing sunt commodo voluptate.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Julieann',
-				last: 'Koppes'
-			},
-			position: 'CEO',
-			phone: '(248) 553-5517',
-			email: 'jkoppes@adipisicing.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 10848486,
-				debt: 16012173,
-				revenue: 13082523,
-				ebitda: 3270631
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1886426,
-				debt: 18963067,
-				revenue: 1624476,
-				ebitda: 617301
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 2136571,
-				debt: 11411699,
-				revenue: 2294412,
-				ebitda: 573603
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Ullamco Online',
-	url: 'ullamco.net',
-	description: 'Amet Lorem Lorem sunt eu. Aliquip laborum do dolore sint. Aliquip voluptate ipsum magna elit proident ipsum. Qui commodo minim officia amet ea nulla.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Lorri',
-				last: 'Mccallister'
-			},
-			position: 'CFO',
-			phone: '(172) 156-7479',
-			email: 'lmccallister@ullamco.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1199914,
-				debt: 1442760,
-				revenue: 1497143,
-				ebitda: 374286
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1076566,
-				debt: 106574,
-				revenue: 1271207,
-				ebitda: 330514
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 1306903,
-				debt: 46730,
-				revenue: 1992064,
-				ebitda: 498016
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Culpa Specialties',
-	url: 'culpa.org',
-	description: 'Eu sit incididunt aliqua elit. Esse veniam amet in minim. Mollit voluptate dolor nostrud laborum nostrud. Exercitation ipsum aute cupidatat ut.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Nicole',
-				last: 'Lariviere'
-			},
-			position: 'Vice President',
-			phone: '(773) 588-5430',
-			email: 'nlariviere@culpa.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 157824,
-				debt: 156412,
-				revenue: 121118,
-				ebitda: 42391
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 96019,
-				debt: 193421,
-				revenue: 95628,
-				ebitda: 27732
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 90727,
-				debt: 139664,
-				revenue: 172629,
-				ebitda: 43157
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Irure Logistics',
-	url: 'irure.com',
-	description: 'Proident eu esse ea adipisicing eiusmod occaecat. Sunt cupidatat pariatur Lorem non.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Bridgett',
-				last: 'Puig'
-			},
-			position: 'CEO',
-			phone: '(406) 877-4664',
-			email: 'bpuig@irure.com'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 104859,
-				debt: 120302,
-				revenue: 122678,
-				ebitda: 38030
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 73041,
-				debt: 207665,
-				revenue: 45294,
-				ebitda: 11323
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 117328,
-				debt: 18569,
-				revenue: 43678,
-				ebitda: 14414
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Eiusmod Creative',
-	url: 'eiusmod.net',
-	description: 'Incididunt Lorem quis nisi sit. Enim est elit anim exercitation.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Jin',
-				last: 'Demoura'
-			},
-			position: 'Vice President',
-			phone: '(608) 630-5719',
-			email: 'jdemoura@eiusmod.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 185978,
-				debt: 121410,
-				revenue: 174742,
-				ebitda: 43686
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 15087,
-				debt: 35763,
-				revenue: 24198,
-				ebitda: 6050
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 22548,
-				debt: 1282,
-				revenue: 3427,
-				ebitda: 857
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Commodo LLC',
-	url: 'commodo.org',
-	description: 'Irure ut et cupidatat incididunt. Do sunt veniam ex laboris. Consectetur voluptate deserunt sint aliqua consequat laboris.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Bridgett',
-				last: 'Castagna'
-			},
-			position: 'CEO',
-			phone: '(345) 682-8943',
-			email: 'bcastagna@commodo.org'
-		},
-		{
-			name: {
-				first: 'Nannie',
-				last: 'Moyle'
-			},
-			position: 'President',
-			phone: '(858) 387-5596',
-			email: 'nmoyle@commodo.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 115377,
-				debt: 187720,
-				revenue: 138923,
-				ebitda: 34731
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 97707,
-				debt: 243022,
-				revenue: 173331,
-				ebitda: 43333
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 43873,
-				debt: 309377,
-				revenue: 104037,
-				ebitda: 30171
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Mollit Group',
-	url: 'mollit.com',
-	description: 'In enim adipisicing excepteur quis. Enim fugiat sint labore est pariatur minim eu. Cupidatat cupidatat officia dolor voluptate laboris.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Emmett',
-				last: 'Mercado'
-			},
-			position: 'Vice President',
-			phone: '(178) 425-9433',
-			email: 'emercado@mollit.com'
-		},
-		{
-			name: {
-				first: 'Milagro',
-				last: 'Mccallister'
-			},
-			position: 'President',
-			phone: '(694) 171-6500',
-			email: 'mmccallister@mollit.com'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 179014,
-				debt: 186022,
-				revenue: 108479,
-				mc: 193791,
-				ebitda: 27120
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 337717,
-				debt: 311374,
-				revenue: 98104,
-				mc: 135566,
-				ebitda: 24526
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 171935,
-				debt: 562286,
-				revenue: 133530,
-				mc: 37222,
-				ebitda: 40059
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Consectetur Group',
-	url: 'consectetur.net',
-	description: 'Voluptate Lorem ad non voluptate ullamco exercitation adipisicing eu. Est do ea tempor proident.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Ching',
-				last: 'Mccallister'
-			},
-			position: 'President',
-			phone: '(243) 733-1851',
-			email: 'cmccallister@consectetur.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 17615358,
-				debt: 14389000,
-				revenue: 19881875,
-				ebitda: 4970469
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 13122240,
-				debt: 26783985,
-				revenue: 1042921,
-				ebitda: 260730
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 1959342,
-				debt: 27775433,
-				revenue: 827474,
-				ebitda: 206869
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Magna Collective',
-	url: 'magna.co',
-	description: 'Aliqua incididunt occaecat nisi commodo. Sit reprehenderit laborum reprehenderit veniam reprehenderit esse.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Barbera',
-				last: 'Nagata'
-			},
-			position: 'Vice President',
-			phone: '(355) 263-3263',
-			email: 'bnagata@magna.co'
-		},
-		{
-			name: {
-				first: 'Nannie',
-				last: 'Kinard'
-			},
-			position: 'CFO',
-			phone: '(387) 235-4566',
-			email: 'nkinard@magna.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 16038657,
-				debt: 13610487,
-				revenue: 12757860,
-				ebitda: 4337672
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 30230184,
-				debt: 661442,
-				revenue: 14159152,
-				ebitda: 4530929
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 29913145,
-				debt: 1299823,
-				revenue: 20941197,
-				ebitda: 5235299
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Aliqua Collective',
-	url: 'aliqua.com',
-	description: 'Amet ut nulla qui dolore consectetur amet fugiat. Ut enim ullamco duis et sit.',
-	isPublic: true,
-	contacts: [
 		{
 			name: {
 				first: 'Kelli',
-				last: 'Nagata'
-			},
-			position: 'CEO',
-			phone: '(128) 236-1765',
-			email: 'knagata@aliqua.com'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 193873,
-				debt: 159132,
-				revenue: 158253,
-				mc: 160208,
-				ebitda: 39563
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 8167,
-				debt: 119729,
-				revenue: 106184,
-				mc: 224572,
-				ebitda: 26546
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 6975,
-				debt: 109902,
-				revenue: 136935,
-				mc: 240278,
-				ebitda: 34234
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Et Exercitation Tech',
-	url: 'etexercitation.org',
-	description: 'Incididunt culpa qui nulla tempor. Sit do occaecat velit sit. Et Lorem duis incididunt cillum deserunt et proident sint. Lorem qui ut minim Lorem occaecat magna ex ipsum.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Osvaldo',
-				last: 'Blea'
-			},
-			position: 'CEO',
-			phone: '(126) 163-6312',
-			email: 'oblea@etexercitation.org'
-		},
-		{
-			name: {
-				first: 'Hector',
-				last: 'Parkhill'
-			},
-			position: 'Vice President',
-			phone: '(113) 795-0587',
-			email: 'hparkhill@etexercitation.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 149281,
-				debt: 159112,
-				revenue: 128461,
-				mc: 180730,
-				ebitda: 44961
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 101135,
-				debt: 215402,
-				revenue: 158044,
-				mc: 220856,
-				ebitda: 39511
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 46358,
-				debt: 405208,
-				revenue: 85249,
-				mc: 392471,
-				ebitda: 30690
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Laborum Elit Foods',
-	url: 'laborumelit.com',
-	description: 'Ullamco aliqua qui aliqua quis. Reprehenderit id nulla laborum eu. Magna id magna ullamco in.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Nannie',
-				last: 'Hains'
+				last: 'Pridgeon'
 			},
 			position: 'President',
-			phone: '(140) 561-6776',
-			email: 'nhains@laborumelit.com'
+			phone: '(145) 329-4383',
+			email: 'kpridgeon@ipsum.co'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 126778,
-				debt: 113516,
-				revenue: 136584,
-				mc: 120418,
-				ebitda: 34146
+				assets: 194184,
+				debt: 146899,
+				revenue: 159035,
+				ebitda: 55662
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 134249,
-				debt: 51124,
-				revenue: 175294,
-				mc: 92814,
-				ebitda: 43824
+				assets: 208305,
+				debt: 156675,
+				revenue: 139381,
+				ebitda: 34845
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 83868,
-				debt: 100888,
-				revenue: 83669,
-				mc: 152415,
-				ebitda: 20917
+				assets: 408446,
+				debt: 1907,
+				revenue: 261092,
+				ebitda: 78328
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Exercitation Solutions',
-	url: 'exercitation.com',
-	description: 'Cupidatat cillum anim in aliquip laboris enim. Velit excepteur est adipisicing non enim ipsum. Aliqua Lorem cillum fugiat ut ad.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Jin',
-				last: 'Dutra'
-			},
-			position: 'CFO',
-			phone: '(981) 586-8876',
-			email: 'jdutra@exercitation.com'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 135919,
-				debt: 181211,
-				revenue: 173507,
-				mc: 140977,
-				ebitda: 50317
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 209095,
-				debt: 224214,
-				revenue: 332203,
-				mc: 121363,
-				ebitda: 102983
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 141175,
-				debt: 250191,
-				revenue: 456777,
-				mc: 230962,
-				ebitda: 114194
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Dolore Dolore Systems',
-	url: 'doloredolore.co',
-	description: 'Fugiat eiusmod eiusmod occaecat fugiat. Ullamco cillum sit occaecat non qui sit.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Tamie',
-				last: 'Puig'
-			},
-			position: 'Vice President',
-			phone: '(220) 534-7293',
-			email: 'tpuig@doloredolore.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 117777,
-				debt: 128771,
-				revenue: 186730,
-				ebitda: 52284
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 57152,
-				debt: 187506,
-				revenue: 138365,
-				ebitda: 49812
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 11875,
-				debt: 324110,
-				revenue: 1573,
-				ebitda: 393
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Commodo Digital',
-	url: 'commodo.net',
-	description: 'Id est ipsum nulla sit qui. Et in tempor magna voluptate.',
+	name: 'Laborum Industrial',
+	url: 'laborum.net',
+	description: 'Amet labore ipsum consequat nisi. Laborum aliquip qui sit labore sunt ea proident.',
 	isPublic: false,
 	contacts: [
 		{
 			name: {
 				first: 'Sergio',
-				last: 'Seabury'
-			},
-			position: 'Vice President',
-			phone: '(298) 863-3576',
-			email: 'sseabury@commodo.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 124717,
-				debt: 187545,
-				revenue: 108130,
-				ebitda: 29195
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 75752,
-				debt: 5510,
-				revenue: 10194,
-				ebitda: 3058
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 114344,
-				debt: 6333,
-				revenue: 928,
-				ebitda: 232
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Voluptate Tempor Direct',
-	url: 'voluptatetempor.org',
-	description: 'Eu quis consequat cillum qui consectetur tempor ullamco. Cupidatat laborum ad excepteur consectetur cillum.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Nicole',
-				last: 'Ellett'
-			},
-			position: 'CFO',
-			phone: '(116) 336-3018',
-			email: 'nellett@voluptatetempor.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 12976845,
-				debt: 19799050,
-				revenue: 17981508,
-				mc: 18763723,
-				ebitda: 4495377
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 13763644,
-				debt: 28436893,
-				revenue: 8471999,
-				mc: 989132,
-				ebitda: 2118000
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 10647300,
-				debt: 12534988,
-				revenue: 4572844,
-				mc: 461474,
-				ebitda: 1143211
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Laboris Digital',
-	url: 'laboris.org',
-	description: 'Labore reprehenderit laborum proident sit cillum irure aute. Sint enim voluptate laborum non.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Elia',
-				last: 'Conte'
-			},
-			position: 'Vice President',
-			phone: '(981) 015-8556',
-			email: 'econte@laboris.org'
-		},
-		{
-			name: {
-				first: 'Bradford',
-				last: 'Anderton'
-			},
-			position: 'CFO',
-			phone: '(206) 212-7402',
-			email: 'banderton@laboris.org'
-		},
-		{
-			name: {
-				first: 'Earle',
-				last: 'Leland'
+				last: 'Mccallister'
 			},
 			position: 'CEO',
-			phone: '(153) 633-2663',
-			email: 'eleland@laboris.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 130168,
-				debt: 175164,
-				revenue: 112387,
-				ebitda: 28097
-			}
+			phone: '(541) 136-0858',
+			email: 'smccallister@laborum.net'
 		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 185429,
-				debt: 101189,
-				revenue: 199251,
-				ebitda: 69738
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 117829,
-				debt: 2394,
-				revenue: 258234,
-				ebitda: 64558
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Lorem Industrial',
-	url: 'lorem.net',
-	description: 'Culpa mollit quis cupidatat ullamco aliqua. Proident minim et consequat sit ea.',
-	isPublic: false,
-	contacts: [
 		{
 			name: {
-				first: 'Deeann',
-				last: 'Kee'
+				first: 'Leona',
+				last: 'Hou'
 			},
 			position: 'President',
-			phone: '(223) 757-6091',
-			email: 'dkee@lorem.net'
+			phone: '(011) 818-7796',
+			email: 'lhou@laborum.net'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 119128,
-				debt: 183134,
-				revenue: 122513,
-				ebitda: 30628
+				assets: 193569,
+				debt: 150970,
+				revenue: 162203,
+				ebitda: 40551
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 136982,
-				debt: 335617,
-				revenue: 79916,
-				ebitda: 19979
+				assets: 6312,
+				debt: 147667,
+				revenue: 295257,
+				ebitda: 91530
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 123941,
-				debt: 360753,
-				revenue: 52014,
-				ebitda: 20285
+				assets: 8704,
+				debt: 289886,
+				revenue: 396668,
+				ebitda: 99167
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Dolor Solutions',
-	url: 'dolor.org',
-	description: 'Incididunt ea aliqua adipisicing duis ipsum eiusmod deserunt labore. Pariatur est adipisicing sint magna. Non velit aliquip aute sit labore et anim ipsum consequat. Occaecat elit minim dolor incididunt.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Nohemi',
-				last: 'Puig'
-			},
-			position: 'Vice President',
-			phone: '(221) 718-5214',
-			email: 'npuig@dolor.org'
-		},
-		{
-			name: {
-				first: 'Deeann',
-				last: 'Nagata'
-			},
-			position: 'CEO',
-			phone: '(988) 369-5450',
-			email: 'dnagata@dolor.org'
-		},
-		{
-			name: {
-				first: 'Deeann',
-				last: 'Koppes'
-			},
-			position: 'President',
-			phone: '(012) 381-2269',
-			email: 'dkoppes@dolor.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 165712,
-				debt: 136191,
-				revenue: 170174,
-				ebitda: 42543
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 329854,
-				debt: 111335,
-				revenue: 96459,
-				ebitda: 26044
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 483235,
-				debt: 88401,
-				revenue: 116222,
-				ebitda: 37191
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Aliquip Enterprises',
-	url: 'aliquip.co',
-	description: 'Veniam magna anim labore ex excepteur enim sit pariatur. Laborum pariatur est aute laborum duis.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Jin',
-				last: 'Alegria'
-			},
-			position: 'Vice President',
-			phone: '(701) 751-8178',
-			email: 'jalegria@aliquip.co'
-		},
-		{
-			name: {
-				first: 'Earle',
-				last: 'Wilker'
-			},
-			position: 'CFO',
-			phone: '(358) 722-1439',
-			email: 'ewilker@aliquip.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1096760,
-				debt: 1132878,
-				revenue: 1881540,
-				ebitda: 470385
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1564110,
-				debt: 1432695,
-				revenue: 935360,
-				ebitda: 233840
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 2006193,
-				debt: 1109925,
-				revenue: 938124,
-				ebitda: 234531
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Labore Limited',
-	url: 'labore.co',
-	description: 'Nostrud nostrud tempor laboris laborum cupidatat sunt. Aliqua duis cupidatat enim commodo.',
+	name: 'Id ex Development',
+	url: 'idex.net',
+	description: 'Anim mollit quis amet irure nisi laborum. Laborum ullamco incididunt sint excepteur.',
 	isPublic: false,
 	contacts: [
 		{
 			name: {
 				first: 'Ute',
-				last: 'Hou'
+				last: 'Kee'
 			},
-			position: 'President',
-			phone: '(984) 838-9135',
-			email: 'uhou@labore.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1875592,
-				debt: 1216604,
-				revenue: 1099582,
-				ebitda: 274895
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1584282,
-				debt: 1642275,
-				revenue: 709668,
-				ebitda: 177417
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 2761352,
-				debt: 976834,
-				revenue: 1286166,
-				ebitda: 321541
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Tempor Properties',
-	url: 'tempor.net',
-	description: 'Do culpa officia cillum ipsum veniam cupidatat velit ullamco nulla. Ea velit magna excepteur ex.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Oma',
-				last: 'Hou'
-			},
-			position: 'Vice President',
-			phone: '(277) 656-1857',
-			email: 'ohou@tempor.net'
+			position: 'CFO',
+			phone: '(596) 219-3487',
+			email: 'ukee@idex.net'
 		},
 		{
 			name: {
-				first: 'Leona',
-				last: 'Andrea'
+				first: 'Wilber',
+				last: 'Lariviere'
 			},
 			position: 'CEO',
-			phone: '(239) 742-3347',
-			email: 'landrea@tempor.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1633953,
-				debt: 1785632,
-				revenue: 1937372,
-				mc: 1374984,
-				ebitda: 736201
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 2730361,
-				debt: 2256099,
-				revenue: 1166214,
-				mc: 2104141,
-				ebitda: 326540
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 3754798,
-				debt: 663278,
-				revenue: 2276142,
-				mc: 2060705,
-				ebitda: 910457
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Ullamco Books',
-	url: 'ullamco.co',
-	description: 'Ipsum sit tempor ea velit. Aute culpa magna in velit.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Joseph',
-				last: 'Sones'
-			},
-			position: 'President',
-			phone: '(356) 751-3640',
-			email: 'jsones@ullamco.co'
+			phone: '(214) 457-5767',
+			email: 'wlariviere@idex.net'
 		},
 		{
 			name: {
-				first: 'Imelda',
-				last: 'Ellett'
-			},
-			position: 'CFO',
-			phone: '(435) 786-1534',
-			email: 'iellett@ullamco.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 186368,
-				debt: 165016,
-				revenue: 101225,
-				mc: 182329,
-				ebitda: 25306
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 348777,
-				debt: 63727,
-				revenue: 159110,
-				mc: 260361,
-				ebitda: 49324
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 447677,
-				debt: 82116,
-				revenue: 258274,
-				mc: 175852,
-				ebitda: 67151
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Consectetur LLC',
-	url: 'consectetur.net',
-	description: 'Ipsum ea reprehenderit ex ad. Duis nulla ex veniam dolore.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Adelina',
-				last: 'Jeffords'
+				first: 'Nicole',
+				last: 'Woodie'
 			},
 			position: 'Vice President',
-			phone: '(543) 742-3922',
-			email: 'ajeffords@consectetur.net'
+			phone: '(262) 218-5551',
+			email: 'nwoodie@idex.net'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 1096320,
-				debt: 1872274,
-				revenue: 1992490,
-				mc: 1440188,
-				ebitda: 498122
+				assets: 18534379,
+				debt: 10379550,
+				revenue: 10123493,
+				ebitda: 2530873
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 2043845,
-				debt: 188852,
-				revenue: 3508869,
-				mc: 1714656,
-				ebitda: 877217
+				assets: 7480338,
+				debt: 4280293,
+				revenue: 3501768,
+				ebitda: 1050530
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 601729,
-				debt: 236317,
-				revenue: 3931390,
-				mc: 555677,
-				ebitda: 1218731
+				assets: 12308605,
+				debt: 3584172,
+				revenue: 4859676,
+				ebitda: 1214919
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Minim Development',
-	url: 'minim.net',
-	description: 'Officia eu nulla consequat dolore. Laborum consequat irure ut consequat do. Enim ipsum sint aute dolor nostrud deserunt veniam qui adipisicing. Mollit exercitation veniam officia non velit commodo aliqua.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Deeann',
-				last: 'Jeffords'
-			},
-			position: 'Vice President',
-			phone: '(608) 534-1384',
-			email: 'djeffords@minim.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1227885,
-				debt: 1733807,
-				revenue: 1155215,
-				ebitda: 381221
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1301882,
-				debt: 3034076,
-				revenue: 1950413,
-				ebitda: 702149
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 634554,
-				debt: 4512900,
-				revenue: 2084955,
-				ebitda: 521239
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Proident Development',
-	url: 'proident.net',
-	description: 'Cupidatat nulla elit ut Lorem. Non et minim fugiat laboris cupidatat commodo occaecat cupidatat.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Sergio',
-				last: 'Giard'
-			},
-			position: 'CFO',
-			phone: '(156) 042-4053',
-			email: 'sgiard@proident.net'
-		},
-		{
-			name: {
-				first: 'Oma',
-				last: 'Kennard'
-			},
-			position: 'Vice President',
-			phone: '(622) 575-8620',
-			email: 'okennard@proident.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1878429,
-				debt: 1066939,
-				revenue: 1071755,
-				mc: 1088389,
-				ebitda: 396549
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 2388172,
-				debt: 1768399,
-				revenue: 1231407,
-				mc: 1604055,
-				ebitda: 418678
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 1812150,
-				debt: 1336749,
-				revenue: 709996,
-				mc: 1947418,
-				ebitda: 177499
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Mollit Books',
-	url: 'mollit.org',
-	description: 'Deserunt ut fugiat sit quis. Nisi minim dolor do excepteur.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Denver',
-				last: 'Rudman'
-			},
-			position: 'President',
-			phone: '(537) 119-2551',
-			email: 'drudman@mollit.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 18009023,
-				debt: 11071459,
-				revenue: 18329992,
-				mc: 16389003,
-				ebitda: 4582498
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 18686522,
-				debt: 5567404,
-				revenue: 6761834,
-				mc: 14675558,
-				ebitda: 1690459
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 327052,
-				debt: 3626293,
-				revenue: 9931398,
-				mc: 17768514,
-				ebitda: 3773931
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Consectetur Books',
-	url: 'consectetur.co',
-	description: 'Irure labore et culpa sint id eiusmod ea velit. Incididunt reprehenderit laboris pariatur ullamco quis ut.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Stefani',
-				last: 'Sones'
-			},
-			position: 'CFO',
-			phone: '(851) 331-4731',
-			email: 'ssones@consectetur.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 17264375,
-				debt: 11883873,
-				revenue: 11627182,
-				mc: 10492323,
-				ebitda: 2906795
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 28461185,
-				debt: 14799319,
-				revenue: 10193754,
-				mc: 2412846,
-				ebitda: 2548438
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 44493293,
-				debt: 27480589,
-				revenue: 3313918,
-				mc: 3068581,
-				ebitda: 828480
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Irure Voluptate Inc.',
-	url: 'irurevoluptate.org',
-	description: 'Aute laborum elit adipisicing id. Veniam eu cillum veniam aliquip fugiat excepteur. Duis velit deserunt reprehenderit commodo. Nisi ex dolore et duis sit Lorem ullamco incididunt esse.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Lucrecia',
-				last: 'Cancel'
-			},
-			position: 'President',
-			phone: '(682) 962-5891',
-			email: 'lcancel@irurevoluptate.org'
-		},
-		{
-			name: {
-				first: 'Lorri',
-				last: 'Giard'
-			},
-			position: 'Vice President',
-			phone: '(891) 533-3526',
-			email: 'lgiard@irurevoluptate.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 158084,
-				debt: 187195,
-				revenue: 114029,
-				mc: 162956,
-				ebitda: 28507
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 58892,
-				debt: 128233,
-				revenue: 67332,
-				mc: 137416,
-				ebitda: 16833
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 334,
-				debt: 231082,
-				revenue: 63204,
-				mc: 147123,
-				ebitda: 15801
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Ut Nulla Labs',
-	url: 'utnulla.org',
-	description: 'Exercitation anim nisi quis quis. Eu consequat cillum dolore ex labore consequat sit irure ea.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Adelina',
-				last: 'Koppes'
-			},
-			position: 'Vice President',
-			phone: '(672) 719-2443',
-			email: 'akoppes@utnulla.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 137483,
-				debt: 143112,
-				revenue: 141235,
-				ebitda: 49432
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 252900,
-				debt: 51760,
-				revenue: 195685,
-				ebitda: 64576
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 202364,
-				debt: 70189,
-				revenue: 62800,
-				ebitda: 18212
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Irure Development',
-	url: 'irure.net',
-	description: 'Commodo nostrud adipisicing consequat cillum ipsum ex nisi. Esse sunt consectetur ullamco ex incididunt mollit esse.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Lucrecia',
-				last: 'Nagata'
-			},
-			position: 'President',
-			phone: '(266) 215-8075',
-			email: 'lnagata@irure.net'
-		},
-		{
-			name: {
-				first: 'Deeann',
-				last: 'Andrea'
-			},
-			position: 'CEO',
-			phone: '(562) 351-2172',
-			email: 'dandrea@irure.net'
-		},
-		{
-			name: {
-				first: 'Barbera',
-				last: 'Leland'
-			},
-			position: 'CFO',
-			phone: '(555) 023-8260',
-			email: 'bleland@irure.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 136585,
-				debt: 177229,
-				revenue: 139422,
-				ebitda: 34856
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 270789,
-				debt: 236756,
-				revenue: 278388,
-				ebitda: 69597
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 303500,
-				debt: 51384,
-				revenue: 382046,
-				ebitda: 95511
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Irure Industrial',
-	url: 'irure.net',
-	description: 'Eu irure et commodo eu consequat. Adipisicing enim non nulla aute esse nostrud magna. Voluptate incididunt ullamco dolore ipsum. Tempor sunt cillum ullamco consequat.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Suzi',
-				last: 'Evens'
-			},
-			position: 'Vice President',
-			phone: '(188) 265-3511',
-			email: 'sevens@irure.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1422009,
-				debt: 1502115,
-				revenue: 1448516,
-				ebitda: 362129
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 52802,
-				debt: 1055385,
-				revenue: 482964,
-				ebitda: 120741
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 70633,
-				debt: 1935017,
-				revenue: 101050,
-				ebitda: 25263
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Ullamco Industrial',
-	url: 'ullamco.org',
-	description: 'Nostrud ea enim velit mollit. Veniam labore esse anim culpa commodo non.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Lucrecia',
-				last: 'Kinard'
-			},
-			position: 'President',
-			phone: '(647) 160-9738',
-			email: 'lkinard@ullamco.org'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 180335,
-				debt: 169349,
-				revenue: 192581,
-				mc: 130723,
-				ebitda: 48145
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 294753,
-				debt: 163139,
-				revenue: 76380,
-				mc: 107476,
-				ebitda: 19095
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 533964,
-				debt: 195791,
-				revenue: 135928,
-				mc: 122610,
-				ebitda: 33982
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Cupidatat Works',
-	url: 'cupidatat.net',
-	description: 'Tempor enim dolor commodo non. Consectetur anim reprehenderit cillum quis.',
-	isPublic: true,
-	contacts: [
-		{
-			name: {
-				first: 'Phylis',
-				last: 'Alegria'
-			},
-			position: 'President',
-			phone: '(111) 374-4518',
-			email: 'palegria@cupidatat.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 12467353,
-				debt: 14292126,
-				revenue: 19119041,
-				mc: 11055978,
-				ebitda: 4779760
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 6475509,
-				debt: 21504504,
-				revenue: 26515811,
-				mc: 12061649,
-				ebitda: 10076008
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 12677971,
-				debt: 36369157,
-				revenue: 34531037,
-				mc: 2738643,
-				ebitda: 8632759
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Dolor Partners',
-	url: 'dolor.net',
-	description: 'Veniam ad ad exercitation sit. Excepteur consectetur ex quis eiusmod. Eu officia esse enim sunt.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Denver',
-				last: 'Perron'
-			},
-			position: 'President',
-			phone: '(555) 821-6582',
-			email: 'dperron@dolor.net'
-		},
-		{
-			name: {
-				first: 'Stefani',
-				last: 'Evens'
-			},
-			position: 'Vice President',
-			phone: '(316) 973-7958',
-			email: 'sevens@dolor.net'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1008073,
-				debt: 1012565,
-				revenue: 1531438,
-				ebitda: 382859
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 1602710,
-				debt: 173079,
-				revenue: 192439,
-				ebitda: 67354
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 57072,
-				debt: 76556,
-				revenue: 117867,
-				ebitda: 29467
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Ut Proident Consulting',
-	url: 'utproident.com',
-	description: 'Sit velit labore dolor eu. Duis cupidatat sunt aute et. Sunt officia dolor labore laborum minim.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Kandis',
-				last: 'Mercado'
-			},
-			position: 'President',
-			phone: '(734) 341-5722',
-			email: 'kmercado@utproident.com'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 16413581,
-				debt: 10904417,
-				revenue: 12106765,
-				ebitda: 3026691
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 21474716,
-				debt: 1730959,
-				revenue: 5790956,
-				ebitda: 2026835
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 31543324,
-				debt: 106253,
-				revenue: 201062,
-				ebitda: 50266
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Exercitation Limited',
-	url: 'exercitation.co',
-	description: 'Aliqua qui sit do qui et tempor magna. Elit reprehenderit labore sit do. Ea occaecat elit proident laboris excepteur veniam duis exercitation.',
-	isPublic: false,
-	contacts: [
-		{
-			name: {
-				first: 'Milagro',
-				last: 'Legendre'
-			},
-			position: 'CFO',
-			phone: '(229) 507-1468',
-			email: 'mlegendre@exercitation.co'
-		}
-	],
-	financials: [
-		{
-			key: 2018,
-			metrics: {
-				assets: 1490421,
-				debt: 1243417,
-				revenue: 1485044,
-				ebitda: 371261
-			}
-		},
-		{
-			key: 2017,
-			metrics: {
-				assets: 275905,
-				debt: 947692,
-				revenue: 2490463,
-				ebitda: 622616
-			}
-		},
-		{
-			key: 2016,
-			metrics: {
-				assets: 131583,
-				debt: 16137,
-				revenue: 4963429,
-				ebitda: 1240857
-			}
-		}
-	],
-	status: 'Researching'
-},
-{
-	name: 'Pariatur Scientific',
-	url: 'pariatur.co',
-	description: 'Irure mollit incididunt anim exercitation. Deserunt cupidatat sint adipisicing officia.',
+	name: 'Mollit Services',
+	url: 'mollit.co',
+	description: 'Do esse voluptate id esse nulla ipsum ut nisi. Mollit exercitation fugiat aute irure. Proident fugiat est ullamco '
+		+ 'minim.',
 	isPublic: true,
 	contacts: [
 		{
 			name: {
 				first: 'Fleta',
-				last: 'Cancel'
+				last: 'Mercado'
+			},
+			position: 'Vice President',
+			phone: '(776) 137-2455',
+			email: 'fmercado@mollit.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 17978667,
+				debt: 12287401,
+				revenue: 13905400,
+				mc: 19135040,
+				ebitda: 3476350
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 28846650,
+				debt: 12884855,
+				revenue: 13722681,
+				mc: 23890684,
+				ebitda: 3430670
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 36658542,
+				debt: 8827283,
+				revenue: 26999339,
+				mc: 24647640,
+				ebitda: 6749835
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Ex Sunt Industrial',
+	url: 'exsunt.org',
+	description: 'Sint cillum qui veniam cupidatat. Minim mollit anim anim veniam.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Brady',
+				last: 'Zahl'
 			},
 			position: 'CEO',
-			phone: '(249) 801-6681',
-			email: 'fcancel@pariatur.co'
+			phone: '(221) 048-6454',
+			email: 'bzahl@exsunt.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 181355,
+				debt: 174831,
+				revenue: 183644,
+				ebitda: 45911
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 180089,
+				debt: 325149,
+				revenue: 158238,
+				ebitda: 60130
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 190617,
+				debt: 429797,
+				revenue: 190782,
+				ebitda: 47696
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Cillum Dolore Labs',
+	url: 'cillumdolore.net',
+	description: 'Amet aliqua sint ea reprehenderit. Do deserunt pariatur laboris incididunt. Esse adipisicing pariatur proident '
+		+ 'veniam.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Ileen',
+				last: 'Kee'
+			},
+			position: 'President',
+			phone: '(588) 235-2196',
+			email: 'ikee@cillumdolore.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1884403,
+				debt: 1087566,
+				revenue: 1098770,
+				ebitda: 307656
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 488304,
+				debt: 1211702,
+				revenue: 1811713,
+				ebitda: 452928
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 700217,
+				debt: 353965,
+				revenue: 50106,
+				ebitda: 12526
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Consequat Industrial',
+	url: 'consequat.net',
+	description: 'Mollit magna occaecat ipsum ea esse. Minim laboris esse voluptate magna.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Marlo',
+				last: 'Blea'
+			},
+			position: 'President',
+			phone: '(357) 111-8856',
+			email: 'mblea@consequat.net'
 		},
 		{
 			name: {
-				first: 'Veola',
+				first: 'Valarie',
+				last: 'Ellett'
+			},
+			position: 'Vice President',
+			phone: '(012) 674-5188',
+			email: 'vellett@consequat.net'
+		},
+		{
+			name: {
+				first: 'Lucrecia',
+				last: 'Client'
+			},
+			position: 'CFO',
+			phone: '(814) 646-2501',
+			email: 'lclient@consequat.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 198628,
+				debt: 168247,
+				revenue: 144075,
+				ebitda: 36019
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 363585,
+				debt: 219749,
+				revenue: 233563,
+				ebitda: 58391
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 627786,
+				debt: 342274,
+				revenue: 291908,
+				ebitda: 72977
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Commodo Specialties',
+	url: 'commodo.net',
+	description: 'Commodo eiusmod sit dolor elit. Ut sunt occaecat deserunt veniam. Voluptate enim consectetur proident qui '
+		+ 'incididunt culpa in incididunt nulla. Amet sunt proident consequat adipisicing.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Diego',
+				last: 'Koppes'
+			},
+			position: 'Vice President',
+			phone: '(815) 923-3892',
+			email: 'dkoppes@commodo.net'
+		},
+		{
+			name: {
+				first: 'Malisa',
+				last: 'Parkhill'
+			},
+			position: 'CFO',
+			phone: '(356) 527-9876',
+			email: 'mparkhill@commodo.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 101388,
+				debt: 128390,
+				revenue: 157290,
+				mc: 162673,
+				ebitda: 39323
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 184664,
+				debt: 74959,
+				revenue: 137970,
+				mc: 268783,
+				ebitda: 34492
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 82698,
+				debt: 18615,
+				revenue: 199097,
+				mc: 182855,
+				ebitda: 75657
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Irure Inc.',
+	url: 'irure.org',
+	description: 'Nostrud aute qui ut ut. Do ex consequat id id laborum ipsum est.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Diego',
+				last: 'Andrea'
+			},
+			position: 'Vice President',
+			phone: '(381) 029-5357',
+			email: 'dandrea@irure.org'
+		},
+		{
+			name: {
+				first: 'Fleta',
+				last: 'Zahl'
+			},
+			position: 'President',
+			phone: '(881) 886-1100',
+			email: 'fzahl@irure.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 129382,
+				debt: 157993,
+				revenue: 199112,
+				ebitda: 59734
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 203694,
+				debt: 67466,
+				revenue: 367550,
+				ebitda: 91887
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 184640,
+				debt: 108932,
+				revenue: 614068,
+				ebitda: 184220
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Veniam & Co.',
+	url: 'veniam.co',
+	description: 'Excepteur aliquip eiusmod adipisicing aliqua velit mollit ad cupidatat tempor. Aliqua ad do anim proident sunt '
+		+ 'laborum commodo aute. Elit ut ea et ut. Non nulla ex elit esse.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Milagro',
+				last: 'Alegria'
+			},
+			position: 'President',
+			phone: '(977) 222-8443',
+			email: 'malegria@veniam.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1780135,
+				debt: 1992665,
+				revenue: 1963992,
+				ebitda: 490998
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 400674,
+				debt: 3470210,
+				revenue: 292627,
+				ebitda: 108272
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 239896,
+				debt: 3071300,
+				revenue: 451800,
+				ebitda: 180720
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Minim Solutions',
+	url: 'minim.net',
+	description: 'Cupidatat fugiat cillum commodo consectetur ea amet. Aliquip ad aliqua eiusmod commodo laboris sint velit cillum.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Fidelia',
+				last: 'Hains'
+			},
+			position: 'CFO',
+			phone: '(233) 755-8380',
+			email: 'fhains@minim.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 158171,
+				debt: 123547,
+				revenue: 196925,
+				ebitda: 49231
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 181636,
+				debt: 76511,
+				revenue: 30098,
+				ebitda: 7825
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 277588,
+				debt: 107735,
+				revenue: 8513,
+				ebitda: 2128
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Magna Amet Properties',
+	url: 'magnaamet.net',
+	description: 'Sunt ea minim ullamco incididunt. Qui id veniam duis voluptate.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Lorri',
+				last: 'Tallarico'
+			},
+			position: 'Vice President',
+			phone: '(276) 054-3632',
+			email: 'ltallarico@magnaamet.net'
+		},
+		{
+			name: {
+				first: 'Bridgett',
+				last: 'Lamarre'
+			},
+			position: 'President',
+			phone: '(618) 716-7319',
+			email: 'blamarre@magnaamet.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 117138,
+				debt: 105219,
+				revenue: 150375,
+				ebitda: 37594
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 94158,
+				debt: 173707,
+				revenue: 96297,
+				ebitda: 38519
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 13495,
+				debt: 218247,
+				revenue: 94098,
+				ebitda: 23525
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Laborum Labs',
+	url: 'laborum.net',
+	description: 'Excepteur esse proident magna velit. Id et excepteur et eiusmod irure.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Barbera',
 				last: 'Tallarico'
 			},
 			position: 'President',
-			phone: '(175) 662-0726',
-			email: 'vtallarico@pariatur.co'
+			phone: '(863) 643-6324',
+			email: 'btallarico@laborum.net'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 10592238,
-				debt: 10427599,
-				revenue: 16814396,
-				mc: 19266920,
-				ebitda: 4203599
+				assets: 103100,
+				debt: 146943,
+				revenue: 188915,
+				ebitda: 47229
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 8525362,
-				debt: 1370501,
-				revenue: 4937899,
-				mc: 1899444,
-				ebitda: 1234475
+				assets: 36176,
+				debt: 184800,
+				revenue: 153185,
+				ebitda: 38296
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 13928616,
-				debt: 1341462,
-				revenue: 8639637,
-				mc: 1538966,
-				ebitda: 2159909
+				assets: 7791,
+				debt: 313470,
+				revenue: 169042,
+				ebitda: 42260
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Incididunt Consulting',
-	url: 'incididunt.co',
-	description: 'Dolor veniam occaecat dolore sunt do aliqua et aliquip. Laboris consequat velit eu commodo. Reprehenderit eu aute cupidatat esse fugiat.',
+	name: 'Veniam Books',
+	url: 'veniam.co',
+	description: 'Ipsum deserunt aliqua exercitation incididunt. Consectetur qui ullamco ut do velit aute sunt.',
 	isPublic: true,
 	contacts: [
 		{
 			name: {
-				first: 'Joseph',
-				last: 'Ellett'
+				first: 'Fleta',
+				last: 'Kinard'
+			},
+			position: 'President',
+			phone: '(684) 903-1117',
+			email: 'fkinard@veniam.co'
+		},
+		{
+			name: {
+				first: 'Denver',
+				last: 'Perron'
+			},
+			position: 'Vice President',
+			phone: '(944) 203-7410',
+			email: 'dperron@veniam.co'
+		},
+		{
+			name: {
+				first: 'Antony',
+				last: 'Lantz'
 			},
 			position: 'CEO',
-			phone: '(786) 475-5238',
-			email: 'jellett@incididunt.co'
-		},
-		{
-			name: {
-				first: 'Brady',
-				last: 'Andrea'
-			},
-			position: 'President',
-			phone: '(155) 266-5654',
-			email: 'bandrea@incididunt.co'
-		},
-		{
-			name: {
-				first: 'Wilber',
-				last: 'Pridgeon'
-			},
-			position: 'CFO',
-			phone: '(106) 224-2466',
-			email: 'wpridgeon@incididunt.co'
+			phone: '(419) 281-8201',
+			email: 'alantz@veniam.co'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 157226,
-				debt: 106233,
-				revenue: 155226,
-				mc: 156736,
-				ebitda: 41911
+				assets: 152038,
+				debt: 157234,
+				revenue: 190854,
+				mc: 152974,
+				ebitda: 49622
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 53779,
-				debt: 106355,
-				revenue: 250709,
-				mc: 255825,
-				ebitda: 62677
+				assets: 231419,
+				debt: 249798,
+				revenue: 191474,
+				mc: 297380,
+				ebitda: 47869
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 78722,
-				debt: 58635,
-				revenue: 450974,
-				mc: 79643,
-				ebitda: 117253
+				assets: 285979,
+				debt: 291739,
+				revenue: 237349,
+				mc: 94462,
+				ebitda: 59337
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Mollit Properties',
-	url: 'mollit.com',
-	description: 'Est duis aliqua nisi ut. Aliqua dolore tempor incididunt officia cupidatat ut nisi. Lorem id ad irure proident qui labore pariatur magna.',
+	name: 'Magna Dynamics',
+	url: 'magna.co',
+	description: 'Pariatur in velit est consectetur. Nisi in id exercitation in mollit nisi mollit veniam. Ex anim commodo '
+		+ 'consectetur amet.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Denver',
+				last: 'Lantz'
+			},
+			position: 'CEO',
+			phone: '(276) 823-6384',
+			email: 'dlantz@magna.co'
+		},
+		{
+			name: {
+				first: 'Kelli',
+				last: 'Client'
+			},
+			position: 'President',
+			phone: '(206) 768-5114',
+			email: 'kclient@magna.co'
+		},
+		{
+			name: {
+				first: 'Fidelia',
+				last: 'Keala'
+			},
+			position: 'Vice President',
+			phone: '(434) 137-6221',
+			email: 'fkeala@magna.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1128628,
+				debt: 1644616,
+				revenue: 1136399,
+				ebitda: 284100
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1124951,
+				debt: 1246419,
+				revenue: 948895,
+				ebitda: 351091
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 938302,
+				debt: 1003277,
+				revenue: 579264,
+				ebitda: 144816
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Deserunt Properties',
+	url: 'deserunt.net',
+	description: 'Veniam consequat velit excepteur deserunt eiusmod adipisicing anim veniam. Cupidatat consectetur eu cupidatat '
+		+ 'nostrud. Sunt voluptate excepteur sit est sit dolore anim. Dolore nostrud reprehenderit laborum eiusmod.',
 	isPublic: true,
 	contacts: [
 		{
 			name: {
-				first: 'Tamie',
-				last: 'Pridgeon'
+				first: 'Fidelia',
+				last: 'Cancel'
+			},
+			position: 'Vice President',
+			phone: '(116) 358-4320',
+			email: 'fcancel@deserunt.net'
+		},
+		{
+			name: {
+				first: 'Bradford',
+				last: 'Lariviere'
 			},
 			position: 'President',
-			phone: '(836) 165-7748',
-			email: 'tpridgeon@mollit.com'
+			phone: '(235) 878-1256',
+			email: 'blariviere@deserunt.net'
 		},
+		{
+			name: {
+				first: 'Marlo',
+				last: 'Seabury'
+			},
+			position: 'CEO',
+			phone: '(032) 680-1755',
+			email: 'mseabury@deserunt.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 197495,
+				debt: 112868,
+				revenue: 119006,
+				mc: 170758,
+				ebitda: 42842
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 227359,
+				debt: 68635,
+				revenue: 209754,
+				mc: 155777,
+				ebitda: 52439
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 240426,
+				debt: 90510,
+				revenue: 233872,
+				mc: 37726,
+				ebitda: 58468
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Fugiat Aliquip Enterprises',
+	url: 'fugiataliquip.co',
+	description: 'Ullamco id pariatur proident dolore sit culpa commodo. Voluptate nulla nostrud ex duis.',
+	isPublic: false,
+	contacts: [
 		{
 			name: {
 				first: 'Suzi',
-				last: 'Hou'
+				last: 'Koppes'
+			},
+			position: 'President',
+			phone: '(643) 778-7182',
+			email: 'skoppes@fugiataliquip.co'
+		},
+		{
+			name: {
+				first: 'Fleta',
+				last: 'Hellen'
+			},
+			position: 'CEO',
+			phone: '(791) 416-5728',
+			email: 'fhellen@fugiataliquip.co'
+		},
+		{
+			name: {
+				first: 'Bridgett',
+				last: 'Lamarre'
 			},
 			position: 'Vice President',
-			phone: '(273) 897-2868',
-			email: 'shou@mollit.com'
+			phone: '(825) 331-8028',
+			email: 'blamarre@fugiataliquip.co'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 1162057,
-				debt: 1624614,
-				revenue: 1704071,
-				mc: 1371093,
-				ebitda: 647547
+				assets: 18147879,
+				debt: 10102501,
+				revenue: 15419825,
+				ebitda: 6013732
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 598266,
-				debt: 961080,
-				revenue: 3289723,
-				mc: 2489909,
-				ebitda: 822431
+				assets: 22371463,
+				debt: 419756,
+				revenue: 15165877,
+				ebitda: 3791469
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 454587,
-				debt: 1345553,
-				revenue: 4743188,
-				mc: 3074161,
-				ebitda: 1185797
+				assets: 43379377,
+				debt: 671256,
+				revenue: 3611254,
+				ebitda: 902813
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Nostrud Limited',
-	url: 'nostrud.org',
-	description: 'Proident enim aliquip veniam dolor ipsum velit reprehenderit adipisicing ullamco. Consectetur ex nostrud ad sint. Reprehenderit reprehenderit adipisicing fugiat occaecat.',
+	name: 'Deserunt Creative',
+	url: 'deserunt.co',
+	description: 'Sit do veniam pariatur ex. Nulla ipsum ad non sint. Pariatur aliqua laborum veniam nisi. Ad magna esse quis dolore '
+		+ 'ea incididunt labore voluptate cillum.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Emmett',
+				last: 'Kinard'
+			},
+			position: 'CEO',
+			phone: '(643) 863-6856',
+			email: 'ekinard@deserunt.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 131867,
+				debt: 139564,
+				revenue: 129713,
+				mc: 182422,
+				ebitda: 32428
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 209862,
+				debt: 194045,
+				revenue: 71482,
+				mc: 154582,
+				ebitda: 17870
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 166647,
+				debt: 387574,
+				revenue: 105545,
+				mc: 86215,
+				ebitda: 26386
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Reprehenderit Adipisicing Dynamics',
+	url: 'reprehenderitadipisicing.co',
+	description: 'Cillum duis adipisicing consequat reprehenderit. Et occaecat cupidatat labore pariatur.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Denver',
+				last: 'Evens'
+			},
+			position: 'CFO',
+			phone: '(458) 744-2838',
+			email: 'devens@reprehenderitadipisicing.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1733140,
+				debt: 1966593,
+				revenue: 1182995,
+				mc: 1555013,
+				ebitda: 295749
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 505767,
+				debt: 2420188,
+				revenue: 1743385,
+				mc: 94189,
+				ebitda: 592751
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 248181,
+				debt: 1485905,
+				revenue: 3148492,
+				mc: 25074,
+				ebitda: 850093
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Ea Laborum Digital',
+	url: 'ealaborum.net',
+	description: 'Consectetur duis velit sint fugiat nisi. Magna reprehenderit qui aliqua consequat. Incididunt voluptate labore '
+		+ 'excepteur ut mollit commodo do ut.',
 	isPublic: false,
 	contacts: [
 		{
 			name: {
-				first: 'Ute',
-				last: 'Dutra'
+				first: 'Adelina',
+				last: 'Lamarre'
 			},
-			position: 'Vice President',
-			phone: '(134) 362-3406',
-			email: 'udutra@nostrud.org'
+			position: 'CEO',
+			phone: '(313) 228-6037',
+			email: 'alamarre@ealaborum.net'
+		},
+		{
+			name: {
+				first: 'Adelina',
+				last: 'Hunte'
+			},
+			position: 'President',
+			phone: '(475) 733-9250',
+			email: 'ahunte@ealaborum.net'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 168886,
-				debt: 116415,
-				revenue: 194853,
-				ebitda: 50662
+				assets: 111921,
+				debt: 184937,
+				revenue: 191918,
+				ebitda: 61414
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 2604,
-				debt: 231945,
-				revenue: 214704,
-				ebitda: 72999
+				assets: 104606,
+				debt: 141252,
+				revenue: 281408,
+				ebitda: 92865
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 4354,
-				debt: 294629,
-				revenue: 350006,
-				ebitda: 87502
+				assets: 104445,
+				debt: 247875,
+				revenue: 92394,
+				ebitda: 23099
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
 },
 {
-	name: 'Veniam Foods',
-	url: 'veniam.org',
-	description: 'Id laboris et et officia velit proident do Lorem ullamco. Reprehenderit incididunt est ullamco anim.',
+	name: 'Eiusmod Development',
+	url: 'eiusmod.org',
+	description: 'Nostrud velit fugiat excepteur ea. Occaecat reprehenderit adipisicing sit et veniam proident.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Ching',
+				last: 'Oiler'
+			},
+			position: 'President',
+			phone: '(038) 374-4517',
+			email: 'coiler@eiusmod.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 10699155,
+				debt: 13440585,
+				revenue: 10425327,
+				mc: 16995826,
+				ebitda: 3336105
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 17376046,
+				debt: 23822118,
+				revenue: 5739394,
+				mc: 3296025,
+				ebitda: 2008788
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 3069076,
+				debt: 10969817,
+				revenue: 4913839,
+				mc: 4348932,
+				ebitda: 1228460
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Cillum Online',
+	url: 'cillum.net',
+	description: 'Anim duis qui ex pariatur culpa. Fugiat cupidatat in minim id excepteur occaecat laboris elit. Dolor ex nisi duis '
+		+ 'mollit cillum voluptate elit.',
 	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Barbera',
+				last: 'Woodie'
+			},
+			position: 'CEO',
+			phone: '(641) 623-1042',
+			email: 'bwoodie@cillum.net'
+		},
+		{
+			name: {
+				first: 'Mirian',
+				last: 'Ruckman'
+			},
+			position: 'Vice President',
+			phone: '(081) 428-8136',
+			email: 'mruckman@cillum.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 170193,
+				debt: 147698,
+				revenue: 165617,
+				ebitda: 41404
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 219838,
+				debt: 64488,
+				revenue: 237339,
+				ebitda: 68828
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 167560,
+				debt: 82157,
+				revenue: 77100,
+				ebitda: 20817
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Magna Industrial',
+	url: 'magna.org',
+	description: 'Aute sunt mollit laboris id eiusmod. Voluptate minim ea nisi minim. Eu non veniam amet qui cillum.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Kelli',
+				last: 'Sones'
+			},
+			position: 'President',
+			phone: '(285) 466-3632',
+			email: 'ksones@magna.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 146098,
+				debt: 129397,
+				revenue: 187813,
+				ebitda: 46953
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 199299,
+				debt: 3703,
+				revenue: 23623,
+				ebitda: 9449
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 275795,
+				debt: 2473,
+				revenue: 24030,
+				ebitda: 6969
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Laborum Systems',
+	url: 'laborum.org',
+	description: 'Voluptate aliqua enim reprehenderit ullamco. Exercitation culpa in incididunt laborum mollit adipisicing. Mollit '
+		+ 'mollit culpa reprehenderit sit dolore ipsum elit. Non et cillum quis occaecat exercitation.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Barbera',
+				last: 'Wilker'
+			},
+			position: 'President',
+			phone: '(253) 632-1603',
+			email: 'bwilker@laborum.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1217705,
+				debt: 1566382,
+				revenue: 1905735,
+				mc: 1568677,
+				ebitda: 476434
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 2284197,
+				debt: 2917370,
+				revenue: 2521863,
+				mc: 1396904,
+				ebitda: 630466
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 2857746,
+				debt: 193292,
+				revenue: 4458161,
+				mc: 2430985,
+				ebitda: 1114540
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Consequat Enterprises',
+	url: 'consequat.co',
+	description: 'Laborum sunt duis fugiat excepteur. Veniam pariatur pariatur irure nulla commodo.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Sebrina',
+				last: 'Puig'
+			},
+			position: 'Vice President',
+			phone: '(148) 274-1218',
+			email: 'spuig@consequat.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1431972,
+				debt: 1162573,
+				revenue: 1003220,
+				ebitda: 250805
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1456748,
+				debt: 180553,
+				revenue: 536301,
+				ebitda: 134075
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 1654311,
+				debt: 145637,
+				revenue: 486567,
+				ebitda: 121642
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Tempor Online',
+	url: 'tempor.net',
+	description: 'Occaecat ut et aute cupidatat ut exercitation excepteur veniam ut. Consectetur est ut in nulla. Aliquip do dolore '
+		+ 'qui consectetur.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Fleta',
+				last: 'Mccallister'
+			},
+			position: 'President',
+			phone: '(683) 150-9837',
+			email: 'fmccallister@tempor.net'
+		},
+		{
+			name: {
+				first: 'Malisa',
+				last: 'Cancel'
+			},
+			position: 'Vice President',
+			phone: '(229) 325-4846',
+			email: 'mcancel@tempor.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 197681,
+				debt: 123596,
+				revenue: 162593,
+				ebitda: 40648
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 289499,
+				debt: 36644,
+				revenue: 96647,
+				ebitda: 26095
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 195050,
+				debt: 7751,
+				revenue: 42690,
+				ebitda: 10673
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Deserunt Online',
+	url: 'deserunt.co',
+	description: 'Cillum laboris officia aliquip elit. Velit consectetur ea deserunt labore.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Elia',
+				last: 'Demoura'
+			},
+			position: 'Vice President',
+			phone: '(404) 062-4298',
+			email: 'edemoura@deserunt.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 121223,
+				debt: 194383,
+				revenue: 111960,
+				mc: 192504,
+				ebitda: 36947
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 181134,
+				debt: 368136,
+				revenue: 175513,
+				mc: 218462,
+				ebitda: 59674
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 227303,
+				debt: 459251,
+				revenue: 99072,
+				mc: 253213,
+				ebitda: 24768
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Officia Bureau',
+	url: 'officia.net',
+	description: 'Velit non reprehenderit ipsum veniam ex. Anim sit veniam veniam labore deserunt aliquip.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Tobie',
+				last: 'Wilker'
+			},
+			position: 'CEO',
+			phone: '(753) 351-2374',
+			email: 'twilker@officia.net'
+		},
+		{
+			name: {
+				first: 'Joseph',
+				last: 'Mercado'
+			},
+			position: 'Vice President',
+			phone: '(544) 760-1556',
+			email: 'jmercado@officia.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1074828,
+				debt: 1962443,
+				revenue: 1710275,
+				mc: 1264442,
+				ebitda: 598596
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1690211,
+				debt: 2632143,
+				revenue: 1167231,
+				mc: 2362823,
+				ebitda: 291808
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 1452461,
+				debt: 4489170,
+				revenue: 1559483,
+				mc: 2020346,
+				ebitda: 389871
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Cillum LLC',
+	url: 'cillum.org',
+	description: 'Laborum consequat sint sit aliquip ea. Qui adipisicing ut consequat elit. Laboris aliquip exercitation voluptate '
+		+ 'ullamco.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Fidelia',
+				last: 'Mercado'
+			},
+			position: 'President',
+			phone: '(265) 548-6023',
+			email: 'fmercado@cillum.org'
+		},
+		{
+			name: {
+				first: 'Earle',
+				last: 'Seabury'
+			},
+			position: 'Vice President',
+			phone: '(735) 524-8016',
+			email: 'eseabury@cillum.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 115562,
+				debt: 123878,
+				revenue: 133040,
+				ebitda: 33260
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 15596,
+				debt: 203444,
+				revenue: 101683,
+				ebitda: 25421
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 25993,
+				debt: 311845,
+				revenue: 38012,
+				ebitda: 10643
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Reprehenderit Industrial',
+	url: 'reprehenderit.org',
+	description: 'Aliqua qui esse irure commodo. Dolore ea laboris sit enim.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Fidelia',
+				last: 'Alegria'
+			},
+			position: 'Vice President',
+			phone: '(318) 285-6613',
+			email: 'falegria@reprehenderit.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1028108,
+				debt: 1623067,
+				revenue: 1384172,
+				ebitda: 346043
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1543372,
+				debt: 3154551,
+				revenue: 1055592,
+				ebitda: 285010
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 652636,
+				debt: 140171,
+				revenue: 960757,
+				ebitda: 307442
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Mollit Innovations',
+	url: 'mollit.org',
+	description: 'Consectetur cupidatat commodo aliquip aliqua. Cillum id ea mollit voluptate dolore officia mollit.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Sergio',
+				last: 'Puig'
+			},
+			position: 'CEO',
+			phone: '(181) 683-1627',
+			email: 'spuig@mollit.org'
+		},
+		{
+			name: {
+				first: 'Nicole',
+				last: 'Hellen'
+			},
+			position: 'President',
+			phone: '(137) 360-3278',
+			email: 'nhellen@mollit.org'
+		},
+		{
+			name: {
+				first: 'Sergio',
+				last: 'Oiler'
+			},
+			position: 'CFO',
+			phone: '(883) 295-2561',
+			email: 'soiler@mollit.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 120499,
+				debt: 192126,
+				revenue: 198864,
+				ebitda: 49716
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 128885,
+				debt: 382873,
+				revenue: 173672,
+				ebitda: 43418
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 76420,
+				debt: 529034,
+				revenue: 230265,
+				ebitda: 75987
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Fugiat Innovations',
+	url: 'fugiat.co',
+	description: 'Sunt officia eiusmod id ullamco dolore culpa. Irure quis commodo laborum aliqua.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Lashonda',
+				last: 'Kee'
+			},
+			position: 'President',
+			phone: '(678) 260-6364',
+			email: 'lkee@fugiat.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 194463,
+				debt: 184298,
+				revenue: 106938,
+				ebitda: 26735
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 81365,
+				debt: 351522,
+				revenue: 112480,
+				ebitda: 41618
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 117965,
+				debt: 586058,
+				revenue: 126152,
+				ebitda: 31538
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Exercitation Group',
+	url: 'exercitation.org',
+	description: 'Eu nulla laboris proident cillum. Officia nostrud magna veniam in duis et eiusmod. Laborum cupidatat sunt nisi '
+		+ 'anim voluptate excepteur sunt enim.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Valarie',
+				last: 'Parkhill'
+			},
+			position: 'CEO',
+			phone: '(312) 531-8911',
+			email: 'vparkhill@exercitation.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 115364,
+				debt: 111257,
+				revenue: 106068,
+				mc: 134875,
+				ebitda: 26517
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 30033,
+				debt: 74726,
+				revenue: 64400,
+				mc: 33678,
+				ebitda: 16100
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 18706,
+				debt: 17874,
+				revenue: 81050,
+				mc: 35026,
+				ebitda: 20262
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Nulla Solutions',
+	url: 'nulla.net',
+	description: 'Ipsum minim irure esse aliqua. Cupidatat dolore cupidatat fugiat labore qui nulla exercitation pariatur.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Lashonda',
+				last: 'Evens'
+			},
+			position: 'CFO',
+			phone: '(683) 224-8014',
+			email: 'levens@nulla.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 185866,
+				debt: 101069,
+				revenue: 139302,
+				ebitda: 54328
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 91911,
+				debt: 116892,
+				revenue: 111235,
+				ebitda: 44494
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 50293,
+				debt: 66372,
+				revenue: 24454,
+				ebitda: 6113
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Ullamco Development',
+	url: 'ullamco.co',
+	description: 'Ex amet dolor pariatur adipisicing eiusmod. Nostrud ex id minim aliqua veniam nostrud.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Yoshiko',
+				last: 'Perron'
+			},
+			position: 'CFO',
+			phone: '(248) 140-3371',
+			email: 'yperron@ullamco.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 195245,
+				debt: 194533,
+				revenue: 183525,
+				ebitda: 62399
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 262828,
+				debt: 366293,
+				revenue: 12500,
+				ebitda: 3125
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 121190,
+				debt: 619650,
+				revenue: 12917,
+				ebitda: 4908
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Aliqua Dynamics',
+	url: 'aliqua.co',
+	description: 'Reprehenderit cillum irure commodo aliqua. Excepteur excepteur sit deserunt qui do minim dolor.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Phylis',
+				last: 'Towle'
+			},
+			position: 'President',
+			phone: '(637) 313-1115',
+			email: 'ptowle@aliqua.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1838547,
+				debt: 1520847,
+				revenue: 1878510,
+				mc: 1661653,
+				ebitda: 469627
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 212553,
+				debt: 2373776,
+				revenue: 659773,
+				mc: 1952278,
+				ebitda: 164943
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 12671,
+				debt: 2914708,
+				revenue: 566767,
+				mc: 3053244,
+				ebitda: 141692
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Nulla Dynamics',
+	url: 'nulla.org',
+	description: 'Nulla commodo culpa in consequat. Et consequat nulla dolore commodo. Consequat est ad est ex.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Fleta',
+				last: 'Woodie'
+			},
+			position: 'Vice President',
+			phone: '(672) 800-7775',
+			email: 'fwoodie@nulla.org'
+		},
+		{
+			name: {
+				first: 'Ileen',
+				last: 'Jeffords'
+			},
+			position: 'President',
+			phone: '(217) 471-8415',
+			email: 'ijeffords@nulla.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 149435,
+				debt: 126129,
+				revenue: 157243,
+				ebitda: 42456
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 98165,
+				debt: 55691,
+				revenue: 23658,
+				ebitda: 5915
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 127280,
+				debt: 68492,
+				revenue: 34041,
+				ebitda: 8510
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Exercitation Systems',
+	url: 'exercitation.co',
+	description: 'Laborum cupidatat et nostrud laboris. Non sunt et non cupidatat.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Elia',
+				last: 'Mercado'
+			},
+			position: 'President',
+			phone: '(457) 150-8886',
+			email: 'emercado@exercitation.co'
+		},
+		{
+			name: {
+				first: 'Fleta',
+				last: 'Client'
+			},
+			position: 'CEO',
+			phone: '(992) 366-0228',
+			email: 'fclient@exercitation.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 111562,
+				debt: 168201,
+				revenue: 125076,
+				mc: 106327,
+				ebitda: 43776
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 56338,
+				debt: 47160,
+				revenue: 51468,
+				mc: 117858,
+				ebitda: 12867
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 86999,
+				debt: 11238,
+				revenue: 823,
+				mc: 85035,
+				ebitda: 206
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Nulla Services',
+	url: 'nulla.net',
+	description: 'Cupidatat sunt est nulla eiusmod. Elit esse ea aliquip nulla amet amet officia est reprehenderit.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Yoshiko',
+				last: 'Lamarre'
+			},
+			position: 'President',
+			phone: '(249) 297-4052',
+			email: 'ylamarre@nulla.net'
+		},
+		{
+			name: {
+				first: 'Sergio',
+				last: 'Hunte'
+			},
+			position: 'Vice President',
+			phone: '(857) 270-4045',
+			email: 'shunte@nulla.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 176753,
+				debt: 183649,
+				revenue: 199597,
+				ebitda: 49899
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 308627,
+				debt: 86299,
+				revenue: 21796,
+				ebitda: 5449
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 59354,
+				debt: 150716,
+				revenue: 35701,
+				ebitda: 14280
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Dolore qui Scientific',
+	url: 'dolorequi.org',
+	description: 'Elit deserunt in exercitation aute enim nisi pariatur. Et Lorem enim exercitation deserunt. Esse culpa id '
+		+ 'reprehenderit incididunt.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Emmett',
+				last: 'Pridgeon'
+			},
+			position: 'President',
+			phone: '(589) 753-6154',
+			email: 'epridgeon@dolorequi.org'
+		},
+		{
+			name: {
+				first: 'Ileen',
+				last: 'Hunte'
+			},
+			position: 'Vice President',
+			phone: '(512) 427-8322',
+			email: 'ihunte@dolorequi.org'
+		},
+		{
+			name: {
+				first: 'Milagro',
+				last: 'Moyle'
+			},
+			position: 'CEO',
+			phone: '(490) 833-7182',
+			email: 'mmoyle@dolorequi.org'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1308422,
+				debt: 1806868,
+				revenue: 1756508,
+				ebitda: 439127
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 400715,
+				debt: 3173495,
+				revenue: 881489,
+				ebitda: 220372
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 791008,
+				debt: 2812785,
+				revenue: 157986,
+				ebitda: 39496
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Nisi Fugiat Direct',
+	url: 'nisifugiat.co',
+	description: 'Minim eu cillum consequat aliqua consequat. Cupidatat minim est aute commodo dolor incididunt laboris. Aute '
+		+ 'excepteur Lorem reprehenderit eiusmod laboris id proident aute.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Lela',
+				last: 'Alegria'
+			},
+			position: 'Vice President',
+			phone: '(070) 742-2864',
+			email: 'lalegria@nisifugiat.co'
+		},
+		{
+			name: {
+				first: 'Osvaldo',
+				last: 'Wilker'
+			},
+			position: 'CFO',
+			phone: '(007) 589-9105',
+			email: 'owilker@nisifugiat.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1865383,
+				debt: 1547994,
+				revenue: 1246511,
+				ebitda: 311628
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 2668798,
+				debt: 2246724,
+				revenue: 531134,
+				ebitda: 169963
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 361856,
+				debt: 4169380,
+				revenue: 56731,
+				ebitda: 19856
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Incididunt Laborum Industrial',
+	url: 'incididuntlaborum.co',
+	description: 'Lorem anim Lorem amet reprehenderit. Veniam dolor aliquip elit tempor.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Diego',
+				last: 'Cancel'
+			},
+			position: 'CFO',
+			phone: '(774) 376-3377',
+			email: 'dcancel@incididuntlaborum.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 124272,
+				debt: 120476,
+				revenue: 166594,
+				ebitda: 61640
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 91539,
+				debt: 140536,
+				revenue: 206261,
+				ebitda: 68066
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 106599,
+				debt: 156031,
+				revenue: 104502,
+				ebitda: 37621
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Ipsum & Co.',
+	url: 'ipsum.net',
+	description: 'Proident quis enim pariatur magna. Et ipsum reprehenderit nulla dolor eu sint cupidatat consectetur.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Earle',
+				last: 'Mccallister'
+			},
+			position: 'CEO',
+			phone: '(814) 316-4117',
+			email: 'emccallister@ipsum.net'
+		},
+		{
+			name: {
+				first: 'Mirian',
+				last: 'Mccallister'
+			},
+			position: 'Vice President',
+			phone: '(144) 572-7825',
+			email: 'mmccallister@ipsum.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1576083,
+				debt: 1917775,
+				revenue: 1628416,
+				ebitda: 537377
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1097433,
+				debt: 1066349,
+				revenue: 2475182,
+				ebitda: 618795
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 1980288,
+				debt: 1707635,
+				revenue: 414109,
+				ebitda: 103527
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Reprehenderit Scientific',
+	url: 'reprehenderit.net',
+	description: 'Incididunt excepteur officia ea ut. Anim et dolor consectetur aute irure aute elit.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Mirian',
+				last: 'Moyle'
+			},
+			position: 'CEO',
+			phone: '(681) 364-6018',
+			email: 'mmoyle@reprehenderit.net'
+		},
+		{
+			name: {
+				first: 'Oma',
+				last: 'Kinard'
+			},
+			position: 'Vice President',
+			phone: '(546) 874-1636',
+			email: 'okinard@reprehenderit.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 1693787,
+				debt: 1423529,
+				revenue: 1795532,
+				ebitda: 448883
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 1366262,
+				debt: 2521108,
+				revenue: 2364161,
+				ebitda: 732890
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 2308363,
+				debt: 4003947,
+				revenue: 1813548,
+				ebitda: 453387
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Cupidatat Amet Innovations',
+	url: 'cupidatatamet.net',
+	description: 'Occaecat cupidatat aliquip anim id aliqua labore laboris. Nulla officia eu commodo do ut magna. Incididunt enim '
+		+ 'consectetur aliqua laboris veniam duis. Dolor aute aute amet in.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Lelah',
+				last: 'Mccallister'
+			},
+			position: 'Vice President',
+			phone: '(222) 830-6079',
+			email: 'lmccallister@cupidatatamet.net'
+		},
+		{
+			name: {
+				first: 'Yoshiko',
+				last: 'Jeffords'
+			},
+			position: 'President',
+			phone: '(122) 906-4483',
+			email: 'yjeffords@cupidatatamet.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 19418431,
+				debt: 19587046,
+				revenue: 12125333,
+				mc: 10622545,
+				ebitda: 3031333
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 20028484,
+				debt: 18086007,
+				revenue: 9816749,
+				mc: 5064423,
+				ebitda: 2650522
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 29901802,
+				debt: 13662825,
+				revenue: 4843331,
+				mc: 35781,
+				ebitda: 1695166
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Veniam Creative',
+	url: 'veniam.net',
+	description: 'Laboris eiusmod dolor dolore ullamco commodo qui excepteur est id. In fugiat et consectetur qui. Et sint sunt '
+		+ 'irure nisi dolor.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Ching',
+				last: 'Demoura'
+			},
+			position: 'Vice President',
+			phone: '(963) 636-2563',
+			email: 'cdemoura@veniam.net'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 170674,
+				debt: 129899,
+				revenue: 159601,
+				ebitda: 41496
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 87066,
+				debt: 112436,
+				revenue: 55309,
+				ebitda: 13827
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 134482,
+				debt: 46230,
+				revenue: 34242,
+				ebitda: 8561
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Nulla Productions',
+	url: 'nulla.com',
+	description: 'Incididunt qui quis dolore qui nostrud deserunt nulla anim. Culpa id officia cupidatat adipisicing reprehenderit '
+		+ 'est nisi. Magna aliqua sunt nostrud culpa elit incididunt.',
+	isPublic: false,
+	contacts: [
+		{
+			name: {
+				first: 'Julieann',
+				last: 'Keala'
+			},
+			position: 'President',
+			phone: '(996) 034-4138',
+			email: 'jkeala@nulla.com'
+		},
+		{
+			name: {
+				first: 'Antony',
+				last: 'Andrea'
+			},
+			position: 'CFO',
+			phone: '(662) 398-1328',
+			email: 'aandrea@nulla.com'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 101149,
+				debt: 106229,
+				revenue: 124074,
+				ebitda: 31018
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 129349,
+				debt: 168702,
+				revenue: 114052,
+				ebitda: 28513
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 187160,
+				debt: 142449,
+				revenue: 218622,
+				ebitda: 59028
+			}
+		}
+	],
+	status: Status.Researching
+},
+{
+	name: 'Mollit Creative',
+	url: 'mollit.co',
+	description: 'Nulla nisi Lorem irure aliquip commodo enim. Anim amet ullamco nostrud mollit duis eiusmod.',
+	isPublic: true,
 	contacts: [
 		{
 			name: {
 				first: 'Brady',
-				last: 'Koppes'
+				last: 'Dutra'
 			},
-			position: 'CEO',
-			phone: '(731) 904-9161',
-			email: 'bkoppes@veniam.org'
+			position: 'CFO',
+			phone: '(199) 484-9333',
+			email: 'bdutra@mollit.co'
 		}
 	],
 	financials: [
 		{
 			key: 2018,
 			metrics: {
-				assets: 1526402,
-				debt: 1908303,
-				revenue: 1205603,
-				ebitda: 301401
+				assets: 1752458,
+				debt: 1247507,
+				revenue: 1907583,
+				mc: 1906744,
+				ebitda: 476896
 			}
 		},
 		{
 			key: 2017,
 			metrics: {
-				assets: 2297208,
-				debt: 3596688,
-				revenue: 2215658,
-				ebitda: 753324
+				assets: 2539020,
+				debt: 1949714,
+				revenue: 556712,
+				mc: 600777,
+				ebitda: 139178
 			}
 		},
 		{
 			key: 2016,
 			metrics: {
-				assets: 1570724,
-				debt: 4416610,
-				revenue: 1951391,
-				ebitda: 487848
+				assets: 3862574,
+				debt: 2743252,
+				revenue: 148916,
+				mc: 833626,
+				ebitda: 37229
 			}
 		}
 	],
-	status: 'Researching'
+	status: Status.Researching
+},
+{
+	name: 'Exercitation Inc.',
+	url: 'exercitation.co',
+	description: 'Elit nisi veniam consectetur tempor commodo laborum consectetur est. Aute sunt ipsum culpa tempor proident et.',
+	isPublic: true,
+	contacts: [
+		{
+			name: {
+				first: 'Emmett',
+				last: 'Client'
+			},
+			position: 'Vice President',
+			phone: '(354) 445-5831',
+			email: 'eclient@exercitation.co'
+		},
+		{
+			name: {
+				first: 'Barbera',
+				last: 'Reece'
+			},
+			position: 'CFO',
+			phone: '(495) 778-7365',
+			email: 'breece@exercitation.co'
+		}
+	],
+	financials: [
+		{
+			key: 2018,
+			metrics: {
+				assets: 18852673,
+				debt: 10706631,
+				revenue: 19452038,
+				mc: 16299621,
+				ebitda: 7586295
+			}
+		},
+		{
+			key: 2017,
+			metrics: {
+				assets: 32605147,
+				debt: 18587984,
+				revenue: 37037633,
+				mc: 13923753,
+				ebitda: 14815053
+			}
+		},
+		{
+			key: 2016,
+			metrics: {
+				assets: 17009223,
+				debt: 14731411,
+				revenue: 18475123,
+				mc: 22980539,
+				ebitda: 6466293
+			}
+		}
+	],
+	status: Status.Researching
 },
 ];
 
