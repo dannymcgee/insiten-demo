@@ -14,6 +14,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	eViewMode = ViewMode;
 	viewMode: ViewMode;
 	viewModeSub: Subscription;
+	filterFormCheckboxes = [
+		{ label: 'Name', id: 'filterFieldName', defaultValue: true },
+		{ label: 'URL', id: 'filterFieldUrl' },
+		{ label: 'Description', id: 'filterFieldDescription' },
+		{ label: 'Contacts', id: 'filterFieldContacts' }
+	];
 	filterForm: FormGroup;
 	filterQuery: string;
 	filterFields: Set<string> = new Set();
@@ -43,15 +49,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	onFilterFormUpdate(values: any) {
 		this.filterQuery = values.filterQuery;
 
-		const checkboxesMap = {
-			name: values.filterFieldName,
-			url: values.filterFieldUrl,
-			description: values.filterFieldDescription,
-			contacts: values.filterFieldContacts
-		};
-		const keys = Object.keys(checkboxesMap);
-		for (const key of keys) {
-			if (checkboxesMap[key] === true) {
+		for (const checkbox of this.filterFormCheckboxes) {
+			const key = checkbox.label.toLowerCase();
+			const value = values[checkbox.id];
+
+			if (value === true) {
 				this.filterFields.add(key);
 			} else {
 				this.filterFields.delete(key);
