@@ -48,7 +48,6 @@
               <app-checkbox
                 [label]="checkbox.label"
                 [id]="checkbox.id"
-                inputClass="filter-checkbox"
                 [defaultValue]="checkbox.defaultValue || false"
                 [form]="filterForm"
               ></app-checkbox>
@@ -61,7 +60,6 @@
               <app-checkbox
                 label="Public"
                 [id]="'filterPublic'"
-                inputClass="filter-checkbox"
                 [isTernary]="true"
                 [defaultValue]="null"
                 [form]="filterForm"
@@ -70,7 +68,6 @@
             <li class="filter-dropdown__menu-item">
               <app-checkbox
                 [id]="'filterStatusToggle'"
-                inputClass="filter-checkbox"
                 [isTernary]="true"
                 [defaultValue]="null"
                 [form]="filterForm"

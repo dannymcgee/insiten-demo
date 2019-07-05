@@ -32,7 +32,6 @@ export class CheckboxComponent implements OnInit {
 	ternarySub: Subscription;
 	ternaryStateLast: TernaryState;
 
-	@Input() inputClass: string;
 	@HostBinding('class.checkbox') _ = true;
 	@HostBinding('class.checkbox--checked') isChecked = false;
 	@HostBinding('class.checkbox--false') isNegative = false;
