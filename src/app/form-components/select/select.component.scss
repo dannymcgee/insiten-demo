@@ -42,6 +42,7 @@
 		padding: 0.5em 0;
 		background: $gray-600;
 		color: $gray-200;
+		border-color: $gray-700;
 
 		#{$block}--open & {
 			display: flex;
