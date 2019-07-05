@@ -1,3 +1,19 @@
+a, button, input, textarea, select {
+	padding: 0;
+	margin: 0;
+	-webkit-appearance: none;
+	background: transparent;
+	color: inherit;
+	border: 0 none;
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+a, button, input[type="checkbox"], input[type="radio"], select {
+	cursor: pointer;
+}
+
 a, button, input, textarea, .dropdown {
 	@include interactable;
 }

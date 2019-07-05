@@ -19,6 +19,10 @@ nav {
 .nav {
 	display: flex;
 
+	&--stacked {
+		flex-direction: column;
+	}
+
 	&__item {
 		display: flex;
 		align-items: center;

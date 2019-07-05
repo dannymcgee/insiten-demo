@@ -24,13 +24,6 @@
 			}
 }
 
-.filter,
-.dropdown {
-	&__icon {
-		color: $gray-600;
-	}
-}
-
 .filter {
 	position: relative;
 	margin-left: auto;
@@ -42,11 +35,19 @@
 	&__icon {
 		margin-left: -0.25em;
 		margin-right: 0.5em;
+		color: $gray-600;
 	}
 	&__input {
 		width: 20em;
 		padding: 0;
 		border: 0;
+		color: $gray-600;
+		font-size: px(14);
+		line-height: 1;
+
+		&:focus {
+			color: $gray-900;
+		}
 	}
 }
 
@@ -54,12 +55,17 @@
 	$block: &;
 
 	&__toggle {
+		width: 2.25em;
+		@include position(absolute, (0 0 0));
 		font-size: px(16);
-		@include position(absolute, (50% 0.75em));
-		transform: translateY(-50%);
+		color: $gray-500;
+
+		#{$block}--open & { color: $gray-600 }
+		&:hover,
+		#{$block}--open &:hover { color: $gray-700 }
 	}
 	&__nav {
 		@include position(absolute, (null 0 0));
-		transform: translateY(100%);
+		transform: translateY(calc(100% + 5px));
 	}
 }

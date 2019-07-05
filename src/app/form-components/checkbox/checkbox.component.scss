@@ -19,6 +19,7 @@
 		margin-right: 0.5em;
 		position: relative;
 		border: 1px solid $gray-500;
+		@include transition(border-color);
 
 		#{$block}:hover & { border-color: $gray-600 }
 		#{$block}--checked &,
@@ -29,13 +30,26 @@
 		&::after {
 			content: '';
 			display: block;
-			@include position(absolute, (2px 2px 2px 2px));
+			@include position(absolute, (50% 50% 50% 50%));
 			background: transparent;
+			@include transition((
+				top,
+				right,
+				bottom,
+				left,
+				background,
+				border-radius,
+				box-shadow,
+				transform
+			));
 
-			#{$block}--checked & { background: $primary }
+			#{$block}--checked & {
+				@include position(absolute, (2px 2px 2px 2px));
+				background: $primary
+			}
 			#{$block}--false & {
-				width: 3px;
-				@include position(absolute, (-4px unset -4px unset));
+				// width: 3px;
+				@include position(absolute, (-4px calc(50% - 1.5px) -4px calc(50% - 1.5px)));
 				background: $red;
 				border-radius: 1.5px;
 				box-shadow: 1px 0 0 $gray-100;
@@ -47,6 +61,7 @@
 		color: $gray-600;
 		cursor: pointer;
 		user-select: none;
+		@include transition(color);
 
 		#{$block}:hover & { color: $gray-700 }
 		#{$block}--checked &,
