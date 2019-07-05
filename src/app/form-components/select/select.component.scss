@@ -1,17 +1,21 @@
 @import 'lib';
 
-:host,
 .select {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 
-	&__label    { flex: 0 0 auto }
-	&__dropdown { flex: 1 0 0 }
-	&__label    { margin-right: 0.5em }
-	&__dropdown { margin-left: auto }
+	&__label    { flex: 0 0 auto; margin-right: 0.5em }
+	&-dropdown  { flex: 1 0 0;    margin-left: auto }
+
+	&__input {
+		display: none;
+	}
 }
 
+.dropdown--open .select-dropdown__options {
+	display: none;
+}
 .select-dropdown {
 	$block: &;
 	position: relative;
@@ -27,22 +31,19 @@
 		border: 1px solid $gray-500;
 
 		&:hover { border-color: $gray-600 }
-		.dropdown--open & { border-color: $gray-700 }
+		#{$block}--open & { border-color: $gray-700 }
 	}
-		&__btn-icon {
+		&__icon {
 			margin-left: auto;
 		}
 	&__options {
-		min-width: 100%;
-		@include position(absolute, (null 0 0));
-		transform: translateY(100%);
-		// TODO: Merge these styles with the ones in _interactables
-		padding: 0.5em 0;
 		display: none;
+		min-width: 100%;
+		padding: 0.5em 0;
 		background: $gray-600;
 		color: $gray-200;
 
-		.dropdown--open & {
+		#{$block}--open & {
 			display: flex;
 		}
 	}
@@ -60,5 +61,3 @@
 			}
 		}
 }
-
-.select__input { display: none }

@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InputComponent } from './form-components/input/input.component';
 import { CheckboxComponent } from './form-components/checkbox/checkbox.component';
+import { SelectComponent } from './form-components/select/select.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TargetListComponent } from './targets/target-list/target-list.component';
 import { TargetCardComponent } from './targets/target-card/target-card.component';
@@ -26,7 +28,6 @@ import {
 	faBan
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
-import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { DropdownDirective } from './dropdown.directive';
 		TargetTableComponent,
 		CheckboxComponent,
 		InputComponent,
-		DropdownDirective
+		SelectComponent,
+		DropdownComponent
 	],
 	imports: [
 		BrowserModule,

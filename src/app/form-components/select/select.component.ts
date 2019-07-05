@@ -1,5 +1,13 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	HostBinding,
+	ViewEncapsulation,
+	ViewChild
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DropdownComponent } from './../../dropdown/dropdown.component';
 
 interface Option {
 	[key: string]: string | null;
@@ -12,12 +20,12 @@ interface OptionFormatted {
 @Component({
 	selector: 'app-select',
 	templateUrl: './select.component.html',
-	styleUrls: ['./select.component.scss']
+	styleUrls: ['./select.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class SelectComponent implements OnInit {
 	@Input() label: string;
 	@Input() id: string;
-	@Input() baseClass: string;
 	@Input() form: FormGroup;
 	@Input() options: Option[];
 	@Input() defaultValue: Option;
@@ -26,7 +34,13 @@ export class SelectComponent implements OnInit {
 	optionsFormatted: OptionFormatted[] = [];
 	currentValue: OptionFormatted;
 
-	@HostBinding('class.select') _ = true;
+	className = 'select';
+	@Input() inputClass: string;
+	@HostBinding('class') get hostClasses(): string {
+		return [this.className, this.inputClass].join(' ');
+	}
+
+	@ViewChild('dropdown', { static: false }) dropdown: DropdownComponent;
 
 	constructor() {}
 
@@ -39,7 +53,7 @@ export class SelectComponent implements OnInit {
 		this.initFormattedValues(this.options, this.control.value);
 	}
 
-	onSetValue(key: string, value: string | null) {
+	onOptionSelect(key: string, value: string | null) {
 		const option = {};
 		option[key] = value;
 
@@ -48,6 +62,9 @@ export class SelectComponent implements OnInit {
 
 		if (typeof this.onChangeFn === 'function') {
 			this.onChangeFn(option);
+		}
+		if (this.dropdown) {
+			this.dropdown.close();
 		}
 	}
 

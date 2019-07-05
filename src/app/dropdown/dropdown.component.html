@@ -1,0 +1,27 @@
+<button
+  [ngClass]="[
+		'btn',
+		className + '__toggle',
+		inputClass + '__toggle'
+	]"
+  (click)="toggle()"
+>
+  <span
+    *ngIf="label"
+    [ngClass]="[
+			className + '__label',
+			inputClass + '__label'
+		]"
+  >
+    {{ label }}
+  </span>
+	<fa-icon
+		*ngIf="icon"
+		[ngClass]="[
+			className + '__icon',
+			inputClass + '__icon'
+		]"
+		[icon]="icon"
+	></fa-icon>
+</button>
+<ng-content></ng-content>

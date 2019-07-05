@@ -57,8 +57,12 @@ a {
 		}
 	}
 	&__nav {
+		// TODO: Merge these styles with the ones in select.component
 		display: none;
+		width: 100%;
 		padding: px(10);
+		@include position(absolute, (null 0 0));
+		transform: translateY(calc(100% + 5px));
 		background: $gray-100;
 		color: $gray-600;
 		border: 1px solid $gray-300;
@@ -66,7 +70,7 @@ a {
 		font-size: px(14);
 
 		#{$block}--open & {
-			display: block;
+			display: flex;
 		}
 	}
 		&__menu-heading,

@@ -51,7 +51,7 @@
 	}
 }
 
-.dropdown {
+.filter-dropdown {
 	$block: &;
 
 	&__toggle {
@@ -63,9 +63,5 @@
 		#{$block}--open & { color: $gray-600 }
 		&:hover,
 		#{$block}--open &:hover { color: $gray-700 }
-	}
-	&__nav {
-		@include position(absolute, (null 0 0));
-		transform: translateY(calc(100% + 5px));
 	}
 }
