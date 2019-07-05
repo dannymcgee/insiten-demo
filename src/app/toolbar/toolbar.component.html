@@ -32,42 +32,45 @@
 				icon="caret-down"
 				inputClass="filter-dropdown"
 			>
-        <nav class="nav nav--stacked dropdown__nav">
-          <h5 class="dropdown__menu-heading">Search fields:</h5>
-          <ul class="dropdown__menu">
+				<nav
+					[ngClass]="[
+						'nav',
+						'nav--stacked',
+						'dropdown__nav',
+						'filter-dropdown__nav'
+					]">
+          <h5 class="filter-dropdown__menu-heading">Search fields:</h5>
+          <ul class="filter-dropdown__menu">
             <li
               *ngFor="let checkbox of filterQueryCheckboxes"
-              class="dropdown__menu-item"
+              class="filter-dropdown__menu-item"
             >
               <app-checkbox
                 [label]="checkbox.label"
                 [id]="checkbox.id"
-                class="dropdown-checkbox"
-                baseClass="dropdown-checkbox"
+                inputClass="filter-checkbox"
                 [defaultValue]="checkbox.defaultValue || false"
                 [form]="filterForm"
               ></app-checkbox>
             </li>
           </ul>
 
-          <h5 class="dropdown__menu-heading">Show only:</h5>
-          <ul class="dropdown__menu">
-            <li class="dropdown__menu-item">
+          <h5 class="filter-dropdown__menu-heading">Show only:</h5>
+          <ul class="filter-dropdown__menu">
+            <li class="filter-dropdown__menu-item">
               <app-checkbox
                 label="Public"
                 [id]="'filterPublic'"
-                class="dropdown-checkbox"
-                baseClass="dropdown-checkbox"
+                inputClass="filter-checkbox"
                 [isTernary]="true"
                 [defaultValue]="null"
                 [form]="filterForm"
               ></app-checkbox>
             </li>
-            <li class="dropdown__menu-item">
+            <li class="filter-dropdown__menu-item">
               <app-checkbox
                 [id]="'filterStatusToggle'"
-                class="dropdown-checkbox"
-                baseClass="dropdown-checkbox"
+                inputClass="filter-checkbox"
                 [isTernary]="true"
                 [defaultValue]="null"
                 [form]="filterForm"
