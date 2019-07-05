@@ -44,7 +44,7 @@ const suffixes = [
 const tlds = ['com', 'co', 'net', 'org',]
 
 class Company {
-  constructor() {
+	constructor() {
 		this.name = this._generateName()
 		this.url = this._generateUrl()
 		this.description = lipsum.getParagraph()
@@ -53,18 +53,18 @@ class Company {
 		this.financials = this._generateFinancials()
 	}
 
-  _generateName() {
+	_generateName() {
 		const baseLength = Random.range(1, 2)
-    const minWordLength = (baseLength === 1) ? 5 : 0
+		const minWordLength = (baseLength === 1) ? 5 : 0
 		const nameWords = []
 
-    for (let i = 0; i < baseLength; i++) {
-      let word = lipsum.getWord(minWordLength)
+		for (let i = 0; i < baseLength; i++) {
+			let word = lipsum.getWord(minWordLength)
 			word = (i === 0 || word.length > 3)
 				? LoremIpsum.capitalize(word)
 				: word
 
-      nameWords.push(word)
+			nameWords.push(word)
 		}
 		nameWords.push(Random.itemOf(suffixes))
 

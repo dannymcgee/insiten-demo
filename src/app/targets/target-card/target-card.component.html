@@ -1,23 +1,23 @@
 <div class="target-card">
-  <header class="target-card__header">
-    <h3 class="target-card__name">{{ company.name }}</h3>
-    <fa-icon
-      class="
-        target-card__header-icon
-        target-card__header-icon--{{ company.isPublic ? 'public' : 'private' }}
-      "
-      [icon]="company.isPublic ? 'user-chart' : 'building'"
-    ></fa-icon>
-    <span class="target-card__status target-card__status--{{ status.key }}">
-      {{ status.description }}
-      <fa-icon
-        class="
+	<header class="target-card__header">
+		<h3 class="target-card__name">{{ company.name }}</h3>
+		<fa-icon
+			class="
+				target-card__header-icon
+				target-card__header-icon--{{ company.isPublic ? 'public' : 'private' }}
+			"
+			[icon]="company.isPublic ? 'user-chart' : 'building'"
+		></fa-icon>
+		<span class="target-card__status target-card__status--{{ status.key }}">
+			{{ status.description }}
+			<fa-icon
+				class="
 					target-card__status-icon
 					target-card__status-icon--{{ status.key }}
 				"
-        [icon]="status.icon"
-      ></fa-icon>
-    </span>
-  </header>
-  <p class="target-card__description">{{ company.description }}</p>
+				[icon]="status.icon"
+			></fa-icon>
+		</span>
+	</header>
+	<p class="target-card__description">{{ company.description }}</p>
 </div>

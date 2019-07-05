@@ -7,52 +7,52 @@
 		]"
 		[for]="id"
 	>
-    {{ label }}
-  </label>
+		{{ label }}
+	</label>
 	<app-dropdown
 		#dropdown
 		[label]="currentValue.value"
 		icon="caret-down"
 		[inputClass]="className + '-dropdown'"
 	>
-    <nav
-      [ngClass]="[
+		<nav
+			[ngClass]="[
 				'nav',
 				'nav--stacked',
 				'dropdown__nav',
 				className + '-dropdown__options',
 				inputClass + '__options'
 			]"
-    >
-      <a
-        *ngFor="let option of options"
-        [ngClass]="[
+		>
+			<a
+				*ngFor="let option of options"
+				[ngClass]="[
 					className + '-dropdown__option',
 					className + '-dropdown__option--' + option.key,
 					inputClass + '-dropdown__option',
 					inputClass + '-dropdown__option--' + option.key
 				]"
-        href="#"
-        (click)="onOptionSelect({ key: option.key, value: option.value })"
-      >
-        {{ option.value }}
-      </a>
-    </nav>
-  </app-dropdown>
-  <select
-    [id]="id"
-    [ngClass]="[
+				href="#"
+				(click)="onOptionSelect({ key: option.key, value: option.value })"
+			>
+				{{ option.value }}
+			</a>
+		</nav>
+	</app-dropdown>
+	<select
+		[id]="id"
+		[ngClass]="[
 			className + '__input',
 			inputClass + '__input'
 		]"
-    [formControlName]="id"
-    [name]="id"
-  >
-    <option
-      *ngFor="let option of options"
-      [value]="option.key"
-    >
-      {{ option.value }}
-    </option>
-  </select>
+		[formControlName]="id"
+		[name]="id"
+	>
+		<option
+			*ngFor="let option of options"
+			[value]="option.key"
+		>
+			{{ option.value }}
+		</option>
+	</select>
 </ng-container>

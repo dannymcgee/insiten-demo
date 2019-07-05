@@ -1,8 +1,8 @@
 class Random {
-  constructor() {}
+	constructor() {}
 
-  static range(min, max) {
-    return Math.round(Math.max(min, Math.random() * max))
+	static range(min, max) {
+		return Math.round(Math.max(min, Math.random() * max))
 	}
 
 	static coinFlip() {

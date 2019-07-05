@@ -1,13 +1,13 @@
 <ng-container [formGroup]="form">
-  <input
-    [id]="id"
-    class="checkbox__input"
-    (change)="onChanged($event)"
-    (focus)="onFocus()"
-    (blur)="onBlur()"
-    type="checkbox"
-    [formControlName]="id"
-  />
+	<input
+		[id]="id"
+		class="checkbox__input"
+		(change)="onChanged($event)"
+		(focus)="onFocus()"
+		(blur)="onBlur()"
+		type="checkbox"
+		[formControlName]="id"
+	/>
 	<i class="checkbox__ui" (click)="onUiClick()"></i>
-  <label class="checkbox__label" [for]="id">{{ label }}</label>
+	<label class="checkbox__label" [for]="id">{{ label }}</label>
 </ng-container>
