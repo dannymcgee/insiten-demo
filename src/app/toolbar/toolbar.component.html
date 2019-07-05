@@ -1,33 +1,33 @@
 <header class="toolbar">
-  <div class="container toolbar__container">
-    <nav class="nav toolbar__nav">
-      <button
-        [ngClass]="{
-          'toolbar__btn toolbar__btn--icon btn btn--icon': true,
-          'toolbar__btn--icon--active': viewMode === eViewMode.Grid
-        }"
-        (click)="onViewModeSet(eViewMode.Grid)"
-      >
-        <fa-icon class="toolbar__icon" icon="th-large"></fa-icon>
-      </button>
-      <button
-        [ngClass]="{
-          'toolbar__btn toolbar__btn--icon btn btn--icon': true,
-          'toolbar__btn--icon--active': viewMode === eViewMode.Table
-        }"
-        (click)="onViewModeSet(eViewMode.Table)"
-      >
-        <fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
-      </button>
-    </nav>
-    <form class="toolbar__filter filter">
-      <fa-icon class="filter__icon" icon="search"></fa-icon>
-      <app-input
-        id="filterQuery"
-        inputClass="filter__input"
-        type="text"
-        [form]="filterForm"
-      ></app-input>
+	<div class="container toolbar__container">
+		<nav class="nav toolbar__nav">
+			<button
+				[ngClass]="{
+					'toolbar__btn toolbar__btn--icon btn btn--icon': true,
+					'toolbar__btn--icon--active': viewMode === eViewMode.Grid
+				}"
+				(click)="onViewModeSet(eViewMode.Grid)"
+			>
+				<fa-icon class="toolbar__icon" icon="th-large"></fa-icon>
+			</button>
+			<button
+				[ngClass]="{
+					'toolbar__btn toolbar__btn--icon btn btn--icon': true,
+					'toolbar__btn--icon--active': viewMode === eViewMode.Table
+				}"
+				(click)="onViewModeSet(eViewMode.Table)"
+			>
+				<fa-icon class="toolbar__icon" icon="th-list"></fa-icon>
+			</button>
+		</nav>
+		<form class="toolbar__filter filter">
+			<fa-icon class="filter__icon" icon="search"></fa-icon>
+			<app-input
+				id="filterQuery"
+				inputClass="filter__input"
+				type="text"
+				[form]="filterForm"
+			></app-input>
 			<app-dropdown
 				icon="caret-down"
 				inputClass="filter-dropdown"
@@ -39,56 +39,56 @@
 						'dropdown__nav',
 						'filter-dropdown__nav'
 					]">
-          <h5 class="filter-dropdown__menu-heading">Search fields:</h5>
-          <ul class="filter-dropdown__menu">
-            <li
-              *ngFor="let checkbox of filterQueryCheckboxes"
-              class="filter-dropdown__menu-item"
-            >
-              <app-checkbox
-                [label]="checkbox.label"
-                [id]="checkbox.id"
-                [defaultValue]="checkbox.defaultValue || false"
-                [form]="filterForm"
-              ></app-checkbox>
-            </li>
-          </ul>
+					<h5 class="filter-dropdown__menu-heading">Search fields:</h5>
+					<ul class="filter-dropdown__menu">
+						<li
+							*ngFor="let checkbox of filterQueryCheckboxes"
+							class="filter-dropdown__menu-item"
+						>
+							<app-checkbox
+								[label]="checkbox.label"
+								[id]="checkbox.id"
+								[defaultValue]="checkbox.defaultValue || false"
+								[form]="filterForm"
+							></app-checkbox>
+						</li>
+					</ul>
 
-          <h5 class="filter-dropdown__menu-heading">Show only:</h5>
-          <ul class="filter-dropdown__menu">
-            <li class="filter-dropdown__menu-item">
-              <app-checkbox
-                label="Public"
-                [id]="'filterPublic'"
-                [isTernary]="true"
-                [defaultValue]="null"
-                [form]="filterForm"
-              ></app-checkbox>
-            </li>
-            <li class="filter-dropdown__menu-item">
-              <app-checkbox
-                [id]="'filterStatusToggle'"
-                [isTernary]="true"
-                [defaultValue]="null"
-                [form]="filterForm"
-              ></app-checkbox>
-              <app-select
-                label="Status:"
-                [id]="'filterStatus'"
-                inputClass="status-filter"
-                [options]="[
-                  { key: 'researching', value: 'Researching' },
-                  { key: 'pending', value: 'Pending' },
-                  { key: 'approved', value: 'Approved' },
-                  { key: 'declined', value: 'Declined' }
+					<h5 class="filter-dropdown__menu-heading">Show only:</h5>
+					<ul class="filter-dropdown__menu">
+						<li class="filter-dropdown__menu-item">
+							<app-checkbox
+								label="Public"
+								[id]="'filterPublic'"
+								[isTernary]="true"
+								[defaultValue]="null"
+								[form]="filterForm"
+							></app-checkbox>
+						</li>
+						<li class="filter-dropdown__menu-item">
+							<app-checkbox
+								[id]="'filterStatusToggle'"
+								[isTernary]="true"
+								[defaultValue]="null"
+								[form]="filterForm"
+							></app-checkbox>
+							<app-select
+								label="Status:"
+								[id]="'filterStatus'"
+								inputClass="status-filter"
+								[options]="[
+									{ key: 'researching', value: 'Researching' },
+									{ key: 'pending', value: 'Pending' },
+									{ key: 'approved', value: 'Approved' },
+									{ key: 'declined', value: 'Declined' }
 								]"
 								[defaultValue]="{ key: 'researching', value: 'Researching' }"
-                [form]="filterForm"
-              ></app-select>
-            </li>
-          </ul>
-        </nav>
-      </app-dropdown>
-    </form>
-  </div>
+								[form]="filterForm"
+							></app-select>
+						</li>
+					</ul>
+				</nav>
+			</app-dropdown>
+		</form>
+	</div>
 </header>
