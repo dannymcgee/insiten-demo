@@ -23,7 +23,6 @@ enum TernaryState {
 export class CheckboxComponent implements OnInit {
 	@Input() label: string;
 	@Input() id: string;
-	@Input() baseClass: string;
 	@Input() form: FormGroup;
 	@Input() isTernary: boolean;
 	@Input() defaultValue: boolean | null;
@@ -33,6 +32,7 @@ export class CheckboxComponent implements OnInit {
 	ternarySub: Subscription;
 	ternaryStateLast: TernaryState;
 
+	@Input() inputClass: string;
 	@HostBinding('class.checkbox') _ = true;
 	@HostBinding('class.checkbox--checked') isChecked = false;
 	@HostBinding('class.checkbox--false') isNegative = false;
