@@ -39,21 +39,32 @@ interface Query {
 	fields: Set<string>;
 }
 
+interface StatusFilter {
+	comparison: boolean | null;
+	value: string;
+}
+
 export interface FilterConfig {
 	query: Query;
 	isPublic: boolean | null;
+	statusFilter: StatusFilter;
 }
 
 export function createFilterConfig(
 	query?: Query,
-	isPublic?: boolean | null
+	isPublic?: boolean | null,
+	statusFilter?: StatusFilter
 ): FilterConfig {
 	return {
 		query: query || {
 			term: null,
 			fields: new Set()
 		},
-		isPublic: isPublic || null
+		isPublic: isPublic || null,
+		statusFilter: statusFilter || {
+			comparison: null,
+			value: ''
+		}
 	};
 }
 
@@ -81,11 +92,20 @@ export class DataManager {
 
 	filter(config: FilterConfig) {
 		const filteredCompanies = this._companies.filter(company => {
+			// public
 			if (config.isPublic !== null) {
 				if ((company.isPublic === config.isPublic) === false) {
 					return false;
 				}
 			}
+			// status
+			if (config.statusFilter.comparison !== null) {
+				const result = this.filterByStatus(config.statusFilter, company);
+				if (result !== null) {
+					return result;
+				}
+			}
+			// query term
 			if (config.query.term) {
 				return this.filterByQuery(config.query, company);
 			}
@@ -93,6 +113,20 @@ export class DataManager {
 		});
 
 		this._companiesSubject.next(filteredCompanies);
+	}
+
+	private filterByStatus(
+		config: StatusFilter,
+		company: Company
+	): boolean | null {
+		const { comparison, value } = config;
+		if (
+			(company.status === Status[value] && comparison === false) ||
+			(company.status !== Status[value] && comparison === true)
+		) {
+			return false;
+		}
+		return null;
 	}
 
 	private filterByQuery(query: Query, company: Company): boolean {

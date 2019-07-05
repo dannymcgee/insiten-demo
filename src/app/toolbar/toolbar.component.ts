@@ -58,6 +58,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 		}
 		this.filterConfig.query = { term, fields };
 		this.filterConfig.isPublic = values.filterPublic;
+		this.filterConfig.statusFilter = {
+			comparison: values.filterStatusToggle,
+			value: values.filterStatus ? values.filterStatus.value : null
+		};
 
 		this.dataManager.filter(this.filterConfig);
 	}
