@@ -1,0 +1,68 @@
+<ng-container [formGroup]="form">
+  <label *ngIf="label" class="select__label {{ baseClass }}__label" [for]="id">
+    {{ label }}
+  </label>
+  <div
+    class="
+			select__dropdown
+			{{ baseClass }}__dropdown
+			select-dropdown
+			{{ baseClass }}-dropdown
+		"
+    appDropdown
+  >
+    <button
+      class="
+				select-dropdown__toggle
+				select-dropdown__toggle--{{ currentValue.key }}
+				{{ baseClass }}-dropdown__toggle
+				dropdown__toggle
+			"
+    >
+      {{ currentValue.value }}
+      <fa-icon
+        class="
+					select-dropdown__btn-icon
+					{{ baseClass }}-dropdown__btn-icon
+				"
+        icon="caret-down"
+      ></fa-icon>
+    </button>
+    <nav
+      class="
+				nav
+				nav--stacked
+				select-dropdown__options
+				{{ baseClass }}-dropdown__options
+			"
+    >
+      <a
+        *ngFor="let option of optionsFormatted"
+        class="
+					select-dropdown__option
+					select-dropdown__option--{{ option.key }}
+					{{ baseClass }}-dropdown__option
+					{{ baseClass }}-dropdown__option--{{ option.key }}
+				"
+        href="#"
+        (click)="onSetValue(option.key, option.value)"
+      >
+        {{ option.value }}
+      </a>
+    </nav>
+  </div>
+  <select
+    [id]="id"
+    class="select__input {{ baseClass }}__input"
+    [formControlName]="id"
+    [name]="id"
+  >
+    <option
+      *ngFor="let option of optionsFormatted"
+      class="select__option {{ baseClass }}__option"
+      [value]="option.key"
+    >
+      {{ option.value }}
+    </option>
+  </select>
+</ng-container>
