@@ -76,9 +76,18 @@ export class CheckboxComponent implements OnInit {
 		}
 	}
 
-	toggleState($event: any) {
+	onUiClick() {
+		if (!this.isTernary) {
+			this.control.setValue(!this.control.value);
+		}
+		this.toggleState();
+	}
+
+	toggleState($event?: any) {
 		if (this.isTernary) {
-			$event.preventDefault();
+			if ($event) {
+				$event.preventDefault();
+			}
 			if (this.ternaryStateLast === TernaryState.True) {
 				this.ternaryState.next(TernaryState.False);
 			} else {
