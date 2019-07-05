@@ -63,6 +63,29 @@
                 [form]="filterForm"
               ></app-checkbox>
             </li>
+            <li class="dropdown__menu-item">
+              <app-checkbox
+                [id]="'filterStatusToggle'"
+                class="dropdown-checkbox"
+                baseClass="dropdown-checkbox"
+                [isTernary]="true"
+                [defaultValue]="null"
+                [form]="filterForm"
+              ></app-checkbox>
+              <app-select
+                label="Status:"
+                [id]="'filterStatus'"
+                class="status-filter"
+                baseClass="status-filter"
+                [options]="[
+                  { researching: 'Researching' },
+                  { pending: 'Pending' },
+                  { approved: 'Approved' },
+                  { declined: 'Declined' }
+                ]"
+                [form]="filterForm"
+              ></app-select>
+            </li>
           </ul>
         </nav>
       </div>
