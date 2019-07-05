@@ -1,6 +1,6 @@
 export enum Status {
 	Researching,
-	PendingApproval,
+	Pending,
 	Approved,
 	Declined
 }

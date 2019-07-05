@@ -296,7 +296,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Ex Sunt Industrial',
@@ -456,7 +456,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Commodo Specialties',
@@ -572,7 +572,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Veniam & Co.',
@@ -620,7 +620,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Minim Solutions',
@@ -770,7 +770,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Veniam Books',
@@ -1139,7 +1139,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Ea Laborum Digital',
@@ -1196,7 +1196,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Eiusmod Development',
@@ -1448,7 +1448,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Tempor Online',
@@ -1505,7 +1505,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Deserunt Online',
@@ -1555,7 +1555,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Officia Bureau',
@@ -1783,7 +1783,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Fugiat Innovations',
@@ -1881,7 +1881,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Nulla Solutions',
@@ -1975,7 +1975,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Aliqua Dynamics',
@@ -2366,7 +2366,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 {
 	name: 'Ipsum & Co.',
@@ -2752,7 +2752,7 @@ const companies = [
 			}
 		}
 	],
-	status: Status.PendingApproval
+	status: Status.Pending
 },
 ];
 
