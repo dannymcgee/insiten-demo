@@ -84,6 +84,11 @@
 		}
 	}
 		&__menu-item {
+			display: flex;
 			padding: 0.15em 0;
+
+			.select {
+				flex: 1 0 0;
+			}
 		}
 }
