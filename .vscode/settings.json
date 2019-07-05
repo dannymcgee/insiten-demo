@@ -31,6 +31,7 @@
 	"[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 	"[html]":       { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 	"prettier.tslintIntegration": true,
+	"prettier.htmlWhitespaceSensitivity": "ignore",
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
 	"editor.formatOnType": true,
