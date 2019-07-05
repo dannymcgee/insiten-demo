@@ -77,11 +77,12 @@
                 [id]="'filterStatus'"
                 inputClass="status-filter"
                 [options]="[
-                  { researching: 'Researching' },
-                  { pending: 'Pending' },
-                  { approved: 'Approved' },
-                  { declined: 'Declined' }
+                  { key: 'researching', value: 'Researching' },
+                  { key: 'pending', value: 'Pending' },
+                  { key: 'approved', value: 'Approved' },
+                  { key: 'declined', value: 'Declined' }
                 ]"
+								[defaultValue]="{ key: 'researching', value: 'Researching' }"
                 [form]="filterForm"
               ></app-select>
             </li>

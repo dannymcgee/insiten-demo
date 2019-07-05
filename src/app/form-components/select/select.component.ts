@@ -10,11 +10,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { DropdownComponent } from './../../dropdown/dropdown.component';
 
 interface Option {
-	[key: string]: string | null;
-}
-interface OptionFormatted {
 	key: string;
-	value: string | null;
+	value: string | number | null;
 }
 
 @Component({
@@ -31,8 +28,7 @@ export class SelectComponent implements OnInit {
 	@Input() defaultValue: Option;
 	@Input() onChangeFn: ($event: any) => void;
 	control: FormControl;
-	optionsFormatted: OptionFormatted[] = [];
-	currentValue: OptionFormatted;
+	currentValue: Option;
 
 	className = 'select';
 	@Input() inputClass: string;
@@ -48,17 +44,14 @@ export class SelectComponent implements OnInit {
 		this.control = new FormControl(null);
 		this.form.addControl(this.id, this.control);
 
-		const defaultValue = this.defaultValue || { _: null };
+		const defaultValue = this.defaultValue || { key: '_', value: null };
 		this.control.setValue(defaultValue);
-		this.initFormattedValues(this.options, this.control.value);
+		this.currentValue = defaultValue;
 	}
 
-	onOptionSelect(key: string, value: string | null) {
-		const option = {};
-		option[key] = value;
-
+	onOptionSelect(option: any) {
 		this.control.setValue(option);
-		this.currentValue = this.formatOption(option);
+		this.currentValue = option;
 
 		if (typeof this.onChangeFn === 'function') {
 			this.onChangeFn(option);
@@ -66,31 +59,5 @@ export class SelectComponent implements OnInit {
 		if (this.dropdown) {
 			this.dropdown.close();
 		}
-	}
-
-	initFormattedValues(options: Option[], defaultOption: Option) {
-		const toFormat = options.slice();
-		const formatted: OptionFormatted[] = [];
-
-		toFormat.push(defaultOption);
-
-		for (const option of toFormat) {
-			formatted.push(this.formatOption(option));
-		}
-
-		this.currentValue = formatted.pop();
-		this.optionsFormatted = formatted;
-	}
-
-	formatOption(option: Option): OptionFormatted {
-		let optionFormatted: OptionFormatted;
-		const keys = Object.keys(option);
-		for (const key of keys) {
-			optionFormatted = {
-				key,
-				value: option[key]
-			};
-		}
-		return optionFormatted;
 	}
 }
