@@ -161,18 +161,9 @@ export class TargetCardComponent implements OnInit, AfterViewInit {
 	formatTooltipLabel(tooltipItem: ChartTooltipItem, data: ChartData): string {
 		const label = data.datasets[tooltipItem.datasetIndex].label;
 		const { value } = tooltipItem;
-		const valueArr = value.toString().split('');
-		let valueStr = '';
-		const length = valueArr.length;
+		const valueFormatted = DataManager.formatNumberFull(+value);
 
-		for (let i = length; i > 0; i--) {
-			if (i % 3 === 0 && i !== length) {
-				valueStr += ',';
-			}
-			valueStr += valueArr.shift();
-		}
-
-		return `${label}: ${valueStr}`;
+		return `${label}: ${valueFormatted}`;
 	}
 
 	formatTooltipLabelColor(
@@ -213,11 +204,6 @@ export class TargetCardComponent implements OnInit, AfterViewInit {
 	}
 
 	formatTick(value: number): string {
-		const valueArr = value.toString().split('');
-		if (valueArr.length > 6) {
-			valueArr.splice(-5);
-			return valueArr.join('').replace(/(\d+)(\d)/, '$1.$2 M');
-		}
-		return value.toString().replace(/(\d+)(\d{3})$/, '$1,$2');
+		return DataManager.formatNumberAbbrev(value);
 	}
 }

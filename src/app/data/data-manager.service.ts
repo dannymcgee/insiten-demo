@@ -72,11 +72,38 @@ export function createFilterConfig(
 	providedIn: 'root'
 })
 export class DataManager {
+	get companies() {
+		return this._companiesSubject;
+	}
 	private _companies = companies.slice();
 	private _companiesSubject = new BehaviorSubject<Company[]>(companies);
 
-	get companies() {
-		return this._companiesSubject;
+	static formatNumberFull(value: number): string {
+		const valueArr = value.toString().split('');
+		let valueStr = '';
+		const length = valueArr.length;
+
+		for (let i = length; i > 0; i--) {
+			if (i % 3 === 0 && i !== length) {
+				valueStr += ',';
+			}
+			valueStr += valueArr.shift();
+		}
+
+		return valueStr;
+	}
+
+	static formatNumberAbbrev(value: number): string {
+		const valueArr = value.toString().split('');
+		if (valueArr.length > 6) {
+			valueArr.splice(-5);
+			return valueArr.join('').replace(/(\d+)(\d)/, '$1.$2 M');
+		}
+		if (valueArr.length > 4) {
+			valueArr.splice(-3);
+			return valueArr.join('') + ' K';
+		}
+		return value.toString();
 	}
 
 	edit(company: Company, newValues: object) {
