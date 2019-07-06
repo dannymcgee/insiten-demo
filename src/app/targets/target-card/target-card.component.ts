@@ -170,7 +170,6 @@ export class TargetCardComponent implements OnInit, AfterViewInit {
 		tooltipItem: ChartTooltipItem,
 		chart: Chart
 	): ChartTooltipLabelColor {
-		console.log(tooltipItem, chart);
 		const label = chart.config.data.datasets[tooltipItem.datasetIndex].label;
 		switch (label) {
 			case 'Assets':
