@@ -1,6 +1,18 @@
 <div class="targets-table__cell">{{ company.name }}</div>
-<div class="targets-table__cell">{{ company.url }}</div>
-<div class="targets-table__cell">{{ company.isPublic }}</div>
 <div class="targets-table__cell">
-	{{ company.financials[0].metrics.revenue }}
+	<span class="target-status target-status--{{ status.key }}">
+		<fa-icon class="target-status__icon" [icon]="status.icon"></fa-icon>
+		{{ status.description }}
+	</span>
+</div>
+<div
+	*ngFor="let metric of metrics"
+	class="targets-table__cell"
+>
+	<div class="targets-table__metric--value">
+		{{ metric.formatted }}
+	</div>
+	<div *ngIf="metric.diff" class="targets-table__metric--diff">
+		{{ metric.diff }}
+	</div>
 </div>

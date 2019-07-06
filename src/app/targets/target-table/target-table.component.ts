@@ -1,5 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Company } from 'src/app/data/data-manager.service';
+import { Company, DataManager } from 'src/app/data/data-manager.service';
+import { statusMap } from '../../data/status.model';
+
+interface FinanceMetric {
+	formatted: string;
+	diff: string | null;
+}
 
 @Component({
 	selector: 'app-target-table',
@@ -8,8 +14,28 @@ import { Company } from 'src/app/data/data-manager.service';
 })
 export class TargetTableComponent implements OnInit {
 	@Input() company: Company;
+	status: { key: string; description: string; icon: string };
+	metricKeys = ['assets', 'debt', 'revenue', 'ebitda', 'mc'];
+	metrics: FinanceMetric[] = [];
 
-	constructor() {}
+	constructor(private dataManager: DataManager) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.status = statusMap[this.company.status];
+		this.initMetrics();
+	}
+
+	initMetrics() {
+		for (const key of this.metricKeys) {
+			const currentValue = this.company.financials[0].metrics[key] || null;
+			const formatted = currentValue
+				? DataManager.formatNumberFull(currentValue)
+				: `—`;
+
+			const lastValue = this.company.financials[1].metrics[key] || null;
+			const diff = DataManager.getChangeOverLast(currentValue, lastValue);
+
+			this.metrics.push({ formatted, diff });
+		}
+	}
 }

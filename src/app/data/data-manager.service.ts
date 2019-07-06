@@ -106,6 +106,17 @@ export class DataManager {
 		return value.toString();
 	}
 
+	static getChangeOverLast(current: number, last: number): string {
+		if (current === null || last === null) {
+			return null;
+		}
+		const difference = current - last;
+		const percent = Math.round((difference / last) * 100);
+		const sign = difference < 0 ? '' : '+';
+
+		return `(${sign}${percent}%)`;
+	}
+
 	edit(company: Company, newValues: object) {
 		const index = this._companies.indexOf(company);
 		const newCompany = {
