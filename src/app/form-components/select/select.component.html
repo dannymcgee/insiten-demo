@@ -24,7 +24,7 @@
 				inputClass + '__options'
 			]"
 		>
-			<a
+			<button
 				*ngFor="let option of options"
 				[ngClass]="[
 					className + '-dropdown__option',
@@ -32,11 +32,10 @@
 					inputClass + '-dropdown__option',
 					inputClass + '-dropdown__option--' + option.key
 				]"
-				href="#"
 				(click)="onOptionSelect({ key: option.key, value: option.value })"
 			>
 				{{ option.value }}
-			</a>
+			</button>
 		</nav>
 	</app-dropdown>
 	<select
