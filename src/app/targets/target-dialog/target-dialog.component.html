@@ -1,4 +1,4 @@
-<div class="target-dialog__overlay" (click)="close()"></div>
+<div class="target-dialog__overlay" (click)="onCloseClick()"></div>
 <div class="container target-dialog__container">
 	<div
 		class="target-dialog__dialog animate animate--fade-in-up animate--slow"
@@ -8,17 +8,51 @@
 		<header
 			[ngClass]="[
 				'target-toolbar',
-				'target-toolbar--' + (locked ? 'locked' : 'unlocked')
+				'target-toolbar--' + (isLocked ? 'locked' : 'unlocked')
 			]">
+			<fa-icon
+				[ngClass]="[
+					'target-toolbar__lock-icon',
+					'target-toolbar__lock-icon--' + (isLocked ? 'locked' : 'unlocked')
+				]"
+				[icon]="isLocked ? 'lock' : 'lock-open'"
+			></fa-icon>
 			<nav class="nav target-toolbar__menu">
-				<button class="btn target-toolbar__btn target-toolbar__btn--edit">
-					<fa-icon class="target-toolbar__btn-icon" [icon]="locked ? 'lock' : 'lock-open'"></fa-icon>
-					{{ locked ? 'Unlock for Editing' : 'Save Changes' }}
+				<button
+					[ngClass]="[
+						'target-toolbar__btn',
+						'target-toolbar__btn--' + (isLocked ? 'edit' : 'save')
+					]"
+					(click)="onEditSaveClick()"
+				>
+					<span class="target-toolbar__btn-text">
+						{{ isLocked ? 'Edit' : 'Save Changes' }}
+					</span>
+					<fa-icon
+						class="target-toolbar__btn-icon"
+						[icon]="isLocked ? 'edit' : 'save'"
+					></fa-icon>
+				</button>
+			</nav>
+			<nav *ngIf="!isLocked" class="nav target-toolbar__menu">
+				<button
+					class="target-toolbar__btn"
+					(click)="onDiscardClick()"
+				>
+					<span class="target-toolbar__btn-text">Discard Changes</span>
+					<fa-icon class="target-toolbar__btn-icon" icon="undo"></fa-icon>
+				</button>
+				<button
+					class="target-toolbar__btn target-toolbar__btn--delete"
+					(click)="onDeleteClick()"
+				>
+					<span class="target-toolbar__btn-text">Delete</span>
+					<fa-icon class="target-toolbar__btn-icon" icon="trash-alt"></fa-icon>
 				</button>
 			</nav>
 			<button
 				class="btn target-toolbar__btn target-toolbar__btn--close"
-				(click)="close()"
+				(click)="onCloseClick()"
 			>
 				<fa-icon class="target-toolbar__btn-icon" icon="times"></fa-icon>
 			</button>

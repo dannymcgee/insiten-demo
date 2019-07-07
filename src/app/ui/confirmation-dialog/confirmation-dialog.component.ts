@@ -18,6 +18,7 @@ import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.componen
 export class ConfirmationDialogComponent extends DialogBaseComponent
 	implements OnInit {
 	@Input() message: string;
+	@Input() style: string;
 
 	constructor(public stateManager: StateManager, public renderer: Renderer2) {
 		super(stateManager, renderer);

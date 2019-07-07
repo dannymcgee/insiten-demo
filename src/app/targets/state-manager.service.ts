@@ -29,11 +29,11 @@ export class StateManager {
 	sortType = new BehaviorSubject<SortType>('name');
 	sortMode = new BehaviorSubject<SortMode>(SortMode.Ascending);
 	activeTarget = new Subject<Company>();
-	confirmation = new Subject<string>();
+	confirmation = new Subject<{ message: string; style: string }>();
 	confirmationResponse = new Subject<boolean>();
 
-	confirm(message: string): Promise<boolean> {
-		this.confirmation.next(message);
+	confirm(message: string, style = 'info'): Promise<boolean> {
+		this.confirmation.next({ message, style });
 
 		return new Promise((resolve, reject) => {
 			this.confirmationResponse.subscribe(response => {

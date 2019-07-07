@@ -23,7 +23,7 @@
 	display: flex;
 	align-items: center;
 	height: px(48);
-	background: $gray-400;
+	background: $gray-200;
 
 	&__btn {
 		display: inline-flex;
@@ -34,8 +34,8 @@
 		letter-spacing: 0;
 
 		&:hover {
-			background: $gray-600;
-			color: $white;
+			background: $gray-300;
+			color: $gray-900;
 		}
 
 		&--close {
@@ -49,18 +49,41 @@
 				margin: 0;
 			}
 		}
+		&--save:hover {
+			background: $green;
+			color: $white;
+		}
+		&--delete:hover {
+			background: $red;
+			color: $white;
+		}
 
 		&-icon {
-			color: $gray-600;
 			font-size: px(18);
-			@include transition(color);
+			opacity: 0.65;
+			@include transition(opacity);
 
-			&:first-child {
-				margin-right: 0.5em;
+			&:first-child { margin-right: 0.5em }
+			&:last-child  { margin-left: 0.5em }
+			#{$block}__btn--close:hover & {
+				opacity: 0.9;
 			}
-			#{$block}__btn:hover & {
-				color: $white;
-			}
+		}
+	}
+	&__lock-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: px(36);
+		height: px(36);
+		margin: 0 px(15);
+		border-radius: px(18);
+		color: $gray-500;
+		@include transition((background, color));
+
+		&--unlocked {
+			background: $yellow;
+			color: $black;
 		}
 	}
 }

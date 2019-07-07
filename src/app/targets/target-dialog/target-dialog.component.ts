@@ -29,7 +29,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 	sDataManager = DataManager;
 	metricsMap = metricsMap;
 	metricKeys: string[];
-	locked = true;
+	isLocked = true;
 
 	constructor(
 		private dataManager: DataManager,
@@ -55,12 +55,60 @@ export class TargetDialogComponent extends DialogBaseComponent
 		return `//google.com/search?q=${queryStr}`;
 	}
 
-	async close() {
-		if (await this.stateManager.confirm('Are you sure?')) {
-			this.fadeOut(() => {
-				this.stateManager.activeTarget.next(null);
-			});
+	async onEditSaveClick() {
+		if (this.isLocked) {
+			this.isLocked = false;
+		} else {
+			if (await this.stateManager.confirm('Commit your changes?')) {
+				// TODO: Edit the target
+				this.isLocked = true;
+			}
 		}
+	}
+
+	async onCloseClick() {
+		if (!this.isLocked) {
+			if (
+				await this.stateManager.confirm(
+					'Are you sure you want to close this target? Any unsaved changes will be lost!',
+					'warning'
+				)
+			) {
+				this.close();
+			}
+		} else {
+			this.close();
+		}
+	}
+
+	async onDiscardClick() {
+		if (
+			await this.stateManager.confirm(
+				'Are you sure you want to discard your changes?',
+				'warning'
+			)
+		) {
+			// TODO: Discard changes
+			this.isLocked = true;
+		}
+	}
+
+	async onDeleteClick() {
+		if (
+			await this.stateManager.confirm(
+				'Are you sure you want to DELETE this target? This action cannot be undone!',
+				'danger'
+			)
+		) {
+			// TODO: Delete the target
+			this.close();
+		}
+	}
+
+	close() {
+		this.fadeOut(() => {
+			this.stateManager.activeTarget.next(null);
+		});
 	}
 
 	fadeOut(callback: () => void) {

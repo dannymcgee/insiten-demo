@@ -23,6 +23,15 @@
 				padding: px(15) px(30);
 				background: $primary;
 				color: $white;
+
+				&--warning {
+					background: $yellow;
+					color: $black;
+				}
+				&--danger {
+					background: $red;
+					color: $white;
+				}
 			}
 				&__title {
 					margin: 0;

@@ -57,9 +57,29 @@ a {
 	&--primary {
 		background: $primary;
 		color: $white;
-
 		&:hover {
 			background: darken($primary, 10%);
+		}
+	}
+	&--info {
+		background: $blue;
+		color: $white;
+		&:hover {
+			background: darken($blue, 10%);
+		}
+	}
+	&--warning {
+		background: $yellow;
+		color: $black;
+		&:hover {
+			background: $orange;
+		}
+	}
+	&--danger {
+		background: $red;
+		color: $white;
+		&:hover {
+			background: darken($red, 10%);
 		}
 	}
 

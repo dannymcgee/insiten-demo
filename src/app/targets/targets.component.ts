@@ -37,7 +37,7 @@ export class TargetsComponent implements OnInit, OnDestroy {
 	sortTypeSub: Subscription;
 	sortModeSub: Subscription;
 
-	confirmation: string;
+	confirmation: { message: string; style: string };
 	confirmationSub: Subscription;
 
 	@HostBinding('class.targets') _ = true;
@@ -71,8 +71,8 @@ export class TargetsComponent implements OnInit, OnDestroy {
 			this.onSortingChange();
 		});
 
-		this.confirmationSub = this.stateManager.confirmation.subscribe(message => {
-			this.confirmation = message;
+		this.confirmationSub = this.stateManager.confirmation.subscribe(config => {
+			this.confirmation = config;
 		});
 	}
 

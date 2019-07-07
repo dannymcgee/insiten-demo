@@ -20,5 +20,6 @@
 ></app-target-details>
 <app-confirmation
 	*ngIf="confirmation"
-	[message]="confirmation"
+	[message]="confirmation.message"
+	[style]="confirmation.style"
 ></app-confirmation>

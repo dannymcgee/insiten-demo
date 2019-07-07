@@ -39,7 +39,11 @@ import {
 	faLock,
 	faLockOpen,
 	faEnvelope,
-	faPhone
+	faPhone,
+	faEdit,
+	faSave,
+	faTrashAlt,
+	faUndo
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
@@ -91,7 +95,11 @@ export class AppModule {
 			faLock,
 			faLockOpen,
 			faEnvelope,
-			faPhone
+			faPhone,
+			faEdit,
+			faSave,
+			faTrashAlt,
+			faUndo
 		);
 	}
 }
