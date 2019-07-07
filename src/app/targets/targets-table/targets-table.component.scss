@@ -1,6 +1,7 @@
 @import 'lib';
 
 .targets-table {
+	$block: &;
 	display: table;
 	width: 100%;
 	border-collapse: collapse;
@@ -19,9 +20,19 @@
 			padding: px(4) 0;
 			background: $white;
 			border-bottom: 1px solid $gray-200;
+			@include transition((background, border-color));
+			cursor: pointer;
 
 			&:first-child { padding-left: px(72) }
 			&:last-child { padding-right: px(72) }
+
+			#{$block}__body:hover & {
+				background: $gray-200;
+				border-color: $gray-400;
+			}
+			#{$block}__body:hover #{$block}__row:hover & {
+				background: $white;
+			}
 
 			&--heading {
 				padding: px(8) 0;

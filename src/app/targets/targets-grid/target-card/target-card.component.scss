@@ -6,6 +6,13 @@
 .target-card {
 	background: $white;
 	padding: px(15);
+	box-shadow: 0 0 0 transparent;
+	@include transition(box-shadow, 0.2s);
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: 0 px(3) px(15) transparentize($black, 0.8);
+	}
 
 	&__header {
 		display: flex;
