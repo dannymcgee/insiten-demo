@@ -9,7 +9,7 @@ import { CheckboxComponent } from './ui/form-components/checkbox/checkbox.compon
 import { SelectComponent } from './ui/form-components/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
 import { SorterComponent } from './ui/sorter/sorter.component';
-import { ConfirmationComponent } from './ui/confirmation/confirmation.component';
+import { ConfirmationDialogComponent } from './ui/confirmation-dialog/confirmation-dialog.component';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 import { TargetsComponent } from './targets/targets.component';
 import { TargetsGridComponent } from './targets/targets-grid/targets-grid.component';
@@ -51,7 +51,7 @@ import 'what-input';
 		SelectComponent,
 		DropdownComponent,
 		SorterComponent,
-		ConfirmationComponent,
+		ConfirmationDialogComponent,
 		TargetsComponent,
 		TargetsGridComponent,
 		TargetCardComponent,

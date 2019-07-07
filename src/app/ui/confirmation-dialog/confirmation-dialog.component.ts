@@ -11,10 +11,10 @@ import { StateManager } from 'src/app/targets/state-manager.service';
 
 @Component({
 	selector: 'app-confirmation',
-	templateUrl: './confirmation.component.html',
-	styleUrls: ['./confirmation.component.scss']
+	templateUrl: './confirmation-dialog.component.html',
+	styleUrls: ['./confirmation-dialog.component.scss']
 })
-export class ConfirmationComponent implements OnInit {
+export class ConfirmationDialogComponent implements OnInit {
 	@Input() message: string;
 
 	@ViewChild('dialog', { static: false }) dialog: ElementRef;
