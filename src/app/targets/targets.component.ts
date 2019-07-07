@@ -3,7 +3,8 @@ import {
 	OnInit,
 	ViewEncapsulation,
 	OnDestroy,
-	HostBinding
+	HostBinding,
+	Renderer2
 } from '@angular/core';
 import {
 	ViewMode,
@@ -40,7 +41,8 @@ export class TargetsComponent implements OnInit, OnDestroy {
 
 	constructor(
 		public stateManager: StateManager,
-		public dataManager: DataManager
+		public dataManager: DataManager,
+		private renderer: Renderer2
 	) {}
 
 	ngOnInit() {
@@ -49,7 +51,7 @@ export class TargetsComponent implements OnInit, OnDestroy {
 		});
 
 		this.activeTargetSub = this.stateManager.activeTarget.subscribe(company => {
-			this.activeTarget = company;
+			this.onActiveTargetChange(company);
 		});
 
 		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
@@ -74,6 +76,16 @@ export class TargetsComponent implements OnInit, OnDestroy {
 	onSortingChange() {
 		if (this.sortType && this.sortMode) {
 			this.dataManager.sort(this.sortType, this.sortMode);
+		}
+	}
+
+	onActiveTargetChange(target: Company) {
+		this.activeTarget = target;
+
+		if (this.activeTarget != null) {
+			this.renderer.addClass(document.body, 'modal-open');
+		} else {
+			this.renderer.removeClass(document.body, 'modal-open');
 		}
 	}
 

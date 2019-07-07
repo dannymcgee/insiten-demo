@@ -1,1 +1,132 @@
-<p>target-details works!</p>
+<div class="target-details__overlay"></div>
+<div class="container target-details__container">
+	<div class="target-details__dialog">
+
+		<header
+			[ngClass]="[
+				'target-toolbar',
+				'target-toolbar--' + (locked ? 'locked' : 'unlocked')
+			]">
+			<nav class="nav target-toolbar__menu">
+				<button class="btn target-toolbar__btn target-toolbar__btn--edit">
+					<fa-icon class="target-toolbar__btn-icon" [icon]="locked ? 'lock' : 'lock-open'"></fa-icon>
+					{{ locked ? 'Unlock for Editing' : 'Save Changes' }}
+				</button>
+			</nav>
+			<button class="btn target-toolbar__btn target-toolbar__btn--close">
+				<fa-icon class="target-toolbar__btn-icon" icon="times"></fa-icon>
+			</button>
+		</header>
+
+		<article class="target-content">
+			<header class="target-content__header">
+				<h1 class="target-content__name">{{ company.name }}</h1>
+				<fa-icon
+					[ngClass]="[
+						'target-content__public',
+						'target-content__public--' + (company.isPublic ? 'public' : 'private')
+					]"
+					[icon]="company.isPublic ? 'user-chart' : 'building'"
+				></fa-icon>
+				<span class="target-status target-status--{{ status.key }}">
+					<span class="target-status__text">{{ status.description }}</span>
+					<fa-icon class="target-status__icon" [icon]="status.icon"></fa-icon>
+				</span>
+			</header>
+
+			<section class="target-content__description">
+				{{ company.description }}
+			</section>
+
+			<section class="target-contacts">
+				<h4 class="target-content__heading">Key Contacts</h4>
+				<div class="row target-contacts__row">
+					<div
+						*ngFor="let contact of company.contacts"
+						class="col-lg-4 target-contacts__col"
+					>
+						<div class="target-contact">
+							<header class="target-contact__header">
+								<h3 class="target-contact__name">
+									{{ contact.name.first }} {{ contact.name.last }}
+								</h3>
+								<h5 class="target-contact__position">
+									{{ contact.position }}
+								</h5>
+							</header>
+							<ul class="target-contact-info">
+								<li class="target-contact-info__item">
+									<fa-icon
+										class="target-contact-info__icon"
+										icon="envelope"
+									></fa-icon>
+									<a
+										class="target-contact-info__text"
+										href="mailto:{{ contact.email }}"
+										target="_blank"
+									>
+										{{ contact.email }}
+									</a>
+								</li>
+								<li class="target-contact-info__item">
+									<fa-icon
+										class="target-contact-info__icon"
+										icon="phone"
+									></fa-icon>
+									<span class="target-contact-info__text">
+										{{ contact.phone }}
+									</span>
+								</li>
+								<li class="target-contact-info__item">
+									<fa-icon
+										class="target-contact-info__icon"
+										icon="search"
+									></fa-icon>
+									<a
+										class="target-contact-info__text"
+										href="{{ getSearchLink(contact) }}"
+										target="_blank"
+									>
+										Search
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="target-financials">
+				<h4 class="target-content__heading">Financial Metrics</h4>
+				<div class="row">
+					<div
+						*ngFor="let year of company.financials"
+						class="col-lg-4"
+					>
+						<div class="target-finance">
+							<h3 class="target-finance__heading">{{ year.key }}</h3>
+							<div class="target-finance__metrics">
+								<div
+									*ngFor="let key of metricKeys"
+									class="target-finance__row"
+								>
+									<span class="target-finance__label">
+										{{ metricsMap[key].label }}
+									</span>
+									<span class="target-finance__value">
+										{{
+											year.metrics[key]
+												? sDataManager.formatNumberFull(year.metrics[key])
+												: '&mdash;'
+										}}
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+
+	</div>
+</div>

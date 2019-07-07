@@ -19,11 +19,11 @@ a, button, input, textarea, .dropdown {
 }
 
 a {
-	color: $primary;
+	color: $gray-900;
 	text-decoration-color: $gray-400;
 
 	&:hover {
-		color: lighten($primary, 10%);
+		color: $primary;
 		text-decoration-color: transparent;
 	}
 }

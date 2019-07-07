@@ -32,7 +32,12 @@ import {
 	faCheckCircle,
 	faBan,
 	faSortUp,
-	faSortDown
+	faSortDown,
+	faTimes,
+	faLock,
+	faLockOpen,
+	faEnvelope,
+	faPhone
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
@@ -77,7 +82,12 @@ export class AppModule {
 			faCheckCircle,
 			faBan,
 			faSortUp,
-			faSortDown
+			faSortDown,
+			faTimes,
+			faLock,
+			faLockOpen,
+			faEnvelope,
+			faPhone
 		);
 	}
 }

@@ -1,10 +1,152 @@
 @import 'lib';
 
 :host {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	@include position(fixed, (0 0 0 0));
-	background: transparentize($black, 0.15);
+	z-index: 200;
 }
-p {
-	padding: px(72);
-	background: $white;
+.target-details {
+	&__overlay {
+		@include position(absolute, (0 0 0 0));
+		background: transparentize($black, 0.15);
+	}
+	&__dialog {
+		background: $white;
+		position: relative;
+	}
+}
+
+.target-toolbar {
+	$block: &;
+	display: flex;
+	align-items: center;
+	height: px(48);
+	background: $gray-400;
+
+	&__btn {
+		display: inline-flex;
+		align-items: center;
+		height: px(48);
+		padding: 0 px(15);
+		color: $gray-700;
+		letter-spacing: 0;
+
+		&:hover {
+			background: $gray-600;
+			color: $white;
+		}
+
+		&--close {
+			justify-content: center;
+			width: px(48);
+			margin-left: auto;
+			padding-right: 0;
+			padding-left: 0;
+
+			#{$block}__btn-icon {
+				margin: 0;
+			}
+		}
+
+		&-icon {
+			color: $gray-600;
+			font-size: px(18);
+			@include transition(color);
+
+			&:first-child {
+				margin-right: 0.5em;
+			}
+			#{$block}__btn:hover & {
+				color: $white;
+			}
+		}
+	}
+}
+
+.target-content {
+	padding: px(36) px(30) px(72);
+
+	&__header {
+		display: flex;
+		align-items: center;
+		margin-bottom: px(30);
+	}
+		&__name {
+			margin: 0;
+		}
+		&__public {
+			font-size: px(24);
+			margin-left: 1em;
+
+			&--public { color: $teal }
+			&--private { color: $purple }
+		}
+
+	&__description {
+		max-width: 45em;
+		font-size: px(18);
+	}
+
+	&__heading {
+		text-transform: uppercase;
+		letter-spacing: 0.025em;
+		margin: 3em 0 1.5em;
+		padding-bottom: 0.666em;
+		border-bottom: 1px solid $gray-300;
+	}
+}
+
+.target-status {
+	margin-right: px(-30);
+	margin-left: auto;
+	font-size: px(18);
+}
+
+.target-contact {
+	&__header {
+		margin-bottom: px(12);
+	}
+	&__name,
+	&__position {
+		margin: 0;
+	}
+	&__position {
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.025em;
+	}
+}
+.target-contact-info {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: px(14);
+
+	&__item {
+		display: flex;
+		align-items: center;
+		line-height: 2;
+	}
+	&__icon {
+		color: $gray-600;
+		margin-right: 0.5em;
+	}
+}
+
+.target-finance {
+	&__heading {
+		margin: 0 0 px(12);
+	}
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		line-height: 1.75;
+		border-bottom: 1px solid $gray-300;
+	}
+	&__label {
+		font-weight: 700;
+	}
 }

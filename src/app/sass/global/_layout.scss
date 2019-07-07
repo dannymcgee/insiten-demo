@@ -10,6 +10,10 @@
 body {
 	margin: 0;
 	background: $gray-200;
+
+	&.modal-open {
+		overflow: hidden;
+	}
 }
 
 nav {
