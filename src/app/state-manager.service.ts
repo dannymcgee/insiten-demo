@@ -11,14 +11,14 @@ export enum SortMode {
 	Descending = -1
 }
 
-export type SortType =
-	| 'name'
-	| 'status'
-	| 'assets'
-	| 'debt'
-	| 'revenue'
-	| 'ebitda'
-	| 'mc';
+type MetricType = 'assets' | 'debt' | 'revenue' | 'ebitda' | 'mc';
+
+export interface MetricSortType {
+	metric: MetricType;
+	sortByDelta: boolean;
+}
+
+export type SortType = 'name' | 'status' | MetricSortType;
 
 @Injectable({
 	providedIn: 'root'

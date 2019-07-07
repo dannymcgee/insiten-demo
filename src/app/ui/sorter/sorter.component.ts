@@ -47,10 +47,24 @@ export class SorterComponent implements OnInit, OnDestroy {
 	}
 
 	handleSortTypeChange(sortType: SortType) {
-		if (sortType === this.sortType) {
-			this.isActive = true;
-		} else {
-			this.isActive = false;
+		if (typeof sortType === 'string') {
+			if (sortType === this.sortType) {
+				this.isActive = true;
+			} else {
+				this.isActive = false;
+			}
+		}
+
+		if (sortType instanceof Object) {
+			if (
+				this.sortType instanceof Object &&
+				sortType.metric === this.sortType.metric &&
+				sortType.sortByDelta === this.sortType.sortByDelta
+			) {
+				this.isActive = true;
+			} else {
+				this.isActive = false;
+			}
 		}
 	}
 

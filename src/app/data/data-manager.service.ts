@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Status } from './status.model';
 import data from './companies';
-import { SortType, SortMode } from 'src/app/state-manager.service';
+import {
+	SortType,
+	SortMode,
+	MetricSortType
+} from 'src/app/state-manager.service';
 
 export interface Contact {
 	name: {
@@ -224,20 +228,12 @@ export class DataManager {
 	sort(sortType: SortType, sortMode: SortMode) {
 		const sortedCompanies = this._companies.slice();
 
-		switch (sortType) {
-			case 'name':
-			case 'status':
-				this.sortByNameOrStatus(sortedCompanies, sortType, sortMode);
-				break;
-			case 'assets':
-			case 'debt':
-			case 'revenue':
-			case 'ebitda':
-			case 'mc':
-				this.sortByFinancialMetric(sortedCompanies, sortType, sortMode);
-				break;
-			default:
-				console.log(`Sort type '${sortType}' unknown!`);
+		if (typeof sortType === 'string') {
+			this.sortByNameOrStatus(sortedCompanies, sortType, sortMode);
+		} else if (sortType instanceof Object) {
+			this.sortByFinancialMetric(sortedCompanies, sortType, sortMode);
+		} else {
+			console.log(`Sort type '${sortType}' unknown!`);
 		}
 
 		this._companies = sortedCompanies;
@@ -246,7 +242,7 @@ export class DataManager {
 
 	private sortByNameOrStatus(
 		companies: Company[],
-		type: SortType,
+		type: 'name' | 'status',
 		mode: SortMode
 	) {
 		companies.sort((a: Company, b: Company) => {
@@ -262,12 +258,12 @@ export class DataManager {
 
 	private sortByFinancialMetric(
 		companies: Company[],
-		metric: SortType,
+		type: MetricSortType,
 		mode: SortMode
 	) {
 		companies.sort((a: Company, b: Company) => {
-			const aMetric = a.financials[0].metrics[metric];
-			const bMetric = b.financials[0].metrics[metric];
+			const aMetric = a.financials[0].metrics[type.metric];
+			const bMetric = b.financials[0].metrics[type.metric];
 
 			// sort nulls to the bottom
 			if (aMetric == null && bMetric == null) {
@@ -278,6 +274,23 @@ export class DataManager {
 			}
 			if (bMetric == null) {
 				return -1;
+			}
+
+			if (type.sortByDelta) {
+				const aPrev = a.financials[1].metrics[type.metric];
+				const bPrev = b.financials[1].metrics[type.metric];
+
+				const aDelta = (aMetric - aPrev) / aPrev;
+				const bDelta = (bMetric - bPrev) / bPrev;
+
+				if (aDelta > bDelta) {
+					return mode;
+				}
+				if (aDelta < bDelta) {
+					return mode * -1;
+				}
+
+				return 0;
 			}
 
 			if (aMetric > bMetric) {

@@ -16,9 +16,15 @@
 		<div class="metric-heading">
 			<span class="metric-heading__item metric-heading__item--year">2018</span>
 			<span class="metric-heading__item metric-heading__item--label">
-				<app-sorter [sortType]="metric">{{ metricsMap[metric].label }}</app-sorter>
+				<app-sorter [sortType]="{ metric: metric, sortByDelta: false }">
+					{{ metricsMap[metric].label }}
+				</app-sorter>
 			</span>
-			<span class="metric-heading__item metric-heading__item--diff">(+/- LY)</span>
+			<span class="metric-heading__item metric-heading__item--diff">
+				<app-sorter [sortType]="{ metric: metric, sortByDelta: true }">
+					(+/- LY)
+				</app-sorter>
+			</span>
 		</div>
 	</th>
 </tr>

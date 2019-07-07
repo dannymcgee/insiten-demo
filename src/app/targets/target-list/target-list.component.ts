@@ -43,23 +43,23 @@ export class TargetListComponent implements OnInit, OnDestroy {
 
 		this.sortTypeSub = this.stateManager.sortType.subscribe(sortType => {
 			this.sortType = sortType;
-
-			if (this.sortType && this.sortMode) {
-				this.dataManager.sort(this.sortType, this.sortMode);
-			}
+			this.onSortingChange();
 		});
 
 		this.sortModeSub = this.stateManager.sortMode.subscribe(sortMode => {
 			this.sortMode = sortMode;
-
-			if (this.sortType && this.sortMode) {
-				this.dataManager.sort(this.sortType, this.sortMode);
-			}
+			this.onSortingChange();
 		});
 	}
 
 	onViewModeChange(viewMode: ViewMode) {
 		this.viewMode = viewMode;
+	}
+
+	onSortingChange() {
+		if (this.sortType && this.sortMode) {
+			this.dataManager.sort(this.sortType, this.sortMode);
+		}
 	}
 
 	ngOnDestroy() {
