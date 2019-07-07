@@ -8,40 +8,23 @@ import {
 	Renderer2
 } from '@angular/core';
 import { StateManager } from 'src/app/targets/state-manager.service';
+import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
 
 @Component({
 	selector: 'app-confirmation',
 	templateUrl: './confirmation-dialog.component.html',
 	styleUrls: ['./confirmation-dialog.component.scss']
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class ConfirmationDialogComponent extends DialogBaseComponent
+	implements OnInit {
 	@Input() message: string;
 
-	@ViewChild('dialog', { static: false }) dialog: ElementRef;
-	@HostBinding('class.animate') _ = true;
-	@HostBinding('class.animate--fade-in') isOpening = true;
-	@HostBinding('class.animate--fade-out') isClosing = false;
-
-	constructor(
-		private stateManager: StateManager,
-		private renderer: Renderer2
-	) {}
-
-	ngOnInit() {
-		window.setTimeout(() => {
-			this.isOpening = false;
-		}, 300);
+	constructor(public stateManager: StateManager, public renderer: Renderer2) {
+		super(stateManager, renderer);
 	}
 
-	fadeOut(callback: () => void) {
-		this.isClosing = true;
-		this.renderer.removeClass(this.dialog.nativeElement, 'animate--fade-in-up');
-		this.renderer.addClass(this.dialog.nativeElement, 'animate--fast');
-		this.renderer.addClass(this.dialog.nativeElement, 'animate--fade-out-down');
-
-		window.setTimeout(() => {
-			callback();
-		}, 300);
+	ngOnInit() {
+		super.ngOnInit();
 	}
 
 	cancel() {

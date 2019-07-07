@@ -7,6 +7,7 @@ import {
 	Renderer2,
 	ElementRef
 } from '@angular/core';
+import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
 import {
 	Company,
 	Contact,
@@ -21,7 +22,8 @@ import { StateManager } from 'src/app/targets/state-manager.service';
 	templateUrl: './target-dialog.component.html',
 	styleUrls: ['./target-dialog.component.scss']
 })
-export class TargetDialogComponent implements OnInit {
+export class TargetDialogComponent extends DialogBaseComponent
+	implements OnInit {
 	@Input() company: Company;
 	status: { key: string; description: string; icon: string };
 	sDataManager = DataManager;
@@ -29,24 +31,18 @@ export class TargetDialogComponent implements OnInit {
 	metricKeys: string[];
 	locked = true;
 
-	@ViewChild('dialog', { static: false }) dialog: ElementRef;
-	@HostBinding('class.animate') _ = true;
-	@HostBinding('class.animate--fade-in') isOpening = true;
-	@HostBinding('class.animate--fade-out') isClosing = false;
-
 	constructor(
 		private dataManager: DataManager,
-		private stateManager: StateManager,
-		private renderer: Renderer2
-	) {}
+		public stateManager: StateManager,
+		public renderer: Renderer2
+	) {
+		super(stateManager, renderer);
+	}
 
 	ngOnInit() {
+		super.ngOnInit();
 		this.status = statusMap[this.company.status];
 		this.metricKeys = this.dataManager.getMetricKeys();
-
-		window.setTimeout(() => {
-			this.isOpening = false;
-		}, 300);
 	}
 
 	getSearchLink(contact: Contact) {
@@ -61,19 +57,14 @@ export class TargetDialogComponent implements OnInit {
 
 	async close() {
 		if (await this.stateManager.confirm('Are you sure?')) {
-			this.fadeOut();
+			this.fadeOut(() => {
+				this.stateManager.activeTarget.next(null);
+			});
 		}
 	}
 
-	fadeOut() {
-		this.isClosing = true;
-		this.renderer.removeClass(this.dialog.nativeElement, 'animate--fade-in-up');
+	fadeOut(callback: () => void) {
 		this.renderer.removeClass(this.dialog.nativeElement, 'animate--slow');
-		this.renderer.addClass(this.dialog.nativeElement, 'animate--fast');
-		this.renderer.addClass(this.dialog.nativeElement, 'animate--fade-out-down');
-
-		window.setTimeout(() => {
-			this.stateManager.activeTarget.next(null);
-		}, 300);
+		super.fadeOut(callback);
 	}
 }
