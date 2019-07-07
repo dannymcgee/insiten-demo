@@ -251,4 +251,16 @@
 		margin-bottom: -1em;
 		font-size: px(18);
 	}
+	&__contact-name {
+		font-size: px(24);
+		font-weight: 700;
+	}
+	&__contact-position {
+		text-transform: uppercase;
+		letter-spacing: 0.025em;
+	}
+	&__contact-email,
+	&__contact-phone {
+		font-size: px(14);
+	}
 }

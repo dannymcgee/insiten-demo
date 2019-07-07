@@ -139,17 +139,37 @@
 				<h4 class="target-content__heading">Key Contacts</h4>
 				<div class="row target-contacts__row">
 					<div
-						*ngFor="let contact of company.contacts"
+						*ngFor="let contact of company.contacts; index as i;"
 						class="col-lg-4 target-contacts__col"
 					>
 						<div class="target-contact">
 							<header class="target-contact__header">
-								<h3 class="target-contact__name">
+
+								<!-- Contact Name -->
+								<h3 *ngIf="isLocked" class="target-contact__name">
 									{{ contact.name.first }} {{ contact.name.last }}
 								</h3>
-								<h5 class="target-contact__position">
+								<app-input
+									*ngIf="!isLocked"
+									[id]="'contact-name__' + i"
+									inputClass="target-form__contact-name"
+									type="text"
+									[defaultValue]="contact.name.first + ' ' + contact.name.last"
+									[form]="form"
+								></app-input>
+
+								<!-- Contact Position -->
+								<h5 *ngIf="isLocked" class="target-contact__position">
 									{{ contact.position }}
 								</h5>
+								<app-input
+									*ngIf="!isLocked"
+									[id]="'contact-position__' + i"
+									inputClass="target-form__contact-position"
+									type="text"
+									[defaultValue]="contact.position"
+									[form]="form"
+								></app-input>
 							</header>
 							<ul class="target-contact-info">
 								<li class="target-contact-info__item">
@@ -157,22 +177,43 @@
 										class="target-contact-info__icon"
 										icon="envelope"
 									></fa-icon>
+
+									<!-- Contact Email -->
 									<a
+										*ngIf="isLocked"
 										class="target-contact-info__text"
 										href="mailto:{{ contact.email }}"
 										target="_blank"
 									>
 										{{ contact.email }}
 									</a>
+									<app-input
+										*ngIf="!isLocked"
+										[id]="'contact-email__' + i"
+										inputClass="target-form__contact-email"
+										type="text"
+										[defaultValue]="contact.email"
+										[form]="form"
+									></app-input>
 								</li>
 								<li class="target-contact-info__item">
 									<fa-icon
 										class="target-contact-info__icon"
 										icon="phone"
 									></fa-icon>
-									<span class="target-contact-info__text">
+
+									<!-- Contact Phone -->
+									<span *ngIf="isLocked" class="target-contact-info__text">
 										{{ contact.phone }}
 									</span>
+									<app-input
+										*ngIf="!isLocked"
+										[id]="'contact-phone__' + i"
+										inputClass="target-form__contact-phone"
+										type="text"
+										[defaultValue]="contact.phone"
+										[form]="form"
+									></app-input>
 								</li>
 								<li class="target-contact-info__item">
 									<fa-icon
