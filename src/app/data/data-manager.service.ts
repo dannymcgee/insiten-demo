@@ -126,6 +126,14 @@ export class DataManager {
 		return `(${sign}${percent}%)`;
 	}
 
+	getMetricKeys(): string[] {
+		const metricKeys = Object.keys(this._companies[0].financials[0].metrics);
+		if (metricKeys.indexOf('mc') === -1) {
+			metricKeys.push('mc');
+		}
+		return metricKeys;
+	}
+
 	edit(company: Company, newValues: object) {
 		const index = this._companies.indexOf(company);
 		const newCompany = {
@@ -160,14 +168,6 @@ export class DataManager {
 		});
 
 		this._companiesSubject.next(filteredCompanies);
-	}
-
-	getMetricKeys(): string[] {
-		const metricKeys = Object.keys(this._companies[0].financials[0].metrics);
-		if (metricKeys.indexOf('mc') === -1) {
-			metricKeys.push('mc');
-		}
-		return metricKeys;
 	}
 
 	private filterByStatus(
