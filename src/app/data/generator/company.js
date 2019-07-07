@@ -5,10 +5,7 @@ const lipsum = new LoremIpsum()
 
 const suffixes = [
 	'& Co.',
-	'Books',
 	'Brands',
-	'Bureau',
-	'Collective',
 	'Consulting',
 	'Creative',
 	'Development',
@@ -16,18 +13,14 @@ const suffixes = [
 	'Direct',
 	'Dynamics',
 	'Enterprises',
-	'Foods',
 	'Group',
 	'Holdings',
 	'Inc.',
-	'Industrial',
-	'Industries',
 	'Innovations',
 	'Labs',
 	'Logistics',
 	'Limited',
 	'LLC',
-	'Online',
 	'Partners',
 	'Productions',
 	'Properties',
@@ -41,7 +34,8 @@ const suffixes = [
 	'Ventures',
 	'Works'
 ]
-const tlds = ['com', 'co', 'net', 'org',]
+const tlds = ['com', 'co', 'net', 'org']
+const statuses = ['Researching', 'Pending', 'Approved', 'Declined']
 
 class Company {
 	constructor() {
@@ -51,6 +45,7 @@ class Company {
 		this.isPublic = Random.chance(0.34)
 		this.contacts = this._generateContacts()
 		this.financials = this._generateFinancials()
+		this.status = this._generateStatus()
 	}
 
 	_generateName() {
@@ -120,6 +115,7 @@ class Company {
 			let metrics = {
 				assets: 0,
 				debt: 0,
+				ebitda: 0,
 				revenue: 0
 			}
 			if (this.isPublic) {
@@ -156,6 +152,12 @@ class Company {
 			return metrics
 		}
 		return years
+	}
+
+	_generateStatus() {
+		const status = Random.itemOf(statuses);
+
+		return `Status.${status}`
 	}
 }
 

@@ -19,14 +19,12 @@ function generateCompanies(number = 10) {
 }
 
 function writeDataModule(companies) {
-	let fileContents = `import { Status } from './status.enum';\n\n`
+	let fileContents = `import { Status } from './status.model';\n\n`
 	fileContents += `const companies = [`
 
 	for (const company of companies) {
 		fileContents += '\n'
 
-		// Add status property
-		company.status = "Status.Researching"
 		// stringify each company
 		let companyString = JSON.stringify(company, null, '\t') + ','
 		// Remove quotes around property names
@@ -34,7 +32,7 @@ function writeDataModule(companies) {
 		// Convert double quotes to single quotes
 		companyString = companyString.replace(/"/g, '\'')
 		// Remove quotes from status value
-		companyString = companyString.replace(/'(Status\.Researching)'/g, '$1')
+		companyString = companyString.replace(/'(Status\.[a-zA-Z]+)'/g, '$1')
 
 		// Split lines that are longer than 130 characters
 		let lines = companyString.split('\n')
