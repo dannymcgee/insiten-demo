@@ -8,7 +8,7 @@ import {
 	ChangeDetectionStrategy
 } from '@angular/core';
 import { DataManager, Company } from 'src/app/data/data-manager.service';
-import { Status, statusMap } from '../../data/status.model';
+import { Status, statusMap } from 'src/app/data/status.model';
 import {
 	Chart,
 	ChartConfiguration,
@@ -16,7 +16,7 @@ import {
 	ChartData,
 	ChartTooltipLabelColor
 } from 'chart.js';
-import { colors } from '../../sass/lib/colors';
+import { colors } from 'src/app/sass/lib/colors';
 import hexToRgba from 'hex-to-rgba';
 
 @Component({

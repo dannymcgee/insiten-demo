@@ -10,10 +10,12 @@ import { SelectComponent } from './ui/form-components/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
 import { SorterComponent } from './ui/sorter/sorter.component';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
-import { TargetListComponent } from './targets/target-list/target-list.component';
-import { TargetCardComponent } from './targets/target-card/target-card.component';
-import { TargetTableHeaderComponent } from './targets/target-table-header/target-table-header.component';
-import { TargetTableComponent } from './targets/target-table/target-table.component';
+import { TargetsComponent } from './targets/targets.component';
+import { TargetsGridComponent } from './targets/targets-grid/targets-grid.component';
+import { TargetCardComponent } from './targets/targets-grid/target-card/target-card.component';
+import { TargetsTableComponent } from './targets/targets-table/targets-table.component';
+import { TargetTableHeaderComponent } from './targets/targets-table/target-table-header/target-table-header.component';
+import { TargetTableRowComponent } from './targets/targets-table/target-table-row/target-table-row.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -37,15 +39,17 @@ import 'what-input';
 	declarations: [
 		AppComponent,
 		ToolbarComponent,
-		TargetListComponent,
-		TargetCardComponent,
-		TargetTableHeaderComponent,
-		TargetTableComponent,
 		CheckboxComponent,
 		InputComponent,
 		SelectComponent,
 		DropdownComponent,
-		SorterComponent
+		SorterComponent,
+		TargetsComponent,
+		TargetsGridComponent,
+		TargetCardComponent,
+		TargetsTableComponent,
+		TargetTableHeaderComponent,
+		TargetTableRowComponent
 	],
 	imports: [
 		BrowserModule,

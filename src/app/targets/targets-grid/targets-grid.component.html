@@ -1,0 +1,7 @@
+<div class="container targets-grid__container">
+	<div class="row targets-grid__row">
+		<div *ngFor="let target of targets" class="col-lg-6 targets-grid__col">
+			<app-target-card [company]="target"></app-target-card>
+		</div>
+	</div>
+</div>

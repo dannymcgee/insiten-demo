@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	ViewEncapsulation,
+	OnDestroy,
+	HostBinding
+} from '@angular/core';
 import {
 	ViewMode,
 	StateManager,
@@ -9,12 +15,12 @@ import { Company, DataManager } from 'src/app/data/data-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-	selector: 'app-target-list',
-	templateUrl: './target-list.component.html',
-	styleUrls: ['./target-list.component.scss'],
+	selector: 'app-targets',
+	templateUrl: './targets.component.html',
+	styleUrls: ['./targets.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class TargetListComponent implements OnInit, OnDestroy {
+export class TargetsComponent implements OnInit, OnDestroy {
 	targets: Company[];
 	targetsSub: Subscription;
 
@@ -26,6 +32,8 @@ export class TargetListComponent implements OnInit, OnDestroy {
 	sortMode: SortMode;
 	sortTypeSub: Subscription;
 	sortModeSub: Subscription;
+
+	@HostBinding('class.targets') _ = true;
 
 	constructor(
 		public stateManager: StateManager,

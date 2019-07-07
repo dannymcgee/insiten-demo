@@ -1,0 +1,17 @@
+@import 'lib';
+
+.targets-grid {
+	&__container {
+		padding-top: $grid-gutter-width;
+		padding-bottom: $grid-gutter-width;
+	}
+		&__row {
+			margin-right: -($grid-gutter-width / 4);
+			margin-left: -($grid-gutter-width / 4);
+		}
+		&__col {
+			margin-bottom: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 4;
+			padding-left: $grid-gutter-width / 4;
+		}
+}

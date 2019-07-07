@@ -1,0 +1,16 @@
+<div [ngSwitch]="viewMode">
+	<app-targets-grid
+		*ngSwitchCase="eViewMode.Grid"
+		[targets]="targets"
+	></app-targets-grid>
+
+	<app-targets-table
+		*ngSwitchCase="eViewMode.Table"
+		[targets]="targets"
+	></app-targets-table>
+
+	<div *ngSwitchDefault class="alert alert--error">
+		<h3>Error</h3>
+		<p>Unknown view mode '{{ viewMode }}'!</p>
+	</div>
+</div>

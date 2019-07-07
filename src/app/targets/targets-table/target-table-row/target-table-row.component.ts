@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Company, DataManager } from 'src/app/data/data-manager.service';
-import { statusMap } from '../../data/status.model';
+import { statusMap } from '../../../data/status.model';
 
 interface FinanceMetric {
 	formatted: string;
@@ -12,14 +12,16 @@ interface FinanceMetric {
 
 @Component({
 	selector: 'app-target-table',
-	templateUrl: './target-table.component.html',
-	styleUrls: ['./target-table.component.scss']
+	templateUrl: './target-table-row.component.html',
+	styleUrls: ['./target-table-row.component.scss']
 })
-export class TargetTableComponent implements OnInit {
+export class TargetTableRowComponent implements OnInit {
 	@Input() company: Company;
 	status: { key: string; description: string; icon: string };
 	metricKeys: string[];
 	metrics: FinanceMetric[] = [];
+
+	@HostBinding('class.targets-table__row') _ = true;
 
 	constructor(private dataManager: DataManager) {}
 
