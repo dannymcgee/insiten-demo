@@ -226,22 +226,64 @@ export class DataManager {
 
 		switch (sortType) {
 			case 'name':
-				this.sortByName(sortedCompanies, sortMode);
+			case 'status':
+				this.sortByNameOrStatus(sortedCompanies, sortType, sortMode);
+				break;
+			case 'assets':
+			case 'debt':
+			case 'revenue':
+			case 'ebitda':
+			case 'mc':
+				this.sortByFinancialMetric(sortedCompanies, sortType, sortMode);
 				break;
 			default:
-				console.log('No known sort type defined!');
+				console.log(`Sort type '${sortType}' unknown!`);
 		}
 
 		this._companies = sortedCompanies;
 		this._companiesSubject.next(sortedCompanies);
 	}
 
-	private sortByName(companies: Company[], mode: SortMode) {
+	private sortByNameOrStatus(
+		companies: Company[],
+		type: SortType,
+		mode: SortMode
+	) {
 		companies.sort((a: Company, b: Company) => {
-			if (a.name > b.name) {
+			if (a[type] > b[type]) {
 				return mode;
 			}
-			if (a.name < b.name) {
+			if (a[type] < b[type]) {
+				return mode * -1;
+			}
+			return 0;
+		});
+	}
+
+	private sortByFinancialMetric(
+		companies: Company[],
+		metric: SortType,
+		mode: SortMode
+	) {
+		companies.sort((a: Company, b: Company) => {
+			const aMetric = a.financials[0].metrics[metric];
+			const bMetric = b.financials[0].metrics[metric];
+
+			// sort nulls to the bottom
+			if (aMetric == null && bMetric == null) {
+				return 0;
+			}
+			if (aMetric == null) {
+				return 1;
+			}
+			if (bMetric == null) {
+				return -1;
+			}
+
+			if (aMetric > bMetric) {
+				return mode;
+			}
+			if (aMetric < bMetric) {
 				return mode * -1;
 			}
 			return 0;
