@@ -246,18 +246,37 @@
 							<div class="target-finance__metrics">
 								<div
 									*ngFor="let key of metricKeys"
-									class="target-finance__row"
+									[ngClass]="{
+										'target-finance__row': true,
+										'target-finance__row--disabled':
+											key === 'mc' && !isLocked && !company.isPublic
+									}"
 								>
 									<span class="target-finance__label">
 										{{ metricsMap[key].label }}
 									</span>
-									<span class="target-finance__value">
+
+									<!-- Finance Metrics -->
+									<span
+										*ngIf="isLocked || (key === 'mc' && !company.isPublic)"
+										class="target-finance__value">
 										{{
 											year.metrics[key]
 												? sDataManager.formatNumberFull(year.metrics[key])
 												: '&mdash;'
 										}}
 									</span>
+									<app-input
+										*ngIf="
+											!isLocked &&
+											(key !== 'mc' || (key === 'mc' && company.isPublic))
+										"
+										[id]="'metric__' + key + '__' + year.key"
+										inputClass="target-form__metric"
+										type="text"
+										[defaultValue]="sDataManager.formatNumberFull(year.metrics[key])"
+										[form]="form"
+									></app-input>
 								</div>
 							</div>
 						</div>
