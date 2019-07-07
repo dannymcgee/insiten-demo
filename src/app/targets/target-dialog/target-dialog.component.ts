@@ -18,10 +18,10 @@ import { StateManager } from 'src/app/targets/state-manager.service';
 
 @Component({
 	selector: 'app-target-details',
-	templateUrl: './target-details.component.html',
-	styleUrls: ['./target-details.component.scss']
+	templateUrl: './target-dialog.component.html',
+	styleUrls: ['./target-dialog.component.scss']
 })
-export class TargetDetailsComponent implements OnInit {
+export class TargetDialogComponent implements OnInit {
 	@Input() company: Company;
 	status: { key: string; description: string; icon: string };
 	sDataManager = DataManager;

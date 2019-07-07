@@ -7,7 +7,7 @@
 	@include position(fixed, (0 0 0 0));
 	z-index: 200;
 }
-.target-details {
+.target-dialog {
 	&__overlay {
 		@include position(absolute, (0 0 0 0));
 		background: transparentize($black, 0.15);

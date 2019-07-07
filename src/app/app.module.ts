@@ -17,7 +17,7 @@ import { TargetCardComponent } from './targets/targets-grid/target-card/target-c
 import { TargetsTableComponent } from './targets/targets-table/targets-table.component';
 import { TargetTableHeaderComponent } from './targets/targets-table/target-table-header/target-table-header.component';
 import { TargetTableRowComponent } from './targets/targets-table/target-table-row/target-table-row.component';
-import { TargetDetailsComponent } from './targets/target-details/target-details.component';
+import { TargetDialogComponent } from './targets/target-dialog/target-dialog.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -58,7 +58,7 @@ import 'what-input';
 		TargetsTableComponent,
 		TargetTableHeaderComponent,
 		TargetTableRowComponent,
-		TargetDetailsComponent
+		TargetDialogComponent
 	],
 	imports: [
 		BrowserModule,
