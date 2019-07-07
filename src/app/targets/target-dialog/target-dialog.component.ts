@@ -1,12 +1,4 @@
-import {
-	Component,
-	OnInit,
-	Input,
-	HostBinding,
-	ViewChild,
-	Renderer2,
-	ElementRef
-} from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Renderer2 } from '@angular/core';
 import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
 import {
 	Company,
@@ -16,7 +8,7 @@ import {
 } from 'src/app/data/data-manager.service';
 import { statusMap } from 'src/app/data/status.model';
 import { StateManager } from 'src/app/targets/state-manager.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-target-details',
@@ -26,13 +18,18 @@ import { FormGroup } from '@angular/forms';
 export class TargetDialogComponent extends DialogBaseComponent
 	implements OnInit {
 	@Input() company: Company;
-	companyClone: Company;
+	companyBackup: Company;
 	status: { key: string; description: string; icon: string };
 	sDataManager = DataManager;
 	metricsMap = metricsMap;
 	metricKeys: string[];
-	isLocked = true;
 	form: FormGroup;
+	self = this;
+	validators = Validators;
+
+	@HostBinding('class.target-dialog') _ = true;
+	@HostBinding('class.target-dialog--locked') isLocked = true;
+	@HostBinding('class.target-dialog--unlocked') isUnlocked = true;
 
 	constructor(
 		private dataManager: DataManager,
@@ -63,10 +60,12 @@ export class TargetDialogComponent extends DialogBaseComponent
 		if (this.isLocked) {
 			this.cloneData();
 			this.isLocked = false;
+			this.isUnlocked = true;
 		} else {
 			if (await this.stateManager.confirm('Commit your changes?')) {
 				// TODO: Edit the target
 				this.isLocked = true;
+				this.isUnlocked = false;
 			}
 		}
 	}
@@ -95,6 +94,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 		) {
 			// TODO: Discard changes
 			this.isLocked = true;
+			this.isUnlocked = false;
 		}
 	}
 
@@ -111,13 +111,109 @@ export class TargetDialogComponent extends DialogBaseComponent
 	}
 
 	cloneData() {
-		this.companyClone = JSON.parse(JSON.stringify(this.company));
+		this.companyBackup = JSON.parse(JSON.stringify(this.company));
 	}
 
 	close() {
 		this.fadeOut(() => {
 			this.stateManager.activeTarget.next(null);
 		});
+	}
+
+	onPhoneKeydown($event: KeyboardEvent, host: TargetDialogComponent) {
+		// @ts-ignore
+		const value = this.control.value;
+		const digits = value.replace(/[^\d]/g, '');
+		const input = $event.target as HTMLElement;
+		const pattern = /(\d)|(Backspace)|(Delete)|(Shift)|(Control)|(Alt)|(Enter)|(Tab)|(Arrow.+)/;
+
+		if (!pattern.test($event.key)) {
+			host.stopInput(input, $event);
+		}
+		if (/\d/.test($event.key) && digits.length >= 10) {
+			host.stopInput(input, $event);
+		}
+	}
+
+	onPhoneInput($event: any, host: TargetDialogComponent) {
+		// @ts-ignore
+		const value = this.control.value;
+		const digits = value.replace(/[^\d]/g, '');
+		const digitsArr = digits.split('');
+		const length = digitsArr.length;
+		const formatted = [];
+
+		for (let i = 0; i < length; i++) {
+			if (i === 0) {
+				formatted.push('(');
+			}
+			if (i === 3) {
+				formatted.push(') ');
+			}
+			if (i === 6) {
+				formatted.push('-');
+			}
+			formatted.push(digitsArr.shift());
+		}
+		// @ts-ignore
+		this.control.setValue(formatted.join(''));
+	}
+
+	onMetricKeydown($event: KeyboardEvent, host: TargetDialogComponent) {
+		const input = $event.target as HTMLElement;
+		const pattern = /(\d)|(Backspace)|(Delete)|(Shift)|(Control)|(Alt)|(Enter)|(Tab)|(Arrow.+)/;
+
+		if (!pattern.test($event.key)) {
+			host.stopInput(input, $event);
+		}
+	}
+
+	onMetricInput($event: any, host: TargetDialogComponent) {
+		// @ts-ignore
+		const value = this.control.value;
+		const digits = value.replace(/[^\d]/g, '');
+		const formatted = DataManager.formatNumberFull(+digits);
+
+		// @ts-ignore
+		this.control.setValue(formatted);
+	}
+
+	async onPublicChange(
+		option: { key: boolean; value: string },
+		host: TargetDialogComponent
+	) {
+		if (option.key === false) {
+			const response = await host.stateManager.confirm(
+				'Note: Changing this value to Private will delete values for Market ' +
+					'Capital when this target is saved. Are you sure you want to continue?',
+				'warning'
+			);
+			if (response === false) {
+				// @ts-ignore
+				this.currentValue = {
+					key: true,
+					value: 'Public'
+				};
+				// @ts-ignore
+				this.control.setValue({
+					key: true,
+					value: 'Public'
+				});
+			} else {
+				host.company.isPublic = false;
+			}
+		}
+	}
+
+	stopInput(input: HTMLElement, $event: any) {
+		$event.stopPropagation();
+		$event.preventDefault();
+		this.renderer.addClass(input, 'animate');
+		this.renderer.addClass(input, 'animate--error-shake');
+		window.setTimeout(() => {
+			this.renderer.removeClass(input, 'animate');
+			this.renderer.removeClass(input, 'animate--error-shake');
+		}, 300);
 	}
 
 	fadeOut(callback: () => void) {

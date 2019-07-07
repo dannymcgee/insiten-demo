@@ -43,7 +43,8 @@ import {
 	faEdit,
 	faSave,
 	faTrashAlt,
-	faUndo
+	faUndo,
+	faPlus
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
@@ -102,7 +103,8 @@ export class AppModule {
 			faEdit,
 			faSave,
 			faTrashAlt,
-			faUndo
+			faUndo,
+			faPlus
 		);
 	}
 }

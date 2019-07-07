@@ -10,6 +10,14 @@
 	from { opacity: 1; transform: translateY(0) }
 	to   { opacity: 0; transform: translateY(36px) }
 }
+@keyframes error-shake {
+	0%   { transform: translateX( .5em); outline: 1px solid transparent; }
+	20%  { transform: translateX(-.5em) }
+	40%  { transform: translateX( .25em); outline: 1px solid $red; }
+	60%  { transform: translateX(-.25em) }
+	80%  { transform: translateX( .125em) }
+	100% { transform: translateX( 0 ); outline: 1px solid transparent; }
+}
 
 .animate {
 	animation-duration: 300ms;
@@ -29,6 +37,9 @@
 	&--fade-out-down {
 		animation-name: fade-out-down;
 		animation-timing-function: $ease-in-sine;
+	}
+	&--error-shake {
+		animation-name: error-shake;
 	}
 
 	&--slow { animation-duration: 500ms }

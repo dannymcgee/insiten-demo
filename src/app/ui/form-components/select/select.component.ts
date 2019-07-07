@@ -26,7 +26,8 @@ export class SelectComponent implements OnInit {
 	@Input() form: FormGroup;
 	@Input() options: Option[];
 	@Input() defaultValue: Option;
-	@Input() onChangeFn: ($event: any) => void;
+	@Input() host: any;
+	@Input() onChangeFn: (option: Option, host?: any) => void;
 	control: FormControl;
 	currentValue: Option;
 
@@ -57,12 +58,13 @@ export class SelectComponent implements OnInit {
 	}
 
 	onOptionSelect(option: any) {
+		if (typeof this.onChangeFn === 'function') {
+			this.onChangeFn(option, this.host);
+		}
+
 		this.control.setValue(option);
 		this.currentValue = option;
 
-		if (typeof this.onChangeFn === 'function') {
-			this.onChangeFn(option);
-		}
 		if (this.dropdown) {
 			this.dropdown.close();
 		}

@@ -22,7 +22,10 @@ export class InputComponent implements AfterViewInit, OnInit {
 	@Input() validators: ValidatorFn[];
 	@Input() form: FormGroup;
 	@Input() validationMessage: string;
+	@Input() host: any;
 	@Input() onChangeFn: ($event: any) => void;
+	@Input() onKeydownFn: ($event: any, host?: any) => void;
+	@Input() onInputFn: ($event: any, host?: any) => void;
 	control: FormControl;
 
 	isValid = true;
@@ -60,6 +63,18 @@ export class InputComponent implements AfterViewInit, OnInit {
 	onChanged($event: any) {
 		if (typeof this.onChangeFn === 'function') {
 			this.onChangeFn($event);
+		}
+	}
+
+	onKeydown($event: any) {
+		if (typeof this.onKeydownFn === 'function') {
+			this.onKeydownFn($event, this.host);
+		}
+	}
+
+	onInput($event: any) {
+		if (typeof this.onInputFn === 'function') {
+			this.onInputFn($event, this.host);
 		}
 	}
 

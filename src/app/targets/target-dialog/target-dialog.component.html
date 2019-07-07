@@ -96,6 +96,8 @@
 						key: company.isPublic,
 						value: (company.isPublic ? 'Public' : 'Private')
 					}"
+					[host]="self"
+					[onChangeFn]="onPublicChange"
 					[form]="form"
 				></app-select>
 
@@ -143,6 +145,9 @@
 						class="col-lg-4 target-contacts__col"
 					>
 						<div class="target-contact">
+							<button *ngIf="!isLocked" class="target-contact__delete">
+								<fa-icon icon="trash-alt"></fa-icon>
+							</button>
 							<header class="target-contact__header">
 
 								<!-- Contact Name -->
@@ -193,6 +198,7 @@
 										inputClass="target-form__contact-email"
 										type="text"
 										[defaultValue]="contact.email"
+										[validators]="[validators.email]"
 										[form]="form"
 									></app-input>
 								</li>
@@ -212,10 +218,18 @@
 										inputClass="target-form__contact-phone"
 										type="text"
 										[defaultValue]="contact.phone"
+										[onKeydownFn]="onPhoneKeydown"
+										[onInputFn]="onPhoneInput"
+										[host]="self"
 										[form]="form"
 									></app-input>
 								</li>
-								<li class="target-contact-info__item">
+								<li
+									[ngClass]="{
+										'target-contact-info__item': true,
+										'target-contact-info__item--disabled': !isLocked
+									}"
+								>
 									<fa-icon
 										class="target-contact-info__icon"
 										icon="search"
@@ -224,6 +238,7 @@
 										class="target-contact-info__text"
 										href="{{ getSearchLink(contact) }}"
 										target="_blank"
+										[tabIndex]="!isLocked ? -1 : 0"
 									>
 										Search
 									</a>
@@ -231,6 +246,9 @@
 							</ul>
 						</div>
 					</div>
+					<button *ngIf="!isLocked" class="target-contact__add">
+						<fa-icon icon="plus"></fa-icon>
+					</button>
 				</div>
 			</section>
 
@@ -249,7 +267,9 @@
 									[ngClass]="{
 										'target-finance__row': true,
 										'target-finance__row--disabled':
-											key === 'mc' && !isLocked && !company.isPublic
+											key === 'mc' && !isLocked && !company.isPublic,
+										'target-finance__row--to-delete':
+											key === 'mc' && year.metrics[key] != null && !company.isPublic
 									}"
 								>
 									<span class="target-finance__label">
@@ -275,6 +295,9 @@
 										inputClass="target-form__metric"
 										type="text"
 										[defaultValue]="sDataManager.formatNumberFull(year.metrics[key])"
+										[host]="self"
+										[onKeydownFn]="onMetricKeydown"
+										[onInputFn]="onMetricInput"
 										[form]="form"
 									></app-input>
 								</div>

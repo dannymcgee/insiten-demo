@@ -9,6 +9,7 @@
 			inputClass
 		]"
 		(change)="onChanged($event)"
+		(input)="onInput($event)"
 		(focus)="onFocus()"
 		(blur)="onBlur()"
 		[name]="id"
@@ -25,7 +26,9 @@
 			inputClass
 		]"
 		[type]="type"
-		(keyup)="onChanged($event)"
+		(change)="onChanged($event)"
+		(keydown)="onKeydown($event)"
+		(input)="onInput($event)"
 		(focus)="onFocus()"
 		(blur)="onBlur()"
 		[name]="id"
