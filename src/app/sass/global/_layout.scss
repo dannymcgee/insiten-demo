@@ -12,6 +12,7 @@ body {
 	background: $gray-200;
 
 	&.modal-open {
+		padding-right: 17px;
 		overflow: hidden;
 	}
 }
