@@ -1,0 +1,44 @@
+@import 'lib';
+
+:host {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include position(fixed, (0 0 0 0));
+	z-index: 300;
+}
+.confirmation {
+	&__overlay {
+		@include position(absolute, (0 0 0 0));
+		background: transparentize($black, 0.5);
+	}
+	&__container {
+		max-width: 640px;
+	}
+		&__dialog {
+			background: $white;
+			position: relative;
+		}
+			&__header {
+				padding: px(15) px(30);
+				background: $primary;
+				color: $white;
+			}
+				&__title {
+					margin: 0;
+				}
+			&__body {
+				padding: px(30);
+				font-size: px(18);
+			}
+			&__footer {
+				background: $gray-200;
+				padding: px(12);
+			}
+				&__nav {
+					justify-content: flex-end;
+				}
+					&__btn {
+						margin-left: px(12);
+					}
+}

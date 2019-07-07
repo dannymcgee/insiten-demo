@@ -14,4 +14,11 @@
 		<p>Unknown view mode '{{ viewMode }}'!</p>
 	</div>
 </div>
-<app-target-details *ngIf="activeTarget" [company]="activeTarget"></app-target-details>
+<app-target-details
+	*ngIf="activeTarget"
+	[company]="activeTarget"
+></app-target-details>
+<app-confirmation
+	*ngIf="confirmation"
+	[message]="confirmation"
+></app-confirmation>

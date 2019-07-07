@@ -65,8 +65,10 @@ export class TargetDetailsComponent implements OnInit, AfterViewInit {
 		return `//google.com/search?q=${queryStr}`;
 	}
 
-	close() {
-		this.fadeOut();
+	async close() {
+		if (await this.stateManager.confirm('Are you sure?')) {
+			this.fadeOut();
+		}
 	}
 
 	fadeOut() {

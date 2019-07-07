@@ -1,0 +1,23 @@
+<div class="confirmation__overlay"></div>
+<div class="container confirmation__container">
+	<div #dialog class="confirmation__dialog animate animate--fade-in-up">
+		<header class="confirmation__header">
+			<h3 class="confirmation__title">Confirm</h3>
+		</header>
+		<section class="confirmation__body">
+			{{ message }}
+		</section>
+		<footer class="confirmation__footer">
+			<nav class="nav confirmation__nav">
+				<button
+					class="btn btn--default btn--lg confirmation__btn"
+					(click)="cancel()"
+				>Cancel</button>
+				<button
+					class="btn btn--primary btn--lg confirmation__btn"
+					(click)="confirm()"
+				>Confirm</button>
+			</nav>
+		</footer>
+	</div>
+</div>

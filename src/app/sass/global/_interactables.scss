@@ -46,4 +46,24 @@ a {
 			margin-left: 1em;
 		}
 	}
+	&--default {
+		background: $gray-400;
+		color: $gray-800;
+
+		&:hover {
+			background: $white;
+		}
+	}
+	&--primary {
+		background: $primary;
+		color: $white;
+
+		&:hover {
+			background: darken($primary, 10%);
+		}
+	}
+
+	&--lg {
+		font-size: px(18);
+	}
 }

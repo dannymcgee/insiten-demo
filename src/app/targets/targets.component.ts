@@ -37,6 +37,9 @@ export class TargetsComponent implements OnInit, OnDestroy {
 	sortTypeSub: Subscription;
 	sortModeSub: Subscription;
 
+	confirmation: string;
+	confirmationSub: Subscription;
+
 	@HostBinding('class.targets') _ = true;
 
 	constructor(
@@ -67,6 +70,10 @@ export class TargetsComponent implements OnInit, OnDestroy {
 			this.sortMode = sortMode;
 			this.onSortingChange();
 		});
+
+		this.confirmationSub = this.stateManager.confirmation.subscribe(message => {
+			this.confirmation = message;
+		});
 	}
 
 	onViewModeChange(viewMode: ViewMode) {
@@ -95,5 +102,6 @@ export class TargetsComponent implements OnInit, OnDestroy {
 		this.viewModeSub.unsubscribe();
 		this.sortTypeSub.unsubscribe();
 		this.sortModeSub.unsubscribe();
+		this.confirmationSub.unsubscribe();
 	}
 }
