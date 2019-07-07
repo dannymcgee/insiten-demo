@@ -47,6 +47,8 @@ import {
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -71,7 +73,8 @@ import 'what-input';
 		AppRoutingModule,
 		FontAwesomeModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		TextareaAutosizeModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

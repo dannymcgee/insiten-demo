@@ -16,6 +16,7 @@ import {
 } from 'src/app/data/data-manager.service';
 import { statusMap } from 'src/app/data/status.model';
 import { StateManager } from 'src/app/targets/state-manager.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
 	selector: 'app-target-details',
@@ -25,11 +26,13 @@ import { StateManager } from 'src/app/targets/state-manager.service';
 export class TargetDialogComponent extends DialogBaseComponent
 	implements OnInit {
 	@Input() company: Company;
+	companyClone: Company;
 	status: { key: string; description: string; icon: string };
 	sDataManager = DataManager;
 	metricsMap = metricsMap;
 	metricKeys: string[];
 	isLocked = true;
+	form: FormGroup;
 
 	constructor(
 		private dataManager: DataManager,
@@ -43,6 +46,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 		super.ngOnInit();
 		this.status = statusMap[this.company.status];
 		this.metricKeys = this.dataManager.getMetricKeys();
+		this.form = new FormGroup({});
 	}
 
 	getSearchLink(contact: Contact) {
@@ -57,6 +61,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 
 	async onEditSaveClick() {
 		if (this.isLocked) {
+			this.cloneData();
 			this.isLocked = false;
 		} else {
 			if (await this.stateManager.confirm('Commit your changes?')) {
@@ -103,6 +108,10 @@ export class TargetDialogComponent extends DialogBaseComponent
 			// TODO: Delete the target
 			this.close();
 		}
+	}
+
+	cloneData() {
+		this.companyClone = JSON.parse(JSON.stringify(this.company));
 	}
 
 	close() {

@@ -58,25 +58,82 @@
 			</button>
 		</header>
 
-		<article class="target-content">
+		<article class="target-content target-form">
 			<header class="target-content__header">
-				<h1 class="target-content__name">{{ company.name }}</h1>
+
+				<!-- Name -->
+				<h1
+					*ngIf="this.isLocked"
+					class="target-content__name"
+				>{{ company.name }}</h1>
+				<app-input
+				*ngIf="!this.isLocked"
+					[id]="'name'"
+					inputClass="target-form__name"
+					type="text"
+					[defaultValue]="company.name"
+					[form]="form"
+				></app-input>
+
+				<!-- Public -->
 				<fa-icon
+					*ngIf="isLocked"
 					[ngClass]="[
 						'target-content__public',
 						'target-content__public--' + (company.isPublic ? 'public' : 'private')
 					]"
 					[icon]="company.isPublic ? 'user-chart' : 'building'"
 				></fa-icon>
-				<span class="target-status target-status--{{ status.key }}">
+				<app-select
+					*ngIf="!isLocked"
+					[id]="'public'"
+					inputClass="target-form__public"
+					[options]="[
+						{ key: true, value: 'Public' },
+						{ key: false, value: 'Private' }
+					]"
+					[defaultValue]="{
+						key: company.isPublic,
+						value: (company.isPublic ? 'Public' : 'Private')
+					}"
+					[form]="form"
+				></app-select>
+
+				<!-- Status -->
+				<span
+					*ngIf="isLocked"
+					class="target-status target-status--{{ status.key }}"
+				>
 					<span class="target-status__text">{{ status.description }}</span>
 					<fa-icon class="target-status__icon" [icon]="status.icon"></fa-icon>
 				</span>
+				<app-select
+					*ngIf="!isLocked"
+					[id]="'status'"
+					inputClass="target-form__status"
+					[options]="[
+						{ key: 'researching', value: 'Researching' },
+						{ key: 'pending', value: 'Pending' },
+						{ key: 'approved', value: 'Approved' },
+						{ key: 'declined', value: 'Declined' }
+					]"
+					[defaultValue]="{ key: status.key, value: status.description }"
+					[form]="form"
+				></app-select>
 			</header>
 
-			<section class="target-content__description">
+			<!-- Description -->
+			<section *ngIf="isLocked" class="target-content__description">
 				{{ company.description }}
 			</section>
+			<app-input
+				*ngIf="!isLocked"
+				[id]="'description'"
+				inputClass="target-form__description"
+				type="textarea"
+				[defaultValue]="company.description"
+				[form]="form"
+			></app-input>
 
 			<section class="target-contacts">
 				<h4 class="target-content__heading">Key Contacts</h4>

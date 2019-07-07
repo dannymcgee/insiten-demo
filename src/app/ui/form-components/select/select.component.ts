@@ -33,7 +33,14 @@ export class SelectComponent implements OnInit {
 	className = 'select';
 	@Input() inputClass: string;
 	@HostBinding('class') get hostClasses(): string {
-		return [this.className, this.inputClass].join(' ');
+		const baseClasses = [this.className, this.inputClass];
+		const modifiers = [];
+		if (this.control.value) {
+			modifiers.push(this.className + `--${this.control.value.key}`);
+			modifiers.push(this.inputClass + `--${this.control.value.key}`);
+		}
+		const classes = baseClasses.concat(modifiers);
+		return classes.join(' ');
 	}
 
 	@ViewChild('dropdown', { static: false }) dropdown: DropdownComponent;

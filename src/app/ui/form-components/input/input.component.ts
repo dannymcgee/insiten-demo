@@ -18,6 +18,7 @@ export class InputComponent implements AfterViewInit, OnInit {
 	@Input() id: string;
 	@Input() inputClass: string;
 	@Input() type: string;
+	@Input() defaultValue: string;
 	@Input() validators: ValidatorFn[];
 	@Input() form: FormGroup;
 	@Input() validationMessage: string;
@@ -33,6 +34,9 @@ export class InputComponent implements AfterViewInit, OnInit {
 
 	ngOnInit() {
 		this.control = new FormControl(null, this.validators);
+		if (this.defaultValue) {
+			this.control.setValue(this.defaultValue);
+		}
 		this.form.addControl(this.id, this.control);
 
 		if (this.validators && !this.validationMessage) {

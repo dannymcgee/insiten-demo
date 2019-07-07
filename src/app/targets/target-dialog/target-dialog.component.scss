@@ -173,3 +173,82 @@
 		font-weight: 700;
 	}
 }
+
+::ng-deep .target-form {
+	@include transition(background);
+	&:focus-within {
+		background: $gray-500;
+	}
+	.form-control {
+		flex: 1 1 0;
+
+		&__input {
+			width: 100%;
+			padding-right: px(15);
+			padding-left: px(15);
+			margin-left: px(-15);
+			&:focus {
+				background: $white;
+			}
+		}
+	}
+	&__name {
+		font-size: px(36);
+		font-weight: 700;
+	}
+	&__public {
+		$element: &;
+
+		.select-dropdown {
+			&__toggle {
+				padding: 0.5em 1em;
+				background: $white;
+				border: none;
+				font-size: px(18);
+				font-weight: 700;
+
+				@at-root .select-dropdown__toggle {
+					#{$element}--true &  { color: $teal }
+					#{$element}--false & { color: $purple }
+				}
+			}
+			&__icon {
+				margin-left: 1em;
+			}
+		}
+	}
+	&__status {
+		$element: &;
+		margin-right: px(-30);
+		margin-left: auto;
+
+		.select-dropdown {
+			&__toggle {
+				padding: 0.447em 1em;
+				color: $white;
+				border: none;
+				font-size: px(18);
+				font-weight: 700;
+				text-transform: uppercase;
+
+				@at-root .select-dropdown__toggle {
+					#{$element}--researching & { background: $blue }
+					#{$element}--pending &     { background: $cyan }
+					#{$element}--approved &    { background: $green }
+					#{$element}--declined &    { background: $red }
+				}
+			}
+			&__icon {
+				margin-left: 2.15em;
+				opacity: 0.4;
+			}
+		}
+	}
+	&__description {
+		max-width: 45em;
+		padding: 1em px(15);
+		margin-top: -1em;
+		margin-bottom: -1em;
+		font-size: px(18);
+	}
+}
