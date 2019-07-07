@@ -1,9 +1,18 @@
 <tr class="targets-table__row">
 	<th class="targets-table__cell targets-table__cell--heading">Name</th>
 	<th class="targets-table__cell targets-table__cell--heading">Status</th>
-	<th class="targets-table__cell targets-table__cell--heading">Assets</th>
-	<th class="targets-table__cell targets-table__cell--heading">Debt</th>
-	<th class="targets-table__cell targets-table__cell--heading">Revenue</th>
-	<th class="targets-table__cell targets-table__cell--heading">EIBTDA</th>
-	<th class="targets-table__cell targets-table__cell--heading">Market Capital</th>
+	<th
+		*ngFor="let metric of metricKeys"
+		[ngClass]="[
+			'targets-table__cell',
+			'targets-table__cell--heading',
+			'targets-table__cell--metric-heading'
+		]"
+	>
+		<div class="metric-heading">
+			<span class="metric-heading__item metric-heading__item--year">2018</span>
+			<span class="metric-heading__item metric-heading__item--label">{{ metricsMap[metric].label }}</span>
+			<span class="metric-heading__item metric-heading__item--diff">(+/- LY)</span>
+		</div>
+	</th>
 </tr>

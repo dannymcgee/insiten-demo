@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { DataManager, metricsMap } from 'src/app/data/data-manager.service';
 
 @Component({
 	selector: 'app-target-table-header',
@@ -7,8 +8,12 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 })
 export class TargetTableHeaderComponent implements OnInit {
 	@HostBinding('class.targets-table__header') _ = true;
+	metricsMap = metricsMap;
+	metricKeys: string[];
 
-	constructor() {}
+	constructor(private dataManager: DataManager) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.metricKeys = this.dataManager.getMetricKeys();
+	}
 }

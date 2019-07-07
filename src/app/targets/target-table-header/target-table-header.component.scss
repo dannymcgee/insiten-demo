@@ -1,0 +1,27 @@
+@import 'lib';
+
+.metric-heading {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	&__item {
+		&--year,
+		&--label {
+			text-align: right;
+		}
+		&--year,
+		&--diff {
+			color: $gray-300;
+			font-size: 0.9em;
+			font-weight: 400;
+		}
+		&--year {
+			padding-right: 0.5em;
+		}
+		&--diff {
+			flex: 0 0 35%;
+			padding-left: 0.5em;
+		}
+	}
+}

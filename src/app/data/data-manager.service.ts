@@ -34,6 +34,14 @@ export interface Company {
 	status: Status;
 }
 
+export const metricsMap = {
+	assets: { label: 'Assets' },
+	debt: { label: 'Debt' },
+	revenue: { label: 'Revenue' },
+	ebitda: { label: 'EBITDA' },
+	mc: { label: 'Market Capital' }
+};
+
 interface Query {
 	term: string | null;
 	fields: Set<string>;

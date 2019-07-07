@@ -37,13 +37,18 @@
 	}
 		&__cell {
 			display: table-cell;
+			padding: px(4) 0;
+			background: $white;
+			border-bottom: 1px solid $gray-200;
 
 			&:first-child { padding-left: px(72) }
 			&:last-child { padding-right: px(72) }
 
 			&--heading {
+				padding: px(8) 0;
 				@include position(sticky, (px(50)));
-				background: $white;
+				background: $gray-700;
+				color: $white;
 				text-align: left;
 			}
 		}
