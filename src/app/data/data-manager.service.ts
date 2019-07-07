@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Status } from './status.model';
-import companies from './companies';
+import data from './companies';
+import { SortType, SortMode } from 'src/app/state-manager.service';
 
 export interface Contact {
 	name: {
@@ -83,8 +84,8 @@ export class DataManager {
 	get companies() {
 		return this._companiesSubject;
 	}
-	private _companies = companies.slice();
-	private _companiesSubject = new BehaviorSubject<Company[]>(companies);
+	private _companies = data.slice();
+	private _companiesSubject = new BehaviorSubject<Company[]>(data);
 
 	static formatNumberFull(value: number): string {
 		const valueArr = value.toString().split('');
@@ -218,5 +219,32 @@ export class DataManager {
 		}
 
 		return false;
+	}
+
+	sort(sortType: SortType, sortMode: SortMode) {
+		const sortedCompanies = this._companies.slice();
+
+		switch (sortType) {
+			case 'name':
+				this.sortByName(sortedCompanies, sortMode);
+				break;
+			default:
+				console.log('No known sort type defined!');
+		}
+
+		this._companies = sortedCompanies;
+		this._companiesSubject.next(sortedCompanies);
+	}
+
+	private sortByName(companies: Company[], mode: SortMode) {
+		companies.sort((a: Company, b: Company) => {
+			if (a.name > b.name) {
+				return mode;
+			}
+			if (a.name < b.name) {
+				return mode * -1;
+			}
+			return 0;
+		});
 	}
 }
