@@ -1,6 +1,10 @@
 <tr class="targets-table__row">
-	<th class="targets-table__cell targets-table__cell--heading">Name</th>
-	<th class="targets-table__cell targets-table__cell--heading">Status</th>
+	<th class="targets-table__cell targets-table__cell--heading">
+		<app-sorter sortType="name">Name</app-sorter>
+	</th>
+	<th class="targets-table__cell targets-table__cell--heading">
+		<app-sorter sortType="status">Status</app-sorter>
+	</th>
 	<th
 		*ngFor="let metric of metricKeys"
 		[ngClass]="[

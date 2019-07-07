@@ -1,0 +1,12 @@
+@import 'lib';
+
+.sorter {
+	cursor: pointer;
+	user-select: none;
+
+	&__icon {
+		margin-left: 0.5em;
+		opacity: 0.6;
+		font-size: 0.75em;
+	}
+}

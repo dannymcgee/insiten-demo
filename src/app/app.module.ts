@@ -8,6 +8,7 @@ import { InputComponent } from './ui/form-components/input/input.component';
 import { CheckboxComponent } from './ui/form-components/checkbox/checkbox.component';
 import { SelectComponent } from './ui/form-components/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
+import { SorterComponent } from './ui/sorter/sorter.component';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 import { TargetListComponent } from './targets/target-list/target-list.component';
 import { TargetCardComponent } from './targets/target-card/target-card.component';
@@ -26,7 +27,9 @@ import {
 	faFlask,
 	faHandshake,
 	faCheckCircle,
-	faBan
+	faBan,
+	faSortUp,
+	faSortDown
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
@@ -41,7 +44,8 @@ import 'what-input';
 		CheckboxComponent,
 		InputComponent,
 		SelectComponent,
-		DropdownComponent
+		DropdownComponent,
+		SorterComponent
 	],
 	imports: [
 		BrowserModule,
@@ -65,7 +69,9 @@ export class AppModule {
 			faFlask,
 			faHandshake,
 			faCheckCircle,
-			faBan
+			faBan,
+			faSortUp,
+			faSortDown
 		);
 	}
 }
