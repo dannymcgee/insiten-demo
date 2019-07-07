@@ -6,7 +6,7 @@ import {
 	SortType,
 	SortMode,
 	MetricSortType
-} from 'src/app/state-manager.service';
+} from 'src/app/targets/state-manager.service';
 
 export interface Contact {
 	name: {

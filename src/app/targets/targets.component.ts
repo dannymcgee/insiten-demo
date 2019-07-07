@@ -10,7 +10,7 @@ import {
 	StateManager,
 	SortType,
 	SortMode
-} from 'src/app/state-manager.service';
+} from 'src/app/targets/state-manager.service';
 import { Company, DataManager } from 'src/app/data/data-manager.service';
 import { Subscription } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ViewMode, StateManager } from 'src/app/state-manager.service';
+import { ViewMode, StateManager } from 'src/app/targets/state-manager.service';
 import {
 	DataManager,
 	createFilterConfig

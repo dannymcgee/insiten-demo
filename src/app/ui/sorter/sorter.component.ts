@@ -7,7 +7,11 @@ import {
 	HostListener,
 	ViewEncapsulation
 } from '@angular/core';
-import { StateManager, SortType, SortMode } from 'src/app/state-manager.service';
+import {
+	StateManager,
+	SortType,
+	SortMode
+} from 'src/app/targets/state-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({
