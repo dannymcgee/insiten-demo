@@ -39,6 +39,7 @@ const statuses = ['Researching', 'Pending', 'Approved', 'Declined']
 
 class Company {
 	constructor() {
+		this.id = this._generateID()
 		this.name = this._generateName()
 		this.url = this._generateUrl()
 		this.description = lipsum.getParagraph()
@@ -46,6 +47,17 @@ class Company {
 		this.contacts = this._generateContacts()
 		this.financials = this._generateFinancials()
 		this.status = this._generateStatus()
+	}
+
+	_generateID() {
+		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+		let id = ''
+		for (let i = 0; i < 32; i++) {
+			const index = Random.range(0, 61)
+			id += characters.charAt(index)
+		}
+
+		return id
 	}
 
 	_generateName() {

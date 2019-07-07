@@ -30,6 +30,7 @@ export interface Financials {
 }
 
 export interface Company {
+	id: string;
 	name: string;
 	url: string;
 	description: string;
