@@ -1,0 +1,10 @@
+@import 'lib';
+
+:host {
+	@include position(fixed, (0 0 0 0));
+	background: transparentize($black, 0.15);
+}
+p {
+	padding: px(72);
+	background: $white;
+}
