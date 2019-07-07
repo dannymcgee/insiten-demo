@@ -19,30 +19,15 @@
 			&--public { color: $green }
 			&--private { color: $orange }
 		}
-		&__status {
-			display: flex;
-			align-items: center;
-			margin-left: auto;
-			margin-right: px(-15);
-			padding: 0 1em;
-			color: $white;
-			font-size: px(12);
-			text-transform: uppercase;
-			font-weight: 700;
-
-			&--researching { background: $blue }
-			&--pending { background: $cyan }
-			&--approved { background: $green }
-			&--declined { background: $red }
-		}
-			&__status-icon {
-				font-size: 1.666em;
-				margin-left: 0.666em;
-			}
 	&__description {
 		margin: 0;
 	}
 	&__chart {
 		margin-top: px(30);
 	}
+}
+
+.target-status {
+	margin-left: auto;
+	margin-right: px(-15);
 }

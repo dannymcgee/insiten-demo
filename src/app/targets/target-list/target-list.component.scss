@@ -1,5 +1,8 @@
 @import 'lib';
 
+
+///-- Grid layout --------------------------------------------------------------
+
 .target-list {
 	&__container {
 		padding-top: $grid-gutter-width;
@@ -15,6 +18,9 @@
 			padding-left: $grid-gutter-width / 4;
 		}
 }
+
+
+///-- Table layout -------------------------------------------------------------
 
 .targets-table {
 	width: 100%;
@@ -39,4 +45,29 @@
 				text-align: left;
 			}
 		}
+}
+
+
+///-- Shared styles ------------------------------------------------------------
+
+.target-status {
+	display: flex;
+	align-items: center;
+	padding: 0 1em;
+	color: $white;
+	font-size: px(12);
+	font-weight: 700;
+	text-transform: uppercase;
+
+	&--researching { background: $blue }
+	&--pending     { background: $cyan }
+	&--approved    { background: $green }
+	&--declined    { background: $red }
+
+	&__icon {
+		font-size: 1.666em;
+
+		&:last-child  { margin-left: 0.666em }
+		&:first-child { margin-right: 0.666em }
+	}
 }
