@@ -1,0 +1,19 @@
+@import 'lib';
+
+.target-metric {
+	display: flex;
+	align-items: center;
+
+	&__value {
+		flex: 0 0 65%;
+		text-align: right;
+	}
+	&__diff {
+		flex: 0 0 35%;
+		padding-left: 0.5em;
+		font-size: 0.9em;
+
+		&--positive { color: $green }
+		&--negative { color: $red }
+	}
+}

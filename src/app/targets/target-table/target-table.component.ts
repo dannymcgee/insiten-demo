@@ -4,7 +4,10 @@ import { statusMap } from '../../data/status.model';
 
 interface FinanceMetric {
 	formatted: string;
-	diff: string | null;
+	diff: {
+		content: string | null
+		sign: 'positive' | 'negative'
+	};
 }
 
 @Component({
@@ -33,9 +36,16 @@ export class TargetTableComponent implements OnInit {
 				: `—`;
 
 			const lastValue = this.company.financials[1].metrics[key] || null;
-			const diff = DataManager.getChangeOverLast(currentValue, lastValue);
+			const diffContent = DataManager.getChangeOverLast(currentValue, lastValue);
+			const diffSign = /-/.test(diffContent) ? 'negative' : 'positive';
 
-			this.metrics.push({ formatted, diff });
+			this.metrics.push({
+				formatted,
+				diff: {
+					content: diffContent,
+					sign: diffSign
+				}
+			});
 		}
 	}
 }

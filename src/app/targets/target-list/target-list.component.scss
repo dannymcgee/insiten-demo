@@ -36,8 +36,9 @@
 	}
 		&__cell {
 			display: table-cell;
-			&:first-child { @include calc-container-margins-from('sm', 'padding', 'left') }
-			&:last-child  { @include calc-container-margins-from('sm', 'padding', 'right') }
+
+			&:first-child { padding-left: px(72) }
+			&:last-child { padding-right: px(72) }
 
 			&--heading {
 				@include position(sticky, (px(50)));

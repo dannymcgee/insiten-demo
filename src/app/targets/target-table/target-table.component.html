@@ -9,10 +9,15 @@
 	*ngFor="let metric of metrics"
 	class="targets-table__cell"
 >
-	<div class="targets-table__metric--value">
-		{{ metric.formatted }}
-	</div>
-	<div *ngIf="metric.diff" class="targets-table__metric--diff">
-		{{ metric.diff }}
+	<div class="target-metric">
+		<div class="target-metric__value">
+			{{ metric.formatted }}
+		</div>
+		<div
+			*ngIf="metric.diff"
+			class="target-metric__diff target-metric__diff--{{ metric.diff.sign }}"
+		>
+			{{ metric.diff.content }}
+		</div>
 	</div>
 </div>
