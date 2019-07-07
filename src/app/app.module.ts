@@ -11,6 +11,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TargetListComponent } from './targets/target-list/target-list.component';
 import { TargetCardComponent } from './targets/target-card/target-card.component';
+import { TargetTableHeaderComponent } from './targets/target-table-header/target-table-header.component';
 import { TargetTableComponent } from './targets/target-table/target-table.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -35,6 +36,7 @@ import 'what-input';
 		ToolbarComponent,
 		TargetListComponent,
 		TargetCardComponent,
+		TargetTableHeaderComponent,
 		TargetTableComponent,
 		CheckboxComponent,
 		InputComponent,

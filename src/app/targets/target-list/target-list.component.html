@@ -12,19 +12,7 @@
 		</div>
 
 		<table *ngSwitchCase="eViewMode.Table" class="targets-table">
-			<!-- TODO: Move this into its own component -->
-			<thead class="targets-table__header">
-				<tr class="targets-table__row">
-					<th class="targets-table__cell targets-table__cell--heading">Name</th>
-					<th class="targets-table__cell targets-table__cell--heading">URL</th>
-					<th class="targets-table__cell targets-table__cell--heading">
-						Public
-					</th>
-					<th class="targets-table__cell targets-table__cell--heading">
-						Revenue
-					</th>
-				</tr>
-			</thead>
+			<app-target-table-header></app-target-table-header>
 			<tbody class="targets-table__body">
 				<app-target-table
 					*ngFor="let target of targets"
