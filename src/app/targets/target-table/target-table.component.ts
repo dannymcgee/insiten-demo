@@ -18,13 +18,14 @@ interface FinanceMetric {
 export class TargetTableComponent implements OnInit {
 	@Input() company: Company;
 	status: { key: string; description: string; icon: string };
-	metricKeys = ['assets', 'debt', 'revenue', 'ebitda', 'mc'];
+	metricKeys: string[];
 	metrics: FinanceMetric[] = [];
 
 	constructor(private dataManager: DataManager) {}
 
 	ngOnInit() {
 		this.status = statusMap[this.company.status];
+		this.metricKeys = this.dataManager.getMetricKeys();
 		this.initMetrics();
 	}
 

@@ -153,6 +153,14 @@ export class DataManager {
 		this._companiesSubject.next(filteredCompanies);
 	}
 
+	getMetricKeys(): string[] {
+		const metricKeys = Object.keys(this._companies[0].financials[0].metrics);
+		if (metricKeys.indexOf('mc') === -1) {
+			metricKeys.push('mc');
+		}
+		return metricKeys;
+	}
+
 	private filterByStatus(
 		config: StatusFilter,
 		company: Company
