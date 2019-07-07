@@ -1,6 +1,9 @@
-<div class="target-details__overlay"></div>
+<div class="target-details__overlay" (click)="close()"></div>
 <div class="container target-details__container">
-	<div class="target-details__dialog">
+	<div
+		class="target-details__dialog animate animate--fade-in-up animate--slow"
+		#dialog
+	>
 
 		<header
 			[ngClass]="[
@@ -13,7 +16,10 @@
 					{{ locked ? 'Unlock for Editing' : 'Save Changes' }}
 				</button>
 			</nav>
-			<button class="btn target-toolbar__btn target-toolbar__btn--close">
+			<button
+				class="btn target-toolbar__btn target-toolbar__btn--close"
+				(click)="close()"
+			>
 				<fa-icon class="target-toolbar__btn-icon" icon="times"></fa-icon>
 			</button>
 		</header>
