@@ -26,6 +26,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	filterForm: FormGroup;
 	filterFormSub: Subscription;
 	filterConfig = createFilterConfig();
+	filterFormIsInitialized = false;
 
 	constructor(
 		public stateManager: StateManager,
@@ -37,9 +38,29 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 			this.onViewModeChange(viewMode)
 		);
 		this.filterForm = new FormGroup({});
-		this.filterFormSub = this.filterForm.valueChanges.subscribe(values =>
-			this.onFilterFormUpdate(values)
-		);
+		this.filterFormSub = this.filterForm.valueChanges.subscribe(values => {
+			this.checkFormInitializationStatus(values);
+			if (this.filterFormIsInitialized) {
+				this.onFilterFormUpdate(values);
+			}
+		});
+	}
+
+	checkFormInitializationStatus(values: any) {
+		if (
+			values.filterFieldContacts === false &&
+			values.filterFieldDescription === false &&
+			values.filterFieldName === true &&
+			values.filterFieldUrl === false &&
+			values.filterPublic !== undefined &&
+			values.filterQuery !== undefined &&
+			values.filterStatus !== undefined &&
+			values.filterStatus.key === 'researching' &&
+			values.filterStatus.value === 'Researching' &&
+			values.filterStatusToggle !== undefined
+		) {
+			this.filterFormIsInitialized = true;
+		}
 	}
 
 	onFilterFormUpdate(values: any) {
