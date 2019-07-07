@@ -115,8 +115,8 @@ class Company {
 			let metrics = {
 				assets: 0,
 				debt: 0,
-				ebitda: 0,
-				revenue: 0
+				revenue: 0,
+				ebitda: 0
 			}
 			if (this.isPublic) {
 				metrics.mc = 0
