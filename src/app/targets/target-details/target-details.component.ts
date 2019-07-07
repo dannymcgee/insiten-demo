@@ -5,7 +5,6 @@ import {
 	HostBinding,
 	ViewChild,
 	Renderer2,
-	AfterViewInit,
 	ElementRef
 } from '@angular/core';
 import {
@@ -22,7 +21,7 @@ import { StateManager } from 'src/app/targets/state-manager.service';
 	templateUrl: './target-details.component.html',
 	styleUrls: ['./target-details.component.scss']
 })
-export class TargetDetailsComponent implements OnInit, AfterViewInit {
+export class TargetDetailsComponent implements OnInit {
 	@Input() company: Company;
 	status: { key: string; description: string; icon: string };
 	sDataManager = DataManager;
@@ -48,11 +47,6 @@ export class TargetDetailsComponent implements OnInit, AfterViewInit {
 		window.setTimeout(() => {
 			this.isOpening = false;
 		}, 300);
-	}
-
-	ngAfterViewInit() {
-		console.log('dialog type:', typeof this.dialog);
-		console.log('dialog:', this.dialog);
 	}
 
 	getSearchLink(contact: Contact) {
