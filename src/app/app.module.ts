@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputComponent } from './form-components/input/input.component';
-import { CheckboxComponent } from './form-components/checkbox/checkbox.component';
-import { SelectComponent } from './form-components/select/select.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { InputComponent } from './ui/form-components/input/input.component';
+import { CheckboxComponent } from './ui/form-components/checkbox/checkbox.component';
+import { SelectComponent } from './ui/form-components/select/select.component';
+import { DropdownComponent } from './ui/dropdown/dropdown.component';
+import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 import { TargetListComponent } from './targets/target-list/target-list.component';
 import { TargetCardComponent } from './targets/target-card/target-card.component';
 import { TargetTableHeaderComponent } from './targets/target-table-header/target-table-header.component';
