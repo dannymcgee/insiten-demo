@@ -14,3 +14,4 @@
 		<p>Unknown view mode '{{ viewMode }}'!</p>
 	</div>
 </div>
+<app-target-details *ngIf="activeTarget" [company]="activeTarget"></app-target-details>

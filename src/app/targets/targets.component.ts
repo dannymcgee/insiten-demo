@@ -24,6 +24,9 @@ export class TargetsComponent implements OnInit, OnDestroy {
 	targets: Company[];
 	targetsSub: Subscription;
 
+	activeTarget: Company;
+	activeTargetSub: Subscription;
+
 	eViewMode = ViewMode;
 	viewMode: ViewMode;
 	viewModeSub: Subscription;
@@ -43,6 +46,10 @@ export class TargetsComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.targetsSub = this.dataManager.companies.subscribe(companies => {
 			this.targets = companies;
+		});
+
+		this.activeTargetSub = this.stateManager.activeTarget.subscribe(company => {
+			this.activeTarget = company;
 		});
 
 		this.viewModeSub = this.stateManager.viewMode.subscribe(viewMode =>
@@ -72,6 +79,7 @@ export class TargetsComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.targetsSub.unsubscribe();
+		this.activeTargetSub.unsubscribe();
 		this.viewModeSub.unsubscribe();
 		this.sortTypeSub.unsubscribe();
 		this.sortModeSub.unsubscribe();

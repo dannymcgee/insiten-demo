@@ -1,6 +1,13 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	HostBinding,
+	HostListener
+} from '@angular/core';
 import { Company, DataManager } from 'src/app/data/data-manager.service';
-import { statusMap } from '../../../data/status.model';
+import { StateManager } from 'src/app/targets/state-manager.service';
+import { statusMap } from 'src/app/data/status.model';
 
 interface FinanceMetric {
 	formatted: string;
@@ -23,7 +30,10 @@ export class TargetTableRowComponent implements OnInit {
 
 	@HostBinding('class.targets-table__row') _ = true;
 
-	constructor(private dataManager: DataManager) {}
+	constructor(
+		private dataManager: DataManager,
+		private stateManager: StateManager
+	) {}
 
 	ngOnInit() {
 		this.status = statusMap[this.company.status];
@@ -50,5 +60,9 @@ export class TargetTableRowComponent implements OnInit {
 				}
 			});
 		}
+	}
+
+	@HostListener('click') onClick() {
+		this.stateManager.activeTarget.next(this.company);
 	}
 }

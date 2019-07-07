@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Company } from 'src/app/data/data-manager.service';
 
 export enum ViewMode {
 	Grid,
@@ -27,4 +28,5 @@ export class StateManager {
 	viewMode = new BehaviorSubject<ViewMode>(ViewMode.Grid);
 	sortType = new BehaviorSubject<SortType>('name');
 	sortMode = new BehaviorSubject<SortMode>(SortMode.Ascending);
+	activeTarget = new Subject<Company>();
 }

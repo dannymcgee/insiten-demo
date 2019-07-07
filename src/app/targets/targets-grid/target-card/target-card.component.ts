@@ -5,9 +5,11 @@ import {
 	ElementRef,
 	ViewChild,
 	AfterViewInit,
-	ChangeDetectionStrategy
+	ChangeDetectionStrategy,
+	HostListener
 } from '@angular/core';
 import { DataManager, Company } from 'src/app/data/data-manager.service';
+import { StateManager } from 'src/app/targets/state-manager.service';
 import { Status, statusMap } from 'src/app/data/status.model';
 import {
 	Chart,
@@ -41,7 +43,10 @@ export class TargetCardComponent implements OnInit, AfterViewInit {
 	ebitdaSet: number[] = [];
 	chartData: ChartConfiguration;
 
-	constructor(public dataManager: DataManager) {}
+	constructor(
+		public dataManager: DataManager,
+		private stateManager: StateManager
+	) {}
 
 	ngOnInit() {
 		this.status = statusMap[this.company.status];
@@ -51,6 +56,10 @@ export class TargetCardComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		this.chart = new Chart(this.canvas.nativeElement, this.chartData);
+	}
+
+	@HostListener('click') onClick() {
+		this.stateManager.activeTarget.next(this.company);
 	}
 
 	initChartData() {
