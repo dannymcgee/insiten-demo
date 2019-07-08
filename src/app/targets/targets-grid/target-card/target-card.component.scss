@@ -20,7 +20,12 @@
 		margin: 0 0 px(8);
 	}
 		&__name {
+			max-width: px(300);
+			height: 1.4em;
 			margin: 0 px(12) 0 0;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 	&__description {
 		margin: 0;
