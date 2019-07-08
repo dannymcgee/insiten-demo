@@ -1,20 +1,19 @@
 @import 'lib';
 
 :host {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	@include position(fixed, (0 0 0 0));
 	z-index: 200;
+	overflow-y: auto;
 }
 .target-dialog {
 	&__overlay {
-		@include position(absolute, (0 0 0 0));
+		@include position(fixed, (0 0 0 0));
 		background: transparentize($black, 0.15);
 	}
 	&__dialog {
-		background: $white;
+		margin: px(72) 0;
 		position: relative;
+		background: $white;
 	}
 }
 
@@ -23,6 +22,8 @@
 	display: flex;
 	align-items: center;
 	height: px(48);
+	@include position(sticky, (0));
+	z-index: 300;
 	background: $gray-200;
 
 	&__btn {
