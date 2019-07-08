@@ -2,6 +2,22 @@
 
 ///-- Shared styles ------------------------------------------------------------
 
+.target-type {
+	display: flex;
+	align-items: center;
+	font-size: px(14);
+
+	&--public { color: $teal }
+	&--private { color: $purple }
+
+	&__icon {
+		margin-right: 0.333em;
+	}
+	&__text {
+		font-weight: 700;
+	}
+}
+
 .target-status {
 	display: flex;
 	align-items: center;

@@ -95,17 +95,10 @@
 	&__header {
 		display: flex;
 		align-items: center;
-		margin-bottom: px(24);
+		margin-bottom: px(18);
 	}
 		&__name {
-			margin: 0;
-		}
-		&__public {
-			font-size: px(24);
-			margin-left: 1em;
-
-			&--public { color: $teal }
-			&--private { color: $purple }
+			margin: 0 0.75em 0 0;
 		}
 
 	&__url {
@@ -137,6 +130,10 @@
 		padding-bottom: 0.666em;
 		border-bottom: 1px solid $gray-300;
 	}
+}
+
+.target-type {
+	font-size: px(24);
 }
 
 .target-status {

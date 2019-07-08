@@ -76,14 +76,21 @@
 				></app-input>
 
 				<!-- Public -->
-				<fa-icon
-					*ngIf="isLocked"
+				<div
+				*ngIf="isLocked"
 					[ngClass]="[
-						'target-content__public',
-						'target-content__public--' + (company.isPublic ? 'public' : 'private')
+						'target-type',
+						'target-type--' + (company.isPublic ? 'public' : 'private')
 					]"
-					[icon]="company.isPublic ? 'user-chart' : 'building'"
-				></fa-icon>
+				>
+					<fa-icon
+						class="target-type__icon"
+						[icon]="company.isPublic ? 'user-chart' : 'building'"
+					></fa-icon>
+					<span class="target-type__text">
+						{{ company.isPublic ? 'Public' : 'Private' }}
+					</span>
+				</div>
 				<app-select
 					*ngIf="!isLocked"
 					[id]="'public'"

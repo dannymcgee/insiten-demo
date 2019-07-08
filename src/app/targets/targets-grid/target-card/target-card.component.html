@@ -1,13 +1,21 @@
 <div class="target-card">
 	<header class="target-card__header">
 		<h3 class="target-card__name">{{ company.name }}</h3>
-		<fa-icon
-			class="
-				target-card__header-icon
-				target-card__header-icon--{{ company.isPublic ? 'public' : 'private' }}
-			"
-			[icon]="company.isPublic ? 'user-chart' : 'building'"
-		></fa-icon>
+		<div
+			[ngClass]="[
+				'target-type',
+				'target-type--' + (company.isPublic ? 'public' : 'private')
+			]"
+		>
+			<fa-icon
+				class="target-type__icon"
+				[icon]="company.isPublic ? 'user-chart' : 'building'"
+			></fa-icon>
+			<span class="target-type__text">
+				{{ company.isPublic ? 'Public' : 'Private' }}
+			</span>
+		</div>
+
 		<span class="target-status target-status--{{ status.key }}">
 			<span class="target-status__text">{{ status.description }}</span>
 			<fa-icon class="target-status__icon" [icon]="status.icon"></fa-icon>
