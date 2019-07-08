@@ -95,6 +95,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 		this.stateManager.viewMode.next(viewMode);
 	}
 
+	onNewTarget() {
+		this.dataManager.create();
+	}
+
 	ngOnDestroy() {
 		this.viewModeSub.unsubscribe();
 	}

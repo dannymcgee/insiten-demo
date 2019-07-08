@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, HostBinding, Renderer2 } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	HostBinding,
+	Renderer2,
+	OnDestroy
+} from '@angular/core';
 import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
 import {
 	Company,
@@ -9,6 +16,7 @@ import {
 import { statusMap, Status } from 'src/app/data/status.model';
 import { StateManager } from 'src/app/targets/state-manager.service';
 import { FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-target-details',
@@ -16,7 +24,7 @@ import { FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./target-dialog.component.scss']
 })
 export class TargetDialogComponent extends DialogBaseComponent
-	implements OnInit {
+	implements OnInit, OnDestroy {
 	@Input() company: Company;
 	companyBackup: Company;
 	statusMap = statusMap;
@@ -26,10 +34,10 @@ export class TargetDialogComponent extends DialogBaseComponent
 	form: FormGroup;
 	self = this;
 	validators = Validators;
+	editModeSub: Subscription;
 
 	@HostBinding('class.target-dialog') _ = true;
 	@HostBinding('class.target-dialog--locked') isLocked = true;
-	@HostBinding('class.target-dialog--unlocked') isUnlocked = true;
 
 	constructor(
 		private dataManager: DataManager,
@@ -43,6 +51,12 @@ export class TargetDialogComponent extends DialogBaseComponent
 		super.ngOnInit();
 		this.metricKeys = this.dataManager.getMetricKeys();
 		this.form = new FormGroup({});
+		this.editModeSub = this.stateManager.editMode.subscribe(editMode => {
+			this.isLocked = !editMode;
+			if (editMode) {
+				this.cloneData();
+			}
+		});
 	}
 
 	getSearchLink(contact: Contact) {
@@ -57,14 +71,11 @@ export class TargetDialogComponent extends DialogBaseComponent
 
 	async onEditSaveClick() {
 		if (this.isLocked) {
-			this.cloneData();
-			this.isLocked = false;
-			this.isUnlocked = true;
+			this.stateManager.editMode.next(true);
 		} else {
 			if (await this.stateManager.confirm('Commit your changes?')) {
 				this.saveChanges();
-				this.isLocked = true;
-				this.isUnlocked = false;
+				this.stateManager.editMode.next(false);
 			}
 		}
 	}
@@ -93,8 +104,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 			)
 		) {
 			this.discardChanges();
-			this.isLocked = true;
-			this.isUnlocked = false;
+			this.stateManager.editMode.next(false);
 		}
 	}
 
@@ -322,5 +332,10 @@ export class TargetDialogComponent extends DialogBaseComponent
 	fadeOut(callback: () => void) {
 		this.renderer.removeClass(this.dialog.nativeElement, 'animate--slow');
 		super.fadeOut(callback);
+	}
+
+	ngOnDestroy() {
+		this.editModeSub.unsubscribe();
+		this.stateManager.editMode.next(false);
 	}
 }

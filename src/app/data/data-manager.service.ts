@@ -5,7 +5,8 @@ import data from './companies';
 import {
 	SortType,
 	SortMode,
-	MetricSortType
+	MetricSortType,
+	StateManager
 } from 'src/app/targets/state-manager.service';
 
 export interface Contact {
@@ -86,6 +87,8 @@ export function createFilterConfig(
 	providedIn: 'root'
 })
 export class DataManager {
+	constructor(private stateManager: StateManager) {}
+
 	get companies() {
 		return this._companiesSubject;
 	}
@@ -142,6 +145,75 @@ export class DataManager {
 			metricKeys.push('mc');
 		}
 		return metricKeys;
+	}
+
+	create() {
+		// TODO: refactor
+		const newCompany: Company = {
+			id: this.generateID(),
+			name: 'Lorem Ipsum Inc.',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+			url: 'loremipsum.com',
+			isPublic: false,
+			contacts: [
+				{
+					name: {
+						first: Math.random() > 0.5 ? 'Jane' : 'John',
+						last: 'Doe'
+					},
+					position: 'Position',
+					phone: '(555) 555-5555',
+					email: 'jdoe@loremipsum.com'
+				}
+			],
+			financials: [
+				{
+					key: 2018,
+					metrics: {
+						assets: 0,
+						debt: 0,
+						revenue: 0,
+						ebitda: 0
+					}
+				},
+				{
+					key: 2017,
+					metrics: {
+						assets: 0,
+						debt: 0,
+						revenue: 0,
+						ebitda: 0
+					}
+				},
+				{
+					key: 2016,
+					metrics: {
+						assets: 0,
+						debt: 0,
+						revenue: 0,
+						ebitda: 0
+					}
+				}
+			],
+			status: Status.Researching
+		};
+
+		this._companies.push(newCompany);
+		this.sort(this.lastSortType, this.lastSortMode);
+		this.stateManager.editMode.next(true);
+		this.stateManager.activeTarget.next(newCompany);
+	}
+
+	private generateID(): string {
+		const characters =
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		let id = '';
+		for (let i = 0; i < 32; i++) {
+			const index = Math.round(Math.max(0, Math.random() * 61));
+			id += characters.charAt(index);
+		}
+
+		return id;
 	}
 
 	update(id: string, company: Company) {

@@ -28,6 +28,7 @@ export class StateManager {
 	viewMode = new BehaviorSubject<ViewMode>(ViewMode.Grid);
 	sortType = new BehaviorSubject<SortType>('name');
 	sortMode = new BehaviorSubject<SortMode>(SortMode.Ascending);
+	editMode = new BehaviorSubject<boolean>(false);
 	activeTarget = new Subject<Company>();
 	confirmation = new Subject<{ message: string; style: string }>();
 	confirmationResponse = new Subject<boolean>();
