@@ -44,7 +44,8 @@ import {
 	faSave,
 	faTrashAlt,
 	faUndo,
-	faPlus
+	faPlus,
+	faGlobe
 } from '@fortawesome/pro-solid-svg-icons';
 import 'what-input';
 
@@ -104,7 +105,8 @@ export class AppModule {
 			faSave,
 			faTrashAlt,
 			faUndo,
-			faPlus
+			faPlus,
+			faGlobe
 		);
 	}
 }

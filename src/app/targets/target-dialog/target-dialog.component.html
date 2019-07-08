@@ -124,6 +124,20 @@
 				></app-select>
 			</header>
 
+			<!-- URL -->
+			<section class="target-content__url">
+				<fa-icon class="target-content__url-icon" icon="globe"></fa-icon>
+				<span *ngIf="isLocked" class="target-content__url-text">{{ company.url }}</span>
+				<app-input
+					*ngIf="!isLocked"
+					[id]="'url'"
+					inputClass="target-form__url"
+					type="text"
+					[defaultValue]="company.url"
+					[form]="form"
+				></app-input>
+			</section>
+
 			<!-- Description -->
 			<section *ngIf="isLocked" class="target-content__description">
 				{{ company.description }}
