@@ -36,20 +36,14 @@ a {
 	border: none;
 	-webkit-appearance: none;
 	cursor: pointer;
-	font-size: px(14);
 
 	&--icon {
 		padding: 0;
 		font-size: px(24);
-
-		+ #{$block}--icon {
-			margin-left: 1em;
-		}
 	}
 	&--default {
 		background: $gray-400;
 		color: $gray-800;
-
 		&:hover {
 			background: $white;
 		}
@@ -59,6 +53,13 @@ a {
 		color: $white;
 		&:hover {
 			background: darken($primary, 10%);
+		}
+	}
+	&--success {
+		background: $green;
+		color: $white;
+		&:hover {
+			background: darken($green, 10%);
 		}
 	}
 	&--info {
