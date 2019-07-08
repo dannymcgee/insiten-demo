@@ -104,10 +104,10 @@
 				<!-- Status -->
 				<span
 					*ngIf="isLocked"
-					class="target-status target-status--{{ status.key }}"
+					class="target-status target-status--{{ statusMap[company.status].key }}"
 				>
-					<span class="target-status__text">{{ status.description }}</span>
-					<fa-icon class="target-status__icon" [icon]="status.icon"></fa-icon>
+					<span class="target-status__text">{{ statusMap[company.status].description }}</span>
+					<fa-icon class="target-status__icon" [icon]="statusMap[company.status].icon"></fa-icon>
 				</span>
 				<app-select
 					*ngIf="!isLocked"
@@ -119,7 +119,10 @@
 						{ key: 'approved', value: 'Approved' },
 						{ key: 'declined', value: 'Declined' }
 					]"
-					[defaultValue]="{ key: status.key, value: status.description }"
+					[defaultValue]="{
+						key: statusMap[company.status].key,
+						value: statusMap[company.status].description
+					}"
 					[form]="form"
 				></app-select>
 			</header>

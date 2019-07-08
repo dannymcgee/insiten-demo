@@ -91,8 +91,13 @@ export class DataManager {
 	}
 	private _companies = data.slice();
 	private _companiesSubject = new BehaviorSubject<Company[]>(data);
+	lastSortType: SortType | MetricSortType;
+	lastSortMode: SortMode;
 
 	static formatNumberFull(value: number): string {
+		if (!value) {
+			return '0';
+		}
 		const valueArr = value.toString().split('');
 		let valueStr = '';
 		const length = valueArr.length;
@@ -139,15 +144,16 @@ export class DataManager {
 		return metricKeys;
 	}
 
-	edit(company: Company, newValues: object) {
-		const index = this._companies.indexOf(company);
-		const newCompany = {
-			...company,
-			...newValues
-		};
-
-		this._companies[index] = newCompany;
-		this._companiesSubject.next(this._companies);
+	update(id: string, company: Company) {
+		let index: number;
+		for (let i = 0; i < this._companies.length; i++) {
+			if (this._companies[i].id === id) {
+				index = i;
+				break;
+			}
+		}
+		this._companies[index] = company;
+		this.sort(this.lastSortType, this.lastSortMode);
 	}
 
 	filter(config: FilterConfig) {
@@ -227,6 +233,9 @@ export class DataManager {
 	}
 
 	sort(sortType: SortType, sortMode: SortMode) {
+		this.lastSortType = sortType;
+		this.lastSortMode = sortMode;
+
 		const sortedCompanies = this._companies.slice();
 
 		if (typeof sortType === 'string') {

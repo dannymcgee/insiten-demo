@@ -6,7 +6,7 @@ import {
 	metricsMap,
 	DataManager
 } from 'src/app/data/data-manager.service';
-import { statusMap } from 'src/app/data/status.model';
+import { statusMap, Status } from 'src/app/data/status.model';
 import { StateManager } from 'src/app/targets/state-manager.service';
 import { FormGroup, Validators } from '@angular/forms';
 
@@ -19,7 +19,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 	implements OnInit {
 	@Input() company: Company;
 	companyBackup: Company;
-	status: { key: string; description: string; icon: string };
+	statusMap = statusMap;
 	sDataManager = DataManager;
 	metricsMap = metricsMap;
 	metricKeys: string[];
@@ -41,7 +41,6 @@ export class TargetDialogComponent extends DialogBaseComponent
 
 	ngOnInit() {
 		super.ngOnInit();
-		this.status = statusMap[this.company.status];
 		this.metricKeys = this.dataManager.getMetricKeys();
 		this.form = new FormGroup({});
 	}
@@ -63,7 +62,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 			this.isUnlocked = true;
 		} else {
 			if (await this.stateManager.confirm('Commit your changes?')) {
-				// TODO: Edit the target
+				this.saveChanges();
 				this.isLocked = true;
 				this.isUnlocked = false;
 			}
@@ -78,6 +77,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 					'warning'
 				)
 			) {
+				this.discardChanges();
 				this.close();
 			}
 		} else {
@@ -92,7 +92,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 				'warning'
 			)
 		) {
-			// TODO: Discard changes
+			this.discardChanges();
 			this.isLocked = true;
 			this.isUnlocked = false;
 		}
@@ -114,6 +114,67 @@ export class TargetDialogComponent extends DialogBaseComponent
 		this.companyBackup = JSON.parse(JSON.stringify(this.company));
 	}
 
+	discardChanges() {
+		this.company = this.companyBackup;
+		this.companyBackup = null;
+	}
+
+	saveChanges() {
+		const data = this.form.value;
+		const updatedCompany: Company = {
+			id: this.company.id,
+			name: data.name,
+			url: data.url,
+			description: data.description,
+			isPublic: data.public.key,
+			contacts: [],
+			financials: [],
+			status: Status[data.status.value as string]
+		};
+
+		const keys = Object.keys(data);
+		const contactKeys = keys.filter(key => /^contact/g.test(key));
+
+		const contactsLength = contactKeys.length / 4;
+		const contacts = new Array(contactsLength);
+		for (let i = 0; i < contactsLength; i++) {
+			const nameArr = data[`contact-name__${i}`].split(' ');
+			const newContact = {
+				name: {
+					first: nameArr[0],
+					last: nameArr[1]
+				},
+				position: data[`contact-position__${i}`],
+				phone: data[`contact-phone__${i}`],
+				email: data[`contact-email__${i}`]
+			};
+			contacts[i] = newContact;
+		}
+		updatedCompany.contacts = contacts;
+
+		const financials = [];
+		for (let y = 2018; y >= 2016; y--) {
+			financials.push({
+				key: y,
+				metrics: {
+					assets: +data[`metric__assets__${y}`].replace(/[^\d]/g, ''),
+					debt: +data[`metric__debt__${y}`].replace(/[^\d]/g, ''),
+					revenue: +data[`metric__revenue__${y}`].replace(/[^\d]/g, ''),
+					ebitda: +data[`metric__ebitda__${y}`].replace(/[^\d]/g, '')
+				}
+			});
+			if (data.public.key) {
+				financials[financials.length - 1].metrics.mc = data[`metric__mc__${y}`]
+					? +data[`metric__mc__${y}`].replace(/[^\d]/g, '')
+					: 0;
+			}
+		}
+		updatedCompany.financials = financials;
+		this.company = updatedCompany;
+		this.companyBackup = null;
+		this.dataManager.update(updatedCompany.id, updatedCompany);
+	}
+
 	close() {
 		this.fadeOut(() => {
 			this.stateManager.activeTarget.next(null);
@@ -121,16 +182,10 @@ export class TargetDialogComponent extends DialogBaseComponent
 	}
 
 	onPhoneKeydown($event: KeyboardEvent, host: TargetDialogComponent) {
-		// @ts-ignore
-		const value = this.control.value;
-		const digits = value.replace(/[^\d]/g, '');
 		const input = $event.target as HTMLElement;
 		const pattern = /(\d)|(Backspace)|(Delete)|(Shift)|(Control)|(Alt)|(Enter)|(Tab)|(Arrow.+)/;
 
-		if (!pattern.test($event.key)) {
-			host.stopInput(input, $event);
-		}
-		if (/\d/.test($event.key) && digits.length >= 10) {
+		if (!$event.ctrlKey && !pattern.test($event.key)) {
 			host.stopInput(input, $event);
 		}
 	}
@@ -143,7 +198,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 		const length = digitsArr.length;
 		const formatted = [];
 
-		for (let i = 0; i < length; i++) {
+		for (let i = 0; i < Math.min(length, 10); i++) {
 			if (i === 0) {
 				formatted.push('(');
 			}
@@ -155,6 +210,9 @@ export class TargetDialogComponent extends DialogBaseComponent
 			}
 			formatted.push(digitsArr.shift());
 		}
+		if (length > 10) {
+			host.stopInput($event.target, null);
+		}
 		// @ts-ignore
 		this.control.setValue(formatted.join(''));
 	}
@@ -163,7 +221,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 		const input = $event.target as HTMLElement;
 		const pattern = /(\d)|(Backspace)|(Delete)|(Shift)|(Control)|(Alt)|(Enter)|(Tab)|(Arrow.+)/;
 
-		if (!pattern.test($event.key)) {
+		if (!$event.ctrlKey && !pattern.test($event.key)) {
 			host.stopInput(input, $event);
 		}
 	}
@@ -182,32 +240,46 @@ export class TargetDialogComponent extends DialogBaseComponent
 		option: { key: boolean; value: string },
 		host: TargetDialogComponent
 	) {
-		if (option.key === false) {
-			const response = await host.stateManager.confirm(
-				'Note: Changing this value to Private will delete values for Market ' +
-					'Capital when this target is saved. Are you sure you want to continue?',
-				'warning'
-			);
-			if (response === false) {
-				// @ts-ignore
-				this.currentValue = {
-					key: true,
-					value: 'Public'
-				};
-				// @ts-ignore
-				this.control.setValue({
-					key: true,
-					value: 'Public'
-				});
-			} else {
-				host.company.isPublic = false;
+		const prevValue = host.company.isPublic;
+		const newValue = option.key;
+
+		if (newValue !== prevValue) {
+			if (newValue === false) {
+				const response = await host.stateManager.confirm(
+					'Note: Changing this value to Private will delete values for Market ' +
+						'Capital when this target is saved. Are you sure you want to continue?',
+					'warning'
+				);
+				if (response === false) {
+					// @ts-ignore
+					this.currentValue = {
+						key: true,
+						value: 'Public'
+					};
+					// @ts-ignore
+					this.control.setValue({
+						key: true,
+						value: 'Public'
+					});
+				} else {
+					host.company.isPublic = false;
+				}
+			}
+			if (newValue === true) {
+				host.company.isPublic = true;
+				for (const financials of host.company.financials) {
+					// @ts-ignore
+					financials.mc = 0;
+				}
 			}
 		}
 	}
 
 	stopInput(input: HTMLElement, $event: any) {
-		$event.stopPropagation();
-		$event.preventDefault();
+		if ($event) {
+			$event.stopPropagation();
+			$event.preventDefault();
+		}
 		this.renderer.addClass(input, 'animate');
 		this.renderer.addClass(input, 'animate--error-shake');
 		window.setTimeout(() => {
