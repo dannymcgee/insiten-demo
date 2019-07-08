@@ -216,6 +216,37 @@ export class TargetDialogComponent extends DialogBaseComponent
 		}, 300);
 	}
 
+	onAddContact() {
+		const firstName = Math.random() > 0.5 ? 'Jane' : 'John';
+		const newContact: Contact = {
+			name: {
+				first: firstName,
+				last: 'Doe'
+			},
+			position: 'Position',
+			phone: '(555) 555-5555',
+			email: `jdoe@${this.company.url}`
+		};
+
+		this.company.contacts.push(newContact);
+	}
+
+	async onDeleteContact(contact: Contact) {
+		const message = `Are you sure you want to delete ${contact.name.first} ${
+			contact.name.last
+		}?`;
+		if (await this.stateManager.confirm(message, 'danger')) {
+			this.deleteContact(contact);
+		}
+	}
+
+	deleteContact(contact: Contact) {
+		const contacts = this.company.contacts;
+		const index = contacts.indexOf(contact);
+
+		contacts.splice(index, 1);
+	}
+
 	fadeOut(callback: () => void) {
 		this.renderer.removeClass(this.dialog.nativeElement, 'animate--slow');
 		super.fadeOut(callback);

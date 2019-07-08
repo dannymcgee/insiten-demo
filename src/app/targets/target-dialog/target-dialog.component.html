@@ -159,7 +159,12 @@
 						class="col-lg-4 target-contacts__col"
 					>
 						<div class="target-contact">
-							<button *ngIf="!isLocked" class="target-contact__delete">
+							<!-- Delete Contact -->
+							<button
+								*ngIf="!isLocked"
+								class="target-contact__delete"
+								(click)="onDeleteContact(contact)"
+							>
 								<fa-icon icon="trash-alt"></fa-icon>
 							</button>
 							<header class="target-contact__header">
@@ -260,7 +265,13 @@
 							</ul>
 						</div>
 					</div>
-					<button *ngIf="!isLocked" class="target-contact__add">
+
+					<!-- Add Contact -->
+					<button
+						*ngIf="!isLocked"
+						class="target-contact__add"
+						(click)="onAddContact()"
+					>
 						<fa-icon icon="plus"></fa-icon>
 					</button>
 				</div>
