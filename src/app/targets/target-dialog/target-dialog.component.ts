@@ -105,7 +105,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 				'danger'
 			)
 		) {
-			// TODO: Delete the target
+			this.dataManager.delete(this.company.id);
 			this.close();
 		}
 	}

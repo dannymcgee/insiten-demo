@@ -145,15 +145,32 @@ export class DataManager {
 	}
 
 	update(id: string, company: Company) {
-		let index: number;
+		const index = this.companyIndexForId(id);
+		if (index !== -1) {
+			this._companies[index] = company;
+			this.sort(this.lastSortType, this.lastSortMode);
+		} else {
+			throw new Error(`No company found with id '${id}'!`);
+		}
+	}
+
+	delete(id: string) {
+		const index = this.companyIndexForId(id);
+		if (index !== -1) {
+			this._companies.splice(index, 1);
+			this._companiesSubject.next(this._companies);
+		} else {
+			throw new Error(`No company found with id '${id}'!`);
+		}
+	}
+
+	private companyIndexForId(id: string): number {
 		for (let i = 0; i < this._companies.length; i++) {
 			if (this._companies[i].id === id) {
-				index = i;
-				break;
+				return i;
 			}
 		}
-		this._companies[index] = company;
-		this.sort(this.lastSortType, this.lastSortMode);
+		return -1;
 	}
 
 	filter(config: FilterConfig) {
