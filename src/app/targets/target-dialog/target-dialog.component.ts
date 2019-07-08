@@ -122,6 +122,7 @@ export class TargetDialogComponent extends DialogBaseComponent
 
 	cloneData() {
 		this.companyBackup = JSON.parse(JSON.stringify(this.company));
+		this.company = JSON.parse(JSON.stringify(this.companyBackup));
 	}
 
 	discardChanges() {
