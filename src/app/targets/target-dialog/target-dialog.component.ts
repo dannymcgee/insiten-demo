@@ -11,11 +11,12 @@ import {
 	Company,
 	Contact,
 	metricsMap,
-	DataManager
+	DataManager,
+	Financials
 } from 'src/app/data/data-manager.service';
 import { statusMap, Status } from 'src/app/data/status.model';
 import { StateManager } from 'src/app/targets/state-manager.service';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -50,7 +51,21 @@ export class TargetDialogComponent extends DialogBaseComponent
 	ngOnInit() {
 		super.ngOnInit();
 		this.metricKeys = this.dataManager.getMetricKeys();
-		this.form = new FormGroup({});
+		this.form = new FormGroup({
+			contacts: new FormArray([]),
+			financials: new FormArray([])
+		});
+
+		const formContacts = this.form.controls.contacts as FormArray;
+		for (const contact of this.company.contacts) {
+			formContacts.push(new FormGroup({}));
+		}
+
+		const formFinancials = this.form.controls.financials as FormArray;
+		for (const financial of this.company.financials) {
+			formFinancials.push(new FormGroup({}));
+		}
+
 		this.editModeSub = this.stateManager.editMode.subscribe(editMode => {
 			this.isLocked = !editMode;
 			if (editMode) {
@@ -137,50 +152,48 @@ export class TargetDialogComponent extends DialogBaseComponent
 			name: data.name,
 			url: data.url,
 			description: data.description,
-			isPublic: data.public.key,
+			isPublic: data.isPublic.key,
 			contacts: [],
 			financials: [],
 			status: Status[data.status.value as string]
 		};
 
-		const keys = Object.keys(data);
-		const contactKeys = keys.filter(key => /^contact/g.test(key));
-
-		const contactsLength = contactKeys.length / 4;
-		const contacts = new Array(contactsLength);
-		for (let i = 0; i < contactsLength; i++) {
-			const nameArr = data[`contact-name__${i}`].split(' ');
-			const newContact = {
-				name: {
-					first: nameArr[0],
-					last: nameArr[1]
-				},
-				position: data[`contact-position__${i}`],
-				phone: data[`contact-phone__${i}`],
-				email: data[`contact-email__${i}`]
+		for (const { name, position, phone, email } of data.contacts) {
+			const nameArr = name.split(' ');
+			const nameObj = {
+				first: nameArr[0],
+				last: nameArr[1]
 			};
-			contacts[i] = newContact;
-		}
-		updatedCompany.contacts = contacts;
-
-		const financials = [];
-		for (let y = 2018; y >= 2016; y--) {
-			financials.push({
-				key: y,
-				metrics: {
-					assets: +data[`metric__assets__${y}`].replace(/[^\d]/g, ''),
-					debt: +data[`metric__debt__${y}`].replace(/[^\d]/g, ''),
-					revenue: +data[`metric__revenue__${y}`].replace(/[^\d]/g, ''),
-					ebitda: +data[`metric__ebitda__${y}`].replace(/[^\d]/g, '')
-				}
+			updatedCompany.contacts.push({
+				name: nameObj,
+				position,
+				phone,
+				email
 			});
-			if (data.public.key) {
-				financials[financials.length - 1].metrics.mc = data[`metric__mc__${y}`]
-					? +data[`metric__mc__${y}`].replace(/[^\d]/g, '')
-					: 0;
-			}
 		}
-		updatedCompany.financials = financials;
+
+		let year = 2016;
+		for (const { assets, debt, revenue, ebitda, mc } of data.financials) {
+			const financial: Financials = {
+				key: year,
+				metrics: {
+					assets: +assets.replace(/[^\d]/g, ''),
+					debt: +debt.replace(/[^\d]/g, ''),
+					revenue: +revenue.replace(/[^\d]/g, ''),
+					ebitda: +ebitda.replace(/[^\d]/g, '')
+				}
+			};
+			if (data.isPublic.key) {
+				if (mc) {
+					financial.metrics.mc = +mc.replace(/[^\d]/g, '');
+				} else {
+					financial.metrics.mc = 0;
+				}
+			}
+			updatedCompany.financials.push(financial);
+			year++;
+		}
+
 		this.company = updatedCompany;
 		this.companyBackup = null;
 		this.dataManager.update(updatedCompany.id, updatedCompany);
@@ -311,6 +324,8 @@ export class TargetDialogComponent extends DialogBaseComponent
 			email: `jdoe@${this.company.url}`
 		};
 
+		const control = this.form.controls.contacts as FormArray;
+		control.push(new FormGroup({}));
 		this.company.contacts.push(newContact);
 	}
 
@@ -328,6 +343,8 @@ export class TargetDialogComponent extends DialogBaseComponent
 		const index = contacts.indexOf(contact);
 
 		contacts.splice(index, 1);
+		const control = this.form.controls.contacts as FormArray;
+		control.removeAt(index);
 	}
 
 	fadeOut(callback: () => void) {

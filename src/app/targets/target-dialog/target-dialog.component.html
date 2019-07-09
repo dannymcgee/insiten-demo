@@ -58,7 +58,7 @@
 			</button>
 		</header>
 
-		<article class="target-content target-form">
+		<article class="target-content target-form" [formGroup]="form">
 			<header class="target-content__header">
 
 				<!-- Name -->
@@ -93,7 +93,7 @@
 				</div>
 				<app-select
 					*ngIf="!isLocked"
-					[id]="'public'"
+					[id]="'isPublic'"
 					inputClass="target-form__public"
 					[options]="[
 						{ key: true, value: 'Public' },
@@ -161,7 +161,7 @@
 				[form]="form"
 			></app-input>
 
-			<section class="target-contacts">
+			<section class="target-contacts" formArrayName="contacts">
 				<h4 class="target-content__heading">Key Contacts</h4>
 				<div class="row target-contacts__row">
 					<div
@@ -185,11 +185,11 @@
 								</h3>
 								<app-input
 									*ngIf="!isLocked"
-									[id]="'contact-name__' + i"
+									[id]="'name'"
 									inputClass="target-form__contact-name"
 									type="text"
 									[defaultValue]="contact.name.first + ' ' + contact.name.last"
-									[form]="form"
+									[form]="form.controls.contacts.controls[i]"
 								></app-input>
 
 								<!-- Contact Position -->
@@ -198,11 +198,11 @@
 								</h5>
 								<app-input
 									*ngIf="!isLocked"
-									[id]="'contact-position__' + i"
+									[id]="'position'"
 									inputClass="target-form__contact-position"
 									type="text"
 									[defaultValue]="contact.position"
-									[form]="form"
+									[form]="form.controls.contacts.controls[i]"
 								></app-input>
 							</header>
 							<ul class="target-contact-info">
@@ -223,12 +223,12 @@
 									</a>
 									<app-input
 										*ngIf="!isLocked"
-										[id]="'contact-email__' + i"
+										[id]="'email'"
 										inputClass="target-form__contact-email"
 										type="text"
 										[defaultValue]="contact.email"
 										[validators]="[validators.email]"
-										[form]="form"
+										[form]="form.controls.contacts.controls[i]"
 									></app-input>
 								</li>
 								<li class="target-contact-info__item">
@@ -243,14 +243,14 @@
 									</span>
 									<app-input
 										*ngIf="!isLocked"
-										[id]="'contact-phone__' + i"
+										[id]="'phone'"
 										inputClass="target-form__contact-phone"
 										type="text"
 										[defaultValue]="contact.phone"
 										[onKeydownFn]="onPhoneKeydown"
 										[onInputFn]="onPhoneInput"
 										[host]="self"
-										[form]="form"
+										[form]="form.controls.contacts.controls[i]"
 									></app-input>
 								</li>
 								<li
@@ -287,11 +287,11 @@
 				</div>
 			</section>
 
-			<section class="target-financials">
+			<section class="target-financials" formArrayName="financials">
 				<h4 class="target-content__heading">Financial Metrics</h4>
 				<div class="row">
 					<div
-						*ngFor="let year of company.financials"
+						*ngFor="let year of company.financials; index as i;"
 						class="col-lg-4"
 					>
 						<div class="target-finance">
@@ -326,14 +326,14 @@
 											!isLocked &&
 											(key !== 'mc' || (key === 'mc' && company.isPublic))
 										"
-										[id]="'metric__' + key + '__' + year.key"
+										[id]="key"
 										inputClass="target-form__metric"
 										type="text"
 										[defaultValue]="sDataManager.formatNumberFull(year.metrics[key])"
 										[host]="self"
 										[onKeydownFn]="onMetricKeydown"
 										[onInputFn]="onMetricInput"
-										[form]="form"
+										[form]="form.controls.financials.controls[i]"
 									></app-input>
 								</div>
 							</div>
