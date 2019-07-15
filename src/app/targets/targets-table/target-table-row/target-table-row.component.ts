@@ -18,7 +18,7 @@ interface FinanceMetric {
 }
 
 @Component({
-	selector: 'app-target-table',
+	selector: 'app-target-table-row',
 	templateUrl: './target-table-row.component.html',
 	styleUrls: ['./target-table-row.component.scss']
 })
