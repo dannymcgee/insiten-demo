@@ -33,6 +33,8 @@ export class TargetDialogComponent extends DialogBaseComponent
 	metricsMap = metricsMap;
 	metricKeys: string[];
 	form: FormGroup;
+	formContacts: FormArray;
+	formFinancials: FormArray;
 	self = this;
 	validators = Validators;
 	editModeSub: Subscription;
@@ -56,14 +58,14 @@ export class TargetDialogComponent extends DialogBaseComponent
 			financials: new FormArray([])
 		});
 
-		const formContacts = this.form.controls.contacts as FormArray;
+		this.formContacts = this.form.controls.contacts as FormArray;
 		for (const contact of this.company.contacts) {
-			formContacts.push(new FormGroup({}));
+			this.formContacts.push(new FormGroup({}));
 		}
 
-		const formFinancials = this.form.controls.financials as FormArray;
+		this.formFinancials = this.form.controls.financials as FormArray;
 		for (const financial of this.company.financials) {
-			formFinancials.push(new FormGroup({}));
+			this.formFinancials.push(new FormGroup({}));
 		}
 
 		this.editModeSub = this.stateManager.editMode.subscribe(editMode => {

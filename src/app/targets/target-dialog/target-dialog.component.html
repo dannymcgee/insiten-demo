@@ -189,7 +189,7 @@
 									inputClass="target-form__contact-name"
 									type="text"
 									[defaultValue]="contact.name.first + ' ' + contact.name.last"
-									[form]="form.controls.contacts.controls[i]"
+									[form]="formContacts.controls[i]"
 								></app-input>
 
 								<!-- Contact Position -->
@@ -202,7 +202,7 @@
 									inputClass="target-form__contact-position"
 									type="text"
 									[defaultValue]="contact.position"
-									[form]="form.controls.contacts.controls[i]"
+									[form]="formContacts.controls[i]"
 								></app-input>
 							</header>
 							<ul class="target-contact-info">
@@ -228,7 +228,7 @@
 										type="text"
 										[defaultValue]="contact.email"
 										[validators]="[validators.email]"
-										[form]="form.controls.contacts.controls[i]"
+										[form]="formContacts.controls[i]"
 									></app-input>
 								</li>
 								<li class="target-contact-info__item">
@@ -250,7 +250,7 @@
 										[onKeydownFn]="onPhoneKeydown"
 										[onInputFn]="onPhoneInput"
 										[host]="self"
-										[form]="form.controls.contacts.controls[i]"
+										[form]="formContacts.controls[i]"
 									></app-input>
 								</li>
 								<li
@@ -333,7 +333,7 @@
 										[host]="self"
 										[onKeydownFn]="onMetricKeydown"
 										[onInputFn]="onMetricInput"
-										[form]="form.controls.financials.controls[i]"
+										[form]="formFinancials.controls[i]"
 									></app-input>
 								</div>
 							</div>
