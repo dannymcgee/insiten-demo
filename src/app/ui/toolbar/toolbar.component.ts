@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ViewMode, StateManager } from 'src/app/targets/state-manager.service';
+import { Subscription } from 'rxjs';
 import {
 	DataManager,
 	createFilterConfig
-} from 'src/app/data/data-manager.service';
-import { Subscription } from 'rxjs';
+} from '@data/data-manager.service';
+import { ViewMode, StateManager } from '@targets/state-manager.service';
 
 @Component({
 	selector: 'app-toolbar',

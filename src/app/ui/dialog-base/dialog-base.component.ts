@@ -6,7 +6,7 @@ import {
 	HostBinding,
 	Renderer2
 } from '@angular/core';
-import { StateManager } from 'src/app/targets/state-manager.service';
+import { StateManager } from '@targets/state-manager.service';
 
 @Component({
 	selector: 'app-dialog-base',

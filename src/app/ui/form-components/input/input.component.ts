@@ -6,7 +6,7 @@ import {
 	HostBinding
 } from '@angular/core';
 import { ValidatorFn, FormGroup, FormControl, Validators } from '@angular/forms';
-import { DataManager } from 'src/app/data/data-manager.service';
+import { DataManager } from '@data/data-manager.service';
 
 @Component({
 	selector: 'app-input',

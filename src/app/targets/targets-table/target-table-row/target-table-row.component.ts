@@ -5,9 +5,9 @@ import {
 	HostBinding,
 	HostListener
 } from '@angular/core';
-import { Company, DataManager } from 'src/app/data/data-manager.service';
-import { StateManager } from 'src/app/targets/state-manager.service';
-import { statusMap } from 'src/app/data/status.model';
+import { Company, DataManager } from '@data/data-manager.service';
+import { statusMap } from '@data/status.model';
+import { StateManager } from '@targets/state-manager.service';
 
 interface FinanceMetric {
 	formatted: string;

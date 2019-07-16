@@ -11,8 +11,8 @@ import {
 	StateManager,
 	SortType,
 	SortMode
-} from 'src/app/targets/state-manager.service';
-import { Company, DataManager } from 'src/app/data/data-manager.service';
+} from '@targets/state-manager.service';
+import { Company, DataManager } from '@data/data-manager.service';
 import { Subscription } from 'rxjs';
 
 @Component({

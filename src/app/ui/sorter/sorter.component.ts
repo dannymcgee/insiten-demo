@@ -7,12 +7,12 @@ import {
 	HostListener,
 	ViewEncapsulation
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import {
 	StateManager,
 	SortType,
 	SortMode
-} from 'src/app/targets/state-manager.service';
-import { Subscription } from 'rxjs';
+} from '@targets/state-manager.service';
 
 @Component({
 	selector: 'app-sorter',

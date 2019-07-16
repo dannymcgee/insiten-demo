@@ -7,7 +7,7 @@ import {
 	ViewChild
 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { DropdownComponent } from './../../dropdown/dropdown.component';
+import { DropdownComponent } from '@ui/dropdown/dropdown.component';
 
 interface Option {
 	key: string;

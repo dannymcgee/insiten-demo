@@ -2,13 +2,10 @@ import {
 	Component,
 	OnInit,
 	Input,
-	HostBinding,
-	ElementRef,
-	ViewChild,
 	Renderer2
 } from '@angular/core';
-import { StateManager } from 'src/app/targets/state-manager.service';
-import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
+import { StateManager } from '@targets/state-manager.service';
+import { DialogBaseComponent } from '@ui/dialog-base/dialog-base.component';
 
 @Component({
 	selector: 'app-confirmation',

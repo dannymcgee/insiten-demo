@@ -1,4 +1,4 @@
-import { Status } from './status.model';
+import { Status } from '@data/status.model';
 
 const companies = [
 {

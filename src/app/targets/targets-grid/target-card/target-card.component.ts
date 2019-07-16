@@ -8,9 +8,10 @@ import {
 	ChangeDetectionStrategy,
 	HostListener
 } from '@angular/core';
-import { DataManager, Company } from 'src/app/data/data-manager.service';
-import { StateManager } from 'src/app/targets/state-manager.service';
-import { Status, statusMap } from 'src/app/data/status.model';
+import { colors } from '@app/sass/lib/colors';
+import { DataManager, Company } from '@data/data-manager.service';
+import { Status, statusMap } from '@data/status.model';
+import { StateManager } from '@targets/state-manager.service';
 import {
 	Chart,
 	ChartConfiguration,
@@ -18,7 +19,6 @@ import {
 	ChartData,
 	ChartTooltipLabelColor
 } from 'chart.js';
-import { colors } from 'src/app/sass/lib/colors';
 import hexToRgba from 'hex-to-rgba';
 
 @Component({

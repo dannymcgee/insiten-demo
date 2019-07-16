@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Status } from './status.model';
-import data from './companies';
+import { Status } from '@data/status.model';
+import data from '@data/companies';
 import {
 	SortType,
 	SortMode,
 	MetricSortType,
 	StateManager
-} from 'src/app/targets/state-manager.service';
+} from '@targets/state-manager.service';
 
 export interface Contact {
 	name: {

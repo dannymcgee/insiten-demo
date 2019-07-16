@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { DataManager, metricsMap } from 'src/app/data/data-manager.service';
+import { DataManager, metricsMap } from '@data/data-manager.service';
 
 @Component({
 	selector: 'app-target-table-header',

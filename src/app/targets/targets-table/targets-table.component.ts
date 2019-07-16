@@ -5,7 +5,7 @@ import {
 	HostBinding,
 	ViewEncapsulation
 } from '@angular/core';
-import { Company } from 'src/app/data/data-manager.service';
+import { Company } from '@data/data-manager.service';
 
 @Component({
 	selector: 'app-targets-table',

@@ -6,18 +6,18 @@ import {
 	Renderer2,
 	OnDestroy
 } from '@angular/core';
-import { DialogBaseComponent } from 'src/app/ui/dialog-base/dialog-base.component';
+import { FormGroup, Validators, FormArray } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import {
 	Company,
 	Contact,
 	metricsMap,
 	DataManager,
 	Financials
-} from 'src/app/data/data-manager.service';
-import { statusMap, Status } from 'src/app/data/status.model';
-import { StateManager } from 'src/app/targets/state-manager.service';
-import { FormGroup, Validators, FormArray } from '@angular/forms';
-import { Subscription } from 'rxjs';
+} from '@data/data-manager.service';
+import { statusMap, Status } from '@data/status.model';
+import { DialogBaseComponent } from '@ui/dialog-base/dialog-base.component';
+import { StateManager } from '@targets/state-manager.service';
 
 @Component({
 	selector: 'app-target-details',
