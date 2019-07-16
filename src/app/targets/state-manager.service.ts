@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Company } from 'src/app/data/data-manager.service';
+import { Company } from '@data/data-manager.service';
 
 export enum ViewMode {
 	Grid,
