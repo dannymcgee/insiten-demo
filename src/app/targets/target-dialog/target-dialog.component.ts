@@ -163,6 +163,27 @@ export class TargetDialogComponent extends DialogBaseComponent
 		for (const { name, position, phone, email } of data.contacts) {
 			const nameArr = name.split(' ');
 			const nameObj = {
+				/**
+				 * FIXME:
+				 *
+				 * If the name field does not consist of a first and last name separated
+				 * by a space, saving changes causes app-breaking errors (in the worst
+				 * case) or unexpected results (in the best case)
+				 *
+				 * Possible solutions:
+				 *
+				 * * Validate input to ensure it follows the [name.first] [name.last] format
+				 *   + Path of least resistance
+				 *   - Compromises usability
+				 * * Switch to two inputs, one for first name and one for last name
+				 *   + Covers most use cases since first or last name can be null
+				 *   - Compromises usability and UI aesthetics
+				 * * Modify data structure to use a single name field
+				 *   + Covers all use cases
+				 *   + No compromise to usability or UI aesthetics
+				 *   - Requires minor modification to mock-data generator
+				 *   - Would not be feasible if data structure were already set in stone
+				 */
 				first: nameArr[0],
 				last: nameArr[1]
 			};
